@@ -9,6 +9,10 @@ public class Nova {
 	      int x=5;
 	      
 	      System.out.println(x);
+	      
+	      x = 55 - x;
+	      
+	      System.out.println(x);
 		
 		
 	}
