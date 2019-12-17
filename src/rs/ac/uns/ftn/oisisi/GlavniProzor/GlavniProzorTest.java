@@ -6,14 +6,11 @@ public class GlavniProzorTest {
 
 	public static void main(String[] args) {
 	
-		String param1 = args[0];
+		
 		JFrame mainFrame = null;
+		mainFrame = new GlavniProzor();
 		
-		if (args.length != 0) {
 		
-		mainFrame = new GlavniProzor(param1);
-		
-		}
 		
 
 	}
