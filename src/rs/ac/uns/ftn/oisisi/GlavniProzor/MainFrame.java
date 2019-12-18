@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
 import java.awt.Dimension;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import java.awt.*;
 
@@ -32,7 +33,11 @@ public class MainFrame extends JFrame {
 		setVisible(true);
 		
 		MenuBar meniBar = new MenuBar();
-		add(meniBar,BorderLayout.NORTH);
+		setJMenuBar(meniBar);
+		
+		
+		
+		
 	    
 	 }
 }
