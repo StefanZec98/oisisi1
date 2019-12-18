@@ -1,7 +1,5 @@
 package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
-import java.awt.Dimension;
-
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import java.awt.*;
@@ -35,7 +33,8 @@ public class MainFrame extends JFrame {
 		MenuBar meniBar = new MenuBar();
 		setJMenuBar(meniBar);
 		
-		
+		Toolbar toolbar = new Toolbar();
+		add(toolbar,BorderLayout.NORTH);
 		
 		
 	    
