@@ -31,6 +31,8 @@ public class MainFrame extends JFrame {
 		//setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setVisible(true);
 		
+		MenuBar meniBar = new MenuBar();
+		add(meniBar,BorderLayout.NORTH);
 	    
 	 }
 }
