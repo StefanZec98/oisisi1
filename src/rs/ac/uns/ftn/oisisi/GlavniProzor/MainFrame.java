@@ -1,7 +1,10 @@
 package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
-import javax.swing.BoxLayout;
+
 import javax.swing.JFrame;
+
+
+
 import java.awt.*;
 
 
@@ -35,6 +38,15 @@ public class MainFrame extends JFrame {
 		
 		Toolbar toolbar = new Toolbar();
 		add(toolbar,BorderLayout.NORTH);
+		
+		StatusBar statusBar = new StatusBar();
+		add(statusBar,BorderLayout.SOUTH);
+		
+		
+		
+		
+		
+		
 		
 		
 		
