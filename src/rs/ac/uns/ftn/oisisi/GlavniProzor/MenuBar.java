@@ -18,8 +18,11 @@ public class MenuBar extends JMenuBar {
 	public MenuBar() {
 		
 		JMenu File = new JMenu("File");
+		File.setToolTipText("File");
 		JMenu Edit = new JMenu("Edit");
+		Edit.setToolTipText("Edit");
 		JMenu Help = new JMenu("Help");
+		Help.setToolTipText("Help");
 		
 		JMenuItem miNew = new JMenuItem("New");
 		JMenuItem miClose = new JMenuItem("Close");
