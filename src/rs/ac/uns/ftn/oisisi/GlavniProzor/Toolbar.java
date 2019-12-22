@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+
+
 public class Toolbar extends JToolBar{
 
 	private static final long serialVersionUID = 1L;
@@ -17,6 +19,7 @@ public class Toolbar extends JToolBar{
 	public Toolbar() {
 		
 		super(SwingConstants.HORIZONTAL);
+				
 		
 		JPanel panLevi = new JPanel();
 		panLevi.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -25,6 +28,7 @@ public class Toolbar extends JToolBar{
 		
 		JButton btnNew = new JButton();
 		btnNew.setToolTipText("Add");
+		btnNew.addMouseListener(new MyMouseListener());
 		btnNew.setIcon(new ImageIcon("images/add-user-button.jpg"));
 		panLevi.add(btnNew);
 
@@ -53,6 +57,7 @@ public class Toolbar extends JToolBar{
 		textField.setPreferredSize(new Dimension(300,36));
 		panDesni.add(textField);
 		
+		
 		//addSeparator();
 		
 		JButton btnSearch = new JButton();
@@ -61,7 +66,7 @@ public class Toolbar extends JToolBar{
 		panDesni.add(btnSearch);
 
 		
-			setFloatable(false);
+		    //setFloatable(false);
 			setBackground(new Color(255, 255, 204));
 		
 		
