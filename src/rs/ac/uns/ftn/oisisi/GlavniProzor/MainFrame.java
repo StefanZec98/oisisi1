@@ -43,7 +43,8 @@ public class MainFrame extends JFrame {
 		add(statusBar,BorderLayout.SOUTH);
 		
 		
-		
+		Tabovi tab2=new Tabovi();
+		add(tab2);
 		
 		
 		
