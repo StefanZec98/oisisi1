@@ -17,7 +17,7 @@ public class DijalogStudent  extends JDialog implements ActionListener {
 public DijalogStudent(Dialog parent){   
 	super(parent,"Dodavanje studenta",true);
  
-   setSize(500, 500);   
+   setSize(500, 600);   
    setLocationRelativeTo(parent);
   
  
@@ -51,6 +51,9 @@ public DijalogStudent(Dialog parent){
    JLabel lblTelefon = new JLabel("Kontakt telefon* ");
    JLabel lblBrojIndeksa = new JLabel("Broj indeksa* ");
    JLabel lblTrenutnaGodinaStudija = new JLabel("Trenutna godina studija* ");
+   JLabel lblEmailAdresa = new JLabel("Email adresa*");
+   JLabel lblDatumUpisa = new JLabel("Datum Upisa*");
+   JLabel lblProsecnaOcena = new JLabel("Prosecna Ocena*");
 
 
    JTextField txtIme = new JTextField();
@@ -59,6 +62,9 @@ public DijalogStudent(Dialog parent){
    JTextField txtAdresa = new JTextField();
    JTextField txtTelefon = new JTextField();
    JTextField txtBrojIndeksa = new JTextField();
+   JTextField txtEmailAdresa = new JTextField();
+   JTextField txtDatumUpisa = new JTextField();
+   JTextField txtProsecnaOcena = new JTextField();
 
    GridBagConstraints gbcLblIme = new GridBagConstraints();
    gbcLblIme.gridx = 0;
@@ -100,9 +106,27 @@ public DijalogStudent(Dialog parent){
    gbcLbBrojIndeksa.insets = new Insets(20, 0, 0,0);
    panelCenter.add(lblBrojIndeksa, gbcLbBrojIndeksa);
    
+   GridBagConstraints gbcLblEmailAdresa = new GridBagConstraints();
+   gbcLblEmailAdresa.gridx = 0;
+   gbcLblEmailAdresa.gridy = 6;
+   gbcLblEmailAdresa.insets = new Insets(20, 0, 0,0);
+   panelCenter.add(lblEmailAdresa, gbcLblEmailAdresa);
+   
+   GridBagConstraints gbcLblDatumUpisa = new GridBagConstraints();
+   gbcLblDatumUpisa.gridx = 0;
+   gbcLblDatumUpisa.gridy = 7;
+   gbcLblDatumUpisa.insets = new Insets(20, 0, 0,0);
+   panelCenter.add(lblDatumUpisa, gbcLblDatumUpisa);
+   
+   GridBagConstraints gbcLblProsecnaOcena = new GridBagConstraints();
+   gbcLblProsecnaOcena.gridx = 0;
+   gbcLblProsecnaOcena.gridy = 8;
+   gbcLblProsecnaOcena.insets = new Insets(20, 0, 0,0);
+   panelCenter.add(lblProsecnaOcena, gbcLblProsecnaOcena);
+   
    GridBagConstraints gbcLbTrenutnaGodinaStudija = new GridBagConstraints();
    gbcLbTrenutnaGodinaStudija.gridx = 0;
-   gbcLbTrenutnaGodinaStudija.gridy = 6;
+   gbcLbTrenutnaGodinaStudija.gridy = 9;
    gbcLbTrenutnaGodinaStudija.insets = new Insets(20, 0, 0,0);
    panelCenter.add(lblTrenutnaGodinaStudija, gbcLbTrenutnaGodinaStudija);
 
@@ -157,6 +181,34 @@ public DijalogStudent(Dialog parent){
    gbcTxtBrojIndeksa.insets = new Insets(20, 20, 0, 20);
    panelCenter.add(txtBrojIndeksa, gbcTxtBrojIndeksa );
    
+   GridBagConstraints gbcTxtEmailAdresa = new GridBagConstraints();
+   gbcTxtEmailAdresa .gridx = 1;
+   gbcTxtEmailAdresa .gridy = 6;
+   gbcTxtEmailAdresa .weightx = 100;
+   gbcTxtEmailAdresa .fill = GridBagConstraints.HORIZONTAL;
+   gbcTxtEmailAdresa .insets = new Insets(20, 20, 0, 20);
+   panelCenter.add(txtEmailAdresa, gbcTxtEmailAdresa );
+   
+   GridBagConstraints gbcTxtDatumUpisa = new GridBagConstraints();
+   gbcTxtDatumUpisa .gridx = 1;
+   gbcTxtDatumUpisa .gridy = 7;
+   gbcTxtDatumUpisa .weightx = 100;
+   gbcTxtDatumUpisa .fill = GridBagConstraints.HORIZONTAL;
+   gbcTxtDatumUpisa .insets = new Insets(20, 20, 0, 20);
+   panelCenter.add(txtDatumUpisa, gbcTxtDatumUpisa );
+   
+   GridBagConstraints gbcTxtProsecnaOcena = new GridBagConstraints();
+   gbcTxtProsecnaOcena .gridx = 1;
+   gbcTxtProsecnaOcena .gridy = 8;
+   gbcTxtProsecnaOcena .weightx = 100;
+   gbcTxtProsecnaOcena .fill = GridBagConstraints.HORIZONTAL;
+   gbcTxtProsecnaOcena .insets = new Insets(20, 20, 0, 20);
+   panelCenter.add(txtProsecnaOcena, gbcTxtProsecnaOcena );
+   
+   
+   
+   
+   
    
 
    String godinaStudija[]= {"I (Prva)","II (Druga)","III (Treca)","IV (Cetvrta)"};
@@ -166,7 +218,7 @@ public DijalogStudent(Dialog parent){
    
    GridBagConstraints grd1 = new GridBagConstraints();
    grd1.gridx = 1;
-   grd1.gridy = 6;
+   grd1.gridy = 9;
    grd1.weightx = 100;
    grd1.fill = GridBagConstraints.HORIZONTAL;
    grd1.insets = new Insets(20, 20, 0, 20);
@@ -204,14 +256,14 @@ public DijalogStudent(Dialog parent){
    
    GridBagConstraints grd2 = new GridBagConstraints();
    grd2.gridx = 0;
-   grd2.gridy = 7;
+   grd2.gridy = 10;
    grd2.insets = new Insets(20, 0, 0,0);
    
    panelCenter.add(budzet,grd2);
    
    GridBagConstraints grd3 = new GridBagConstraints();
    grd3.gridx = 1;
-   grd3.gridy = 7;
+   grd3.gridy = 10;
    grd3.insets = new Insets(20, 20, 0,20);
    
    panelCenter.add(samof,grd3);
