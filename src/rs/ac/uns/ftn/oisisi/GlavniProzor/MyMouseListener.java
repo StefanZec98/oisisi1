@@ -3,11 +3,11 @@ package rs.ac.uns.ftn.oisisi.GlavniProzor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JFrame;
-
 //import javax.swing.JOptionPane;
 
 public class MyMouseListener extends Tabovi implements MouseListener {
+	
+	private static final long serialVersionUID = -863806516841831620L;
 
 	
 	@Override
