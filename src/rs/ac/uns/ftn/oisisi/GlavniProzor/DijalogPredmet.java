@@ -55,9 +55,9 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 		 JLabel lblSifra = new JLabel("Sifra predmeta*");
 		 JLabel lblNaziv = new JLabel("Naziv predmeta*");
 		 JLabel lblSemestar = new JLabel("Semestar*");
-		 JLabel lblGodina = new JLabel("Godina* ");
-		 JLabel lblProfesor = new JLabel("Profesor* ");
-		 JLabel lblStudenti = new JLabel("Studenti* ");
+		 JLabel lblGodina = new JLabel("Godina studija* ");
+		 JLabel lblProfesor = new JLabel("Predmetni profesor* ");
+		 JLabel lblStudenti = new JLabel("Studenti koji slusaju* ");
 		 
 		 
 		 JTextField txtSifra = new JTextField();
