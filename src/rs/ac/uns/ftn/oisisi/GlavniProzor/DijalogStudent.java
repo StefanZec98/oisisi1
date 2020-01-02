@@ -286,6 +286,13 @@ public DijalogStudent(Dialog parent){
 				return;
 				
 			}
+			try {
+				Float.parseFloat(txtProsecnaOcena.getText());
+			}catch(NumberFormatException e1) {
+				JOptionPane.showMessageDialog(new JFrame(), "Prosecna ocena mora biti float!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			if(Float.parseFloat(txtProsecnaOcena.getText())<6.0 || Float.parseFloat(txtProsecnaOcena.getText())>10.0) {
 				JOptionPane.showMessageDialog(new JFrame(), "Ocena mora biti u opsegu [6,10]!", "Greska!",
 				        JOptionPane.ERROR_MESSAGE);
