@@ -54,13 +54,13 @@ private void initPredmeti() {
 this.predmeti = new ArrayList<Predmet>();
 //igraci.add(new Igrac(generateId(), "Mika", "Mikic", "Crvena Zvezda"));
 
-Profesor profesor1=new Profesor("MArko", "prezime", "datum_rodjenja", "adresa_stanovanja",
-06454444444, "e_mail", "adresa_kancelarije", 203, "titula", "zvanje", null);      
+//Profesor profesor1=new Profesor("MArko", "prezime", "datum_rodjenja", "adresa_stanovanja",
+//06454444444, "e_mail", "adresa_kancelarije", 203, "titula", "zvanje", null);      
 
 //String ime=profesor1.getIme();
 //String prezime=profesor1.getPrezime();
 
-predmeti.add(new Predmet("012a", "naziv_predmeta", "semestar", "godina_studija",null, null));
+predmeti.add(new Predmet("012a", "naziv_predmeta", 1, 1,null, null));
 
 }
 
@@ -100,9 +100,9 @@ return predmet.getSifra_predmeta();
 case 1:
 return predmet.getNaziv_predmeta();
 case 2:
-return predmet.getSemestar();
+return Integer.toString(predmet.getSemestar());
 case 3:
-return predmet.getGodina_studija();
+return Integer.toString(predmet.getGodina_studija());
 case 4:
 return "";
 case 5:
@@ -122,8 +122,8 @@ return predmet.getSpisak_studenata();
 }
 
 
-public void dodajPredmet(String sifra, String naziv, String semestar,
-String godina, Profesor profesor,ArrayList<Student>studenti) {
+public void dodajPredmet(String sifra, String naziv, Integer semestar,
+Integer godina, Profesor profesor,ArrayList<Student>studenti) {
 
 this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor,studenti));
 }
@@ -137,8 +137,8 @@ break;
 }
 }
 
-public void izmeniPredmet(String sifra, String naziv, String semestar,
-String godina, Profesor profesor,ArrayList<Student>studenti) {
+public void izmeniPredmet(String sifra, String naziv, Integer semestar,
+Integer godina, Profesor profesor,ArrayList<Student>studenti) {
 for (Predmet i : predmeti) {
 if (i.getSifra_predmeta().equals(sifra)) {
 i.setSifra_predmeta(sifra);

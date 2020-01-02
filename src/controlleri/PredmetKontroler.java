@@ -25,7 +25,7 @@ public class PredmetKontroler {
 	public PredmetKontroler() {}
 	
 	
-	public void dodajPredmet(String sifra,String naziv,String semestar,String godina) {
+	public void dodajPredmet(String sifra,String naziv,Integer semestar,Integer godina) {
 		
 		
 					BazaPredmeta.getInstance().dodajPredmet(sifra, naziv, semestar, godina, null, null);
@@ -50,14 +50,13 @@ public class PredmetKontroler {
 	  
 	  
 	  
-	  public void izmeniPredmet(int rowSelectedIndex) {
+	  public void izmeniPredmet(int rowSelectedIndex,String sifra,String naziv,Integer semestar,Integer godina) {
 			if (rowSelectedIndex < 0) {
 				return;
 			}
 			// izmena modela
-			Predmet predmet = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
-			BazaPredmeta.getInstance().izmeniPredmet(predmet.getSifra_predmeta(),"njee", "njee",
-					"njee", null,null);
+			//Predmet predmet = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
+			BazaPredmeta.getInstance().izmeniPredmet(sifra,naziv,semestar,godina,null,null);
 			// TODO: izmena dodatnih polja modela tabele
 			
 			// azuriranje prikaza

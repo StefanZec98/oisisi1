@@ -6,15 +6,15 @@ public class Predmet {
 	
 	private String sifra_predmeta;
 	private String naziv_predmeta;
-	private String semestar;
-	private String godina_studija;
+	private int semestar;
+	private int godina_studija;
 	private Profesor predmetni_profesor;
 	private ArrayList<Student>spisak_studenata;
 	
 	
 	
 	
-	public Predmet(String sifra_predmeta, String naziv_predmeta, String semestar, String godina_studija,
+	public Predmet(String sifra_predmeta, String naziv_predmeta, int semestar, int godina_studija,
 			Profesor predmetni_profesor, ArrayList<Student> studenti) {
 		super();
 		this.sifra_predmeta = sifra_predmeta;
@@ -47,22 +47,22 @@ public class Predmet {
 	}
 	
 	
-	public String getSemestar() {
+	public Integer getSemestar() {
 		return semestar;
 	}
 	
 	
-	public void setSemestar(String semestar) {
+	public void setSemestar(int semestar) {
 		this.semestar = semestar;
 	}
 	
 	
-	public String getGodina_studija() {
+	public Integer getGodina_studija() {
 		return godina_studija;
 	}
 	
 	
-	public void setGodina_studija(String godina_studija) {
+	public void setGodina_studija(int godina_studija) {
 		this.godina_studija = godina_studija;
 	}
 	

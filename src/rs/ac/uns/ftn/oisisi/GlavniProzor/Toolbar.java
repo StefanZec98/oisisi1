@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -17,6 +19,8 @@ import javax.swing.SwingConstants;
 import controlleri.PredmetKontroler;
 import controlleri.ProfesorKontroler;
 import controlleri.StudentKontroler;
+import modeli.BazaPredmeta;
+import modeli.Predmet;
 
 
 
@@ -56,7 +60,20 @@ public class Toolbar extends JToolBar{
 				
 				
 				}else {
-					PredmetKontroler.getInstance().izmeniPredmet(PredmetiJtable.rowSelectedIndex);
+					
+					if(PredmetiJtable.rowSelectedIndex >=0) {
+					
+					Predmet predmet=BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex);
+					DijalogPredmet dijalogPredmet=new DijalogPredmet(null,predmet.getSifra_predmeta(),
+							predmet.getNaziv_predmeta(),predmet.getSemestar()-1,predmet.getGodina_studija()-1);
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+							       JOptionPane.ERROR_MESSAGE);
+							
+							return;
+					}
+					
+					//PredmetKontroler.getInstance().izmeniPredmet(PredmetiJtable.rowSelectedIndex);
 					
 				}
 			}
