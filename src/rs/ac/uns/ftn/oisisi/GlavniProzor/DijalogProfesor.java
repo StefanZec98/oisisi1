@@ -266,7 +266,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni", "Potvrda unosa", dialogButton);
+				int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
 				
 				if (dialogResult == JOptionPane.YES_OPTION) {
 					
@@ -280,6 +280,20 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 					//dispose();
 					return;
 					
+				}
+				try {
+					Integer.parseInt(txtTelefon.getText());
+				}catch(NumberFormatException e1) {
+					JOptionPane.showMessageDialog(new JFrame(), "Broj telefona bora biti Integer!", "Greska!",
+					        JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				try {
+					Integer.parseInt(txtLicnaKarta.getText());
+				}catch(NumberFormatException e1) {
+					JOptionPane.showMessageDialog(new JFrame(), "Broj licne karte bora biti Integer!", "Greska!",
+					        JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 				String ime = txtIme.getText();
 				String prezime = txtPrezime.getText();

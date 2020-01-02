@@ -268,7 +268,7 @@ public DijalogStudent(Dialog parent){
 			// TODO Auto-generated method stub
 			
 			int dialogButton = JOptionPane.YES_NO_OPTION;
-			int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni", "Potvrda unosa", dialogButton);
+			int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
 			
 			if (dialogResult == JOptionPane.YES_OPTION) {
 			
@@ -290,6 +290,13 @@ public DijalogStudent(Dialog parent){
 				JOptionPane.showMessageDialog(new JFrame(), "Ocena mora biti u opsegu [6,10]!", "Greska!",
 				        JOptionPane.ERROR_MESSAGE);
 				//dispose();
+				return;
+			}
+			try {
+				Integer.parseInt(txtTelefon.getText());
+			}catch(NumberFormatException e1) {
+				JOptionPane.showMessageDialog(new JFrame(), "Broj telefona bora biti Integer!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			
