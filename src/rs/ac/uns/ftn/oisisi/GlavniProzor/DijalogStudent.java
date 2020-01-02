@@ -267,24 +267,35 @@ public DijalogStudent(Dialog parent){
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			
+			int dialogButton = JOptionPane.YES_NO_OPTION;
+			int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni", "Potvrda unosa", dialogButton);
+			
+			if (dialogResult == JOptionPane.YES_OPTION) {
+			
 			if(txtIme.getText().isEmpty() ||txtPrezime.getText().isEmpty() ||txtDatumRodjenja.getText().isEmpty() ||txtAdresa.getText().isEmpty()||txtTelefon.getText().isEmpty()||txtEmailAdresa.getText().isEmpty()||txtBrojIndeksa.getText().isEmpty()||txtDatumUpisa.getText().isEmpty()||txtProsecnaOcena.getText().isEmpty() ) {
-				System.out.println("Morate popuniti sva polja");
-				dispose();
+				//System.out.println("Morate popuniti sva polja");
+				JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
+				//dispose();
 				return;
 			}
 			if(budzet.isSelected()==false && samof.isSelected()==false) {
-				System.out.println("Mora se selektovati budzet ili samofinansiranje");
-				dispose();
+				JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati ili budzet ili samofinansiranje!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
+				//dispose();
 				return;
+				
 			}
 			if(Float.parseFloat(txtProsecnaOcena.getText())<6.0 || Float.parseFloat(txtProsecnaOcena.getText())>10.0) {
-				System.out.println("Prosecna ocena mora biti u opsegu [6,10]");
-				dispose();
+				JOptionPane.showMessageDialog(new JFrame(), "Ocena mora biti u opsegu [6,10]!", "Greska!",
+				        JOptionPane.ERROR_MESSAGE);
+				//dispose();
 				return;
 			}
 			
 			StudentKontroler.getInstance().dodajStudenta(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()), null);
 			dispose();
+		}
 		}
 	});
    

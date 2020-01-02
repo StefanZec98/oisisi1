@@ -260,15 +260,26 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 		
 		potvrda.addActionListener(new ActionListener() {
 			
+			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+				int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni", "Potvrda unosa", dialogButton);
+				
+				if (dialogResult == JOptionPane.YES_OPTION) {
+					
+				
 				if(txtIme.getText().isEmpty() || txtPrezime.getText().isEmpty() || txtDatumRodjenja.getText().isEmpty() ||
 						txtAdresa.getText().isEmpty() || txtTelefon.getText().isEmpty() || txtEmail.getText().isEmpty() ||
 						txtAdresaKancelarije.getText().isEmpty() || txtLicnaKarta.getText().isEmpty() ||
 						txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
-					System.out.println("Morate popuniti sva polja");
-					dispose();
+					JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",
+					        JOptionPane.ERROR_MESSAGE);
+					//dispose();
 					return;
+					
 				}
 				String ime = txtIme.getText();
 				String prezime = txtPrezime.getText();
@@ -284,6 +295,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 				ProfesorKontroler.getInstance().dodajProfesora(ime,prezime,datum,adresa,telefon,email,kanc,licna,titula,zvanje,null);
 				
 				dispose();
+			}
 				
 			}
 		});
@@ -291,6 +303,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 		
 		
 		setVisible(true);
+		
 		
 	}  
 
