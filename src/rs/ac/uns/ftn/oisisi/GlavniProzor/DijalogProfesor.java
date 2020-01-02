@@ -2,6 +2,8 @@ package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
 import javax.swing.*;
 
+import controlleri.ProfesorKontroler;
+
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.GridBagConstraints;
@@ -61,20 +63,20 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 		JLabel lblLicnaKarta = new JLabel("Broj licne karte* ");
 		JLabel lblTitula = new JLabel("Titula* ");
 		JLabel lblZvanje = new JLabel("Zvanje* ");
-		JLabel lblPredmetiSpisak = new JLabel("Spisak predmeta* ");
+//		JLabel lblPredmetiSpisak = new JLabel("Spisak predmeta* ");
 		
 		
-		JTextField txtIme = new JTextField();
-		JTextField txtPrezime = new JTextField();
-		JTextField txtDatumRodjenja = new JTextField();
-		JTextField txtAdresa = new JTextField();
-		JTextField txtTelefon = new JTextField();
-		JTextField txtEmail = new JTextField();
-		JTextField txtAdresaKancelarije = new JTextField();
-		JTextField txtLicnaKarta = new JTextField();
-		JTextField txtTitula = new JTextField();
-		JTextField txtZvanje = new JTextField();
-		JTextField txtPredmetiSpisak = new JTextField();
+	final JTextField txtIme = new JTextField();
+	final JTextField txtPrezime = new JTextField();
+	final JTextField txtDatumRodjenja = new JTextField();
+	final JTextField txtAdresa = new JTextField();
+	final JTextField txtTelefon = new JTextField();
+	final JTextField txtEmail = new JTextField();
+	final JTextField txtAdresaKancelarije = new JTextField();
+	final JTextField txtLicnaKarta = new JTextField();
+	final JTextField txtTitula = new JTextField();
+	final JTextField txtZvanje = new JTextField();
+	//	JTextField txtPredmetiSpisak = new JTextField();
 		
 		//LABELE
 		
@@ -149,11 +151,11 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 		panelCenter.add(lblZvanje, gbcLbZvanje);
 		
 		
-		GridBagConstraints gbcLbPredmetiSpisak = new GridBagConstraints();
+	/*	GridBagConstraints gbcLbPredmetiSpisak = new GridBagConstraints();
 		gbcLbPredmetiSpisak.gridx = 0;
 		gbcLbPredmetiSpisak.gridy = 10;
 		gbcLbPredmetiSpisak.insets = new Insets(20, 0, 0,0);
-		panelCenter.add(lblPredmetiSpisak, gbcLbPredmetiSpisak);
+		panelCenter.add(lblPredmetiSpisak, gbcLbPredmetiSpisak); */
 		
 		//TEXTFILDOVI
 		
@@ -247,13 +249,44 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 		panelCenter.add(txtZvanje, gbcTxtZvanje  );
 	    
 		
-		GridBagConstraints gbcTxtPredmetniSpisak = new GridBagConstraints();
+	/*	GridBagConstraints gbcTxtPredmetniSpisak = new GridBagConstraints();
 		gbcTxtPredmetniSpisak .gridx = 1;
 		gbcTxtPredmetniSpisak.gridy = 10;
 		gbcTxtPredmetniSpisak .weightx = 100;
 		gbcTxtPredmetniSpisak.fill = GridBagConstraints.HORIZONTAL;
 		gbcTxtPredmetniSpisak.insets = new Insets(20, 20, 0, 20);
-		panelCenter.add(txtPredmetiSpisak, gbcTxtPredmetniSpisak);
+		panelCenter.add(txtPredmetiSpisak, gbcTxtPredmetniSpisak); */
+		
+		
+		potvrda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(txtIme.getText().isEmpty() || txtPrezime.getText().isEmpty() || txtDatumRodjenja.getText().isEmpty() ||
+						txtAdresa.getText().isEmpty() || txtTelefon.getText().isEmpty() || txtEmail.getText().isEmpty() ||
+						txtAdresaKancelarije.getText().isEmpty() || txtLicnaKarta.getText().isEmpty() ||
+						txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
+					System.out.println("Morate popuniti sva polja");
+					dispose();
+					return;
+				}
+				String ime = txtIme.getText();
+				String prezime = txtPrezime.getText();
+				String datum = txtDatumRodjenja.getText();
+				String adresa = txtAdresa.getText();
+				long telefon = Long.parseLong(txtTelefon.getText());
+				String email = txtEmail.getText();
+				String kanc = txtAdresaKancelarije.getText();
+				long licna = Long.parseLong(txtLicnaKarta.getText());
+				String titula = txtTitula.getText();
+				String zvanje = txtZvanje.getText();
+				
+				ProfesorKontroler.getInstance().dodajProfesora(ime,prezime,datum,adresa,telefon,email,kanc,licna,titula,zvanje,null);
+				
+				dispose();
+				
+			}
+		});
 		
 		
 		

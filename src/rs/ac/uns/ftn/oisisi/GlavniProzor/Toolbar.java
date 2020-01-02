@@ -3,18 +3,27 @@ package rs.ac.uns.ftn.oisisi.GlavniProzor;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+
+import controlleri.ProfesorKontroler;
+import controlleri.StudentKontroler;
 
 
 
 public class Toolbar extends JToolBar{
 
 	private static final long serialVersionUID = 1L;
+	
+	private JTable TabelaStudenata;
 	
 	public Toolbar() {
 		
@@ -35,6 +44,14 @@ public class Toolbar extends JToolBar{
 		//addSeparator();
 		JButton btnEdit = new JButton();
 		btnEdit.setToolTipText("Edit");
+		btnEdit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex);
+				
+			}
+		});
 		btnEdit.setIcon(new ImageIcon("images/writing.jpg"));
 		panLevi.add(btnEdit);
 
@@ -42,6 +59,21 @@ public class Toolbar extends JToolBar{
 
 		JButton btnDelete = new JButton();
 		btnDelete.setToolTipText("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(Tabovi.pozicija==0) {
+				StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
+				}else if(Tabovi.pozicija==1) {
+					ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
+				}else {
+					
+				}
+				
+				
+			}
+		});
 		btnDelete.setIcon(new ImageIcon("images/rubbish-bin.jpg"));
 		panLevi.add(btnDelete);
 		

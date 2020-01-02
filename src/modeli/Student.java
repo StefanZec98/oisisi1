@@ -1,6 +1,7 @@
 package modeli;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
 		private String ime;
@@ -14,15 +15,25 @@ public class Student {
 		private int trenutna_godina_studija;
 		private Status status;
 		private float prosecna_ocena;
-		//private List<Predmet> predmeti;         cekam njeketa da uradi
+		private ArrayList<Predmet> predmeti;
 		
+		public ArrayList<Predmet> getPredmeti() {
+			return predmeti;
+		}
+
+		public void setPredmeti(ArrayList<Predmet> predmeti) {
+			this.predmeti = predmeti;
+		}
+
 		public Student() {
 			
 		}
 		
+		
+
 		public Student(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
 				String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
-				float prosecna_ocena) {
+				float prosecna_ocena, ArrayList<Predmet> predmeti) {
 			super();
 			this.ime = ime;
 			this.prezime = prezime;
@@ -35,6 +46,7 @@ public class Student {
 			this.trenutna_godina_studija = trenutna_godina_studija;
 			this.status = status;
 			this.prosecna_ocena = prosecna_ocena;
+			this.predmeti = predmeti;
 		}
 
 		public String getIme() {

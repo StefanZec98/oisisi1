@@ -11,7 +11,7 @@ public class Profesor {
 	private long kontakt_telefon;
 	private String e_mail;
 	private String adresa_kancelarije;
-	private int broj_licne_karte;
+	private long broj_licne_karte;
 	private String titula;
 	private String zvanje;
 	private ArrayList<Predmet>predmetiSpisak;
@@ -20,7 +20,7 @@ public class Profesor {
 	
 	
 	public Profesor(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long kontakt_telefon,
-			String e_mail, String adresa_kancelarije, int broj_licne_karte, String titula, String zvanje,
+			String e_mail, String adresa_kancelarije, long broj_licne_karte, String titula, String zvanje,
 			ArrayList<Predmet> predmetiSpisak) {
 		super();
 		this.ime = ime;
@@ -137,14 +137,14 @@ public class Profesor {
 
 
 
-	public int getBroj_licne_karte() {
+	public long getBroj_licne_karte() {
 		return broj_licne_karte;
 	}
 
 
 
 
-	public void setBroj_licne_karte(int broj_licne_karte) {
+	public void setBroj_licne_karte(long broj_licne_karte) {
 		this.broj_licne_karte = broj_licne_karte;
 	}
 

@@ -2,6 +2,11 @@ package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
 import javax.swing.*;
 
+import controlleri.StudentKontroler;
+import modeli.Predmet;
+import modeli.Status;
+import modeli.Student;
+
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.GridBagConstraints;
@@ -56,16 +61,20 @@ public DijalogStudent(Dialog parent){
    JLabel lblProsecnaOcena = new JLabel("Prosecna Ocena*");
 
 
-   JTextField txtIme = new JTextField();
-   JTextField txtPrezime = new JTextField();
-   JTextField txtDatumRodjenja = new JTextField();
-   JTextField txtAdresa = new JTextField();
-   JTextField txtTelefon = new JTextField();
-   JTextField txtBrojIndeksa = new JTextField();
-   JTextField txtEmailAdresa = new JTextField();
-   JTextField txtDatumUpisa = new JTextField();
-   JTextField txtProsecnaOcena = new JTextField();
+  final JTextField txtIme = new JTextField();
+  final JTextField txtPrezime = new JTextField();
+  final JTextField txtDatumRodjenja = new JTextField();
+  final JTextField txtAdresa = new JTextField();
+  final JTextField txtTelefon = new JTextField();
+  final JTextField txtBrojIndeksa = new JTextField();
+  final JTextField txtEmailAdresa = new JTextField();
+  final JTextField txtDatumUpisa = new JTextField();
+  final JTextField txtProsecnaOcena = new JTextField();
 
+  
+   
+   
+   
    GridBagConstraints gbcLblIme = new GridBagConstraints();
    gbcLblIme.gridx = 0;
    gbcLblIme.gridy = 0;
@@ -251,6 +260,34 @@ public DijalogStudent(Dialog parent){
 	}
 });
    
+   b1.addActionListener(new ActionListener() {
+	   
+	   
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			if(txtIme.getText().isEmpty() ||txtPrezime.getText().isEmpty() ||txtDatumRodjenja.getText().isEmpty() ||txtAdresa.getText().isEmpty()||txtTelefon.getText().isEmpty()||txtEmailAdresa.getText().isEmpty()||txtBrojIndeksa.getText().isEmpty()||txtDatumUpisa.getText().isEmpty()||txtProsecnaOcena.getText().isEmpty() ) {
+				System.out.println("Morate popuniti sva polja");
+				dispose();
+				return;
+			}
+			if(budzet.isSelected()==false && samof.isSelected()==false) {
+				System.out.println("Mora se selektovati budzet ili samofinansiranje");
+				dispose();
+				return;
+			}
+			if(Float.parseFloat(txtProsecnaOcena.getText())<6.0 || Float.parseFloat(txtProsecnaOcena.getText())>10.0) {
+				System.out.println("Prosecna ocena mora biti u opsegu [6,10]");
+				dispose();
+				return;
+			}
+			
+			StudentKontroler.getInstance().dodajStudenta(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()), null);
+			dispose();
+		}
+	});
+   
    
    
    
@@ -271,6 +308,10 @@ public DijalogStudent(Dialog parent){
    
    
    setVisible(true);
+   
+   
+   
+  
    
    
    
