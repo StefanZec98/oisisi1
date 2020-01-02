@@ -42,8 +42,8 @@ public void izbrisiProfesora(int rowSelectedIndex) {
 	if (rowSelectedIndex < 0) {
 		return;
 	}
-	Profesor p = BazaProfesora.getInstance().getRow(rowSelectedIndex);
-	BazaProfesora.getInstance().izbrisiProfesora(p.getBroj_licne_karte());
+	Profesor profesor = BazaProfesora.getInstance().getRow(rowSelectedIndex);
+	BazaProfesora.getInstance().izbrisiProfesora(profesor.getBroj_licne_karte());
 	ProfesorJTable.azurirajPrikaz();
 }
 

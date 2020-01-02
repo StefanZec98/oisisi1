@@ -47,63 +47,36 @@ private static final long serialVersionUID = 6162048567980039381L;
 		JScrollPane profesorPane = new JScrollPane(profesoriTable);
 
 
+		
+		PredmetiJtable predmetiJtable=new PredmetiJtable();
+		JScrollPane predmetPane=new JScrollPane(predmetiJtable);
+		ImageIcon icon3 = new ImageIcon("images/predmeti.jpg");
+
+        predmetiJtable.setFillsViewportHeight(true);
+		
+		
+		
+		
 		studentiTable.setFillsViewportHeight(true);
 
 		tabovi.addTab("Studenti",icon1,studentPane);
 		tabovi.addTab("Profesori",icon2,profesorPane);
-
+		tabovi.addTab("Predmeti",icon3,predmetPane);
+		
+		
 		this.add(BorderLayout.CENTER,tabovi);
 
 
-/* ImageIcon icon = new ImageIcon("images/student-tab.jpg");
-
- 
+		
 
 
-
-
-
-   
-
-
-
-
-
-
-
-
-/* this.addChangeListener((ChangeListener) new ChangeListener() {
-   public void stateChanged(ChangeEvent e) {
+		tabovi.addChangeListener((ChangeListener) new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
        
-      pozicija=getSelectedIndex();
-      //System.out.println("Tab: " + pozicija);
-   }
-});*/
-
-
-tabovi.addChangeListener((ChangeListener) new ChangeListener() {
-   public void stateChanged(ChangeEvent e) {
-       
-      pozicija=tabovi.getSelectedIndex();
-      //System.out.println("Tab: " + pozicija);
+				pozicija=tabovi.getSelectedIndex();
+					//System.out.println("Tab: " + pozicija);
    }
 });
-
-
-
-
-
-
-
-       
-
-
-
-
-
-
-
-
 
 
 

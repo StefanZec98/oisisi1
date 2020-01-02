@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import controlleri.PredmetKontroler;
 import controlleri.ProfesorKontroler;
 import controlleri.StudentKontroler;
 
@@ -48,8 +49,16 @@ public class Toolbar extends JToolBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex);
 				
+				if(Tabovi.pozicija==0) {
+				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex);
+				}else if(Tabovi.pozicija==1){
+				
+				
+				}else {
+					PredmetKontroler.getInstance().izmeniPredmet(PredmetiJtable.rowSelectedIndex);
+					
+				}
 			}
 		});
 		btnEdit.setIcon(new ImageIcon("images/writing.jpg"));
@@ -68,7 +77,7 @@ public class Toolbar extends JToolBar{
 				}else if(Tabovi.pozicija==1) {
 					ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
 				}else {
-					
+					PredmetKontroler.getInstance().IzbrisiPredmet(PredmetiJtable.rowSelectedIndex);
 				}
 				
 				
