@@ -1,7 +1,9 @@
 package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
+import controlleri.PredmetKontroler;
 import controlleri.ProfesorKontroler;
 import controlleri.StudentKontroler;
+import modeli.BazaPredmeta;
 import modeli.BazaProfesora;
 import modeli.BazaStudenta;
 
@@ -13,6 +15,8 @@ public class GlavniProzorTest {
 		BazaProfesora.getInstance();
 		StudentKontroler.getInstance();
 		ProfesorKontroler.getInstance();
+		BazaPredmeta.getInstance();
+		PredmetKontroler.getInstance();
 
 		
 		 MainFrame mf = new MainFrame();
