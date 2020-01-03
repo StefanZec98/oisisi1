@@ -3,6 +3,8 @@ package modeli;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 public class BazaProfesora extends AbstractTableModel{
@@ -135,6 +137,13 @@ return profesor.getPredmetiSpisak();
 public void dodajProfesora(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long kontakt_telefon,
 		String e_mail, String adresa_kancelarije, long broj_licne_karte, String titula, String zvanje,
 		ArrayList<Predmet> predmetiSpisak) {
+for (Profesor profesor : profesori) {
+	if(Long.toString(profesor.getBroj_licne_karte()).equals(Long.toString(broj_licne_karte))) {
+		
+		return;
+		}
+		
+	}
 
 this.profesori.add(new Profesor(ime,prezime,datum_rodjenja,adresa_stanovanja,kontakt_telefon,e_mail,
 adresa_kancelarije,broj_licne_karte,titula,zvanje,predmetiSpisak));
