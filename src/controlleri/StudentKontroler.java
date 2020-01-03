@@ -38,7 +38,7 @@ private static StudentKontroler instance = null;
 			return;
 		}
 		Student s = BazaStudenta.getInstance().getRow(rowSelectedIndex);
-		System.out.println(s.getIme());
+		
 		BazaStudenta.getInstance().izbrisiStudenta(s.getBroj_indexa());
 		StudentiJtable.azurirajPrikaz();
 
