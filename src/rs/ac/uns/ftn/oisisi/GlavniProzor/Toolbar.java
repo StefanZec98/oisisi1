@@ -116,7 +116,14 @@ public class Toolbar extends JToolBar{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(Tabovi.pozicija==0) {
+					if(ProfesorJTable.rowSelectedIndex >=0) {
 				StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+							       JOptionPane.ERROR_MESSAGE);
+							
+							return;
+					}
 				}else if(Tabovi.pozicija==1) {
 					ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
 				}else {
