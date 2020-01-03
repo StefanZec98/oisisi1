@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
-import com.sun.xml.internal.ws.api.Component;
+
 
 import controlleri.PredmetKontroler;
 import controlleri.ProfesorKontroler;
@@ -136,7 +136,7 @@ public class MenuBar extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JDialog d = new JDialog(new JFrame(),"Help");
-				d.setSize(500,430); // MENJAS OVO 430 AKO TI BUDE FALILO JOS MESTA
+				d.setSize(500,430); 
 				d.setLocationRelativeTo(null);
 				JTextArea textArea = new JTextArea();
 				textArea.setEditable(false);
@@ -148,8 +148,12 @@ public class MenuBar extends JMenuBar {
 								+"     Autori:\n\n     Nemanja Dragutinovic je rodjen 9.10.1998. u Uzicu,\n"
 								+"     zavrsio je medicinsku skolu '7. april' u Novom Sadu\n"
 								+"     upisao je Fakultet tehnickih nauka 2017. godine,\n"
-								+"     a trenutno je 3. godina na smeru Racunarstvo i automatika.\n");
-								//PISI ISTO OVAKO SA RAZMACIMA NAPRED I \N NAZAD DUZINA MORA BITI SLICNA KAO KOD MENE
+								+"     a trenutno je 3. godina na smeru Racunarstvo i automatika.\n"
+								+ "\n\n     Stefan Zec je rodjen 11.03.1998. u Novom Sadu,\n"
+										+"     zavrsio je medicinsku skolu '7. april' u Novom Sadu\n"
+										+"     upisao je Fakultet tehnickih nauka 2017. godine,\n"
+										+"     a trenutno je 3. godina na smeru Racunarstvo i automatika.\n");
+								
 				d.add(textArea);
 				JButton b = new JButton("OK");
 				b.addActionListener(new ActionListener() {
@@ -250,7 +254,7 @@ public class MenuBar extends JMenuBar {
 		
 		add(File);
 		add(Edit);
-		add(Help); //odraditi ovo posle 
+		add(Help); 
 		
 	}
 

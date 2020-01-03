@@ -66,10 +66,8 @@ return c;
 public static  void azurirajPrikaz() {
 	
 	modelProfesora.fireTableDataChanged();
-	//rowSelectedIndex=-1;
-	
-	
-	
+	rowSelectedIndex=-1;
+		
 }
 
 

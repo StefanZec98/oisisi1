@@ -3,6 +3,8 @@ package modeli;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 
@@ -125,6 +127,19 @@ return predmet.getSpisak_studenata();
 public void dodajPredmet(String sifra, String naziv, Integer semestar,
 Integer godina, Profesor profesor,ArrayList<Student>studenti) {
 
+	for (Predmet p : predmeti) {
+		if(p.getSifra_predmeta().equals(sifra)) {
+			
+			
+			JOptionPane.showMessageDialog(new JFrame(), "Dodajete predmet sa vec postojecom sifrom!", "Greska!",          
+				       JOptionPane.ERROR_MESSAGE);
+				
+			return;
+		}
+		
+	}
+	
+	
 this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor,studenti));
 }
 

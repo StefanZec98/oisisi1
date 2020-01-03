@@ -60,7 +60,7 @@ public class PredmetiJtable extends JTable{
 	
 	public static void azurirajPrikaz() {
 		predmetModel.fireTableDataChanged();
-		
+		rowSelectedIndex=-1;
 	}
 	
 	

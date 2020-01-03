@@ -419,7 +419,7 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 						
 						
 						
-						PredmetKontroler.getInstance().izmeniPredmet(PredmetiJtable.rowSelectedIndex,sifra,naziv,semestar,godina);
+						PredmetKontroler.getInstance().izmeniPredmet(PredmetiJtable.rowSelectedIndex,sifra,naziv,semestar,godina);     
 						
 						dispose();
 						}
