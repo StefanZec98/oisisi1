@@ -44,12 +44,15 @@ private static StudentKontroler instance = null;
 
 		}
 	
-	public void izmeniStudenta(int rowSelectedIndex) {
+	public void izmeniStudenta(int rowSelectedIndex,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+			String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
+			float prosecna_ocena) {
 		if (rowSelectedIndex < 0) {
+			System.out.println("bbbbbbb");
 			return;
 			}
-		Student s = BazaStudenta.getInstance().getRow(rowSelectedIndex);
-		BazaStudenta.getInstance().izmeniStudenta("sadas","asdas","asasdas","asdas",5,"asdas",s.getBroj_indexa(),"sadas,",7,Status.B,(float)6.6,null);
+		BazaStudenta.getInstance().izmeniStudenta(ime, prezime, datum_rodjenja, adresa_stanovanja, broj_telefona, email_adresa, broj_indexa, datum_upisa, trenutna_godina_studija, status, prosecna_ocena, null);
+		System.out.println("aaaaaaaaaaa");
 		StudentiJtable.azurirajPrikaz();
 	}
 }

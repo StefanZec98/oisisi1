@@ -20,7 +20,11 @@ import controlleri.PredmetKontroler;
 import controlleri.ProfesorKontroler;
 import controlleri.StudentKontroler;
 import modeli.BazaPredmeta;
+import modeli.BazaProfesora;
+import modeli.BazaStudenta;
 import modeli.Predmet;
+import modeli.Profesor;
+import modeli.Student;
 
 
 
@@ -55,8 +59,30 @@ public class Toolbar extends JToolBar{
 			public void actionPerformed(ActionEvent e) {
 				
 				if(Tabovi.pozicija==0) {
-				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex);
+					if(StudentiJtable.rowSelectedIndex >=0) {
+						
+					
+				Student student = BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex);
+				DijalogStudent dijalogStudent = new DijalogStudent(null, student.getIme(), student.getPrezime(), student.getDatum_rodjenja(), student.getAdresa_stanovanja(), student.getBroj_telefona(), student.getEmail_adresa(), student.getBroj_indexa(), student.getDatum_upisa(), student.getTrenutna_godina_studija(), student.getStatus(), student.getProsecna_ocena());
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+							       JOptionPane.ERROR_MESSAGE);
+							
+							return;
+					}
+				
+				
 				}else if(Tabovi.pozicija==1){
+					if(ProfesorJTable.rowSelectedIndex >=0) {
+						Profesor profesor = BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex);
+						DijalogProfesor dijalogProfesor = new DijalogProfesor(null, profesor.getIme(), profesor.getPrezime(), profesor.getDatum_rodjenja(), profesor.getAdresa_stanovanja(), profesor.getKontakt_telefon(), profesor.getE_mail(), profesor.getAdresa_kancelarije(), profesor.getBroj_licne_karte(), profesor.getTitula(), profesor.getZvanje());
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+							       JOptionPane.ERROR_MESSAGE);
+							
+							return;
+						
+					}
 				
 				
 				}else {

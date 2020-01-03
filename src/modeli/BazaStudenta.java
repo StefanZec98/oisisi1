@@ -179,7 +179,7 @@ i.setDatum_upisa(datum_upisa);
 i.setTrenutna_godina_studija(trenutna_godina_studija);
 i.setStatus(status);
 i.setProsecna_ocena(prosecna_ocena);
-i.setPredmeti(null);
+i.setPredmeti(predmeti);
 }
 }
 }

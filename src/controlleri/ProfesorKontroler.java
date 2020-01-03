@@ -47,5 +47,14 @@ public void izbrisiProfesora(int rowSelectedIndex) {
 	ProfesorJTable.azurirajPrikaz();
 }
 
+public void izmeniProfesora(int rowSelectedIndex,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long kontakt_telefon,
+		String e_mail, String adresa_kancelarije, long broj_licne_karte, String titula, String zvanje) {
+	if (rowSelectedIndex < 0) {
+		return;
+	}
+	BazaProfesora.getInstance().izmeniProfesora(ime, prezime, datum_rodjenja, adresa_stanovanja, kontakt_telefon, e_mail, adresa_kancelarije, broj_licne_karte, titula, zvanje, null);
+	ProfesorJTable.azurirajPrikaz();
+}
+
 
 }
