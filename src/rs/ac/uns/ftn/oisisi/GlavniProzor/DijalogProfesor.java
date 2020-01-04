@@ -36,7 +36,14 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				
+				int dialogButton = JOptionPane.YES_NO_OPTION;
+	            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+
+	            if (dialogResult == JOptionPane.YES_OPTION) {
+		           dispose();
+	            }
+		             
 				
 			}
 		});

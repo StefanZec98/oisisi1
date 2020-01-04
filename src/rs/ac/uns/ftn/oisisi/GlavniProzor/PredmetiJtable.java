@@ -4,11 +4,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.UncheckedIOException;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.text.TabExpander;
+
+import modeli.BazaProfesora;
 
 
 
@@ -23,8 +30,10 @@ public class PredmetiJtable extends JTable{
 	public static AbstractTableModel predmetModel;
 	public static JTable tabelaPredmeta;
 	public static int rowSelectedIndex = -1;
+	public static JTable predmeti;
 	
 	public PredmetiJtable() {
+		
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.getTableHeader().setReorderingAllowed(false);
@@ -41,6 +50,10 @@ public class PredmetiJtable extends JTable{
 				} 
 			}	
 		});
+		
+		
+		
+		 sort();
 		
 	}	
 	
@@ -63,6 +76,55 @@ public class PredmetiJtable extends JTable{
 		rowSelectedIndex=-1;
 	}
 	
+	public void sort() {
+		
+		
+		TableRowSorter<AbstractTableModel> sorter = 
+				new TableRowSorter<AbstractTableModel>(predmetModel);
+		this.setRowSorter(sorter);
+		
+	}
 	
 	
+	
+	
+	public static void pronadjiPredmet(String nazPred, String sifraPredm) {
+		
+	
+	/*		//TableModel myModel = createMyTableModel();
+		   TableRowSorter sorter = new TableRowSorter(predmetModel);
+		  // sorter.setRowFilter(RowFilter.regexFilter(".*foo.*"));
+		  // JTable table = new JTable(myModel);
+		   tabelaPredmeta=new JTable(predmetModel);
+		   tabelaPredmeta.setRowSorter(sorter);
+		
+		
+		
+		
+		
+		//tabelaPredmeta.setRowSorter(new TableRowSorter<AbstractTableModel>(predmetModel));
+		for (int i = 0; i < tabelaPredmeta.getRowCount(); i++) {
+
+			if (!predmetModel.getValueAt(i, 0).equals(nazPred) && !predmetModel.getValueAt(i, 1).equals(nazPred)) {
+			sorter.setRowFilter(RowFilter.regexFilter("^" + nazPred + "$")); // da bi izbegli pronalazenje
+																				// predmeta sa nazivom koji se
+																					// sadrzi u nekom drugom nazivu
+//
+//			}
+//
+//		}
+//
+		}
+	}*/
+		System.out.println(nazPred + sifraPredm);
+		
+		//JTable tabela=new JTable(predmetModel);
+		TableRowSorter<AbstractTableModel> tr=new TableRowSorter<AbstractTableModel>(predmetModel);
+		tabelaPredmeta.setRowSorter(tr);
+		tr.setRowFilter(RowFilter.regexFilter(nazPred));
+		
+		System.out.println(nazPred + sifraPredm);
+		
+	
+	}		
 }

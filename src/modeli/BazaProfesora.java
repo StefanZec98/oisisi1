@@ -179,6 +179,15 @@ i.setPredmetiSpisak(predmetiSpisak);
 }
 
 
+public Profesor getProfesor(long licna_karta) {
+		for(Profesor profesor : profesori) {
+			if(profesor.getBroj_licne_karte()==licna_karta) {
+				return profesor;
+			}
+		}
+		return null;
+}
+
 @Override
 public int getRowCount() {
 return BazaProfesora.getInstance().getProfesori().size();

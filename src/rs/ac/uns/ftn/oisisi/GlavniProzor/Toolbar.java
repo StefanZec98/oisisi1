@@ -34,6 +34,11 @@ public class Toolbar extends JToolBar{
 	
 	private JTable TabelaStudenata;
 	
+	public String sifra;
+    public String naziv;
+    public 	String semestar;
+   	public String godina;
+	
 	public Toolbar() {
 		
 		super(SwingConstants.HORIZONTAL);
@@ -45,14 +50,14 @@ public class Toolbar extends JToolBar{
 		
 		
 		JButton btnNew = new JButton();
-		btnNew.setToolTipText("Add");
+		btnNew.setToolTipText("Dodavanje");
 		btnNew.addMouseListener(new MyMouseListener());
 		btnNew.setIcon(new ImageIcon("images/add-user-button.jpg"));
 		panLevi.add(btnNew);
 
 		//addSeparator();
 		JButton btnEdit = new JButton();
-		btnEdit.setToolTipText("Edit");
+		btnEdit.setToolTipText("Izmena");
 		btnEdit.addActionListener(new ActionListener() {
 			
 			@Override
@@ -110,31 +115,162 @@ public class Toolbar extends JToolBar{
 		//addSeparator();
 
 		JButton btnDelete = new JButton();
-		btnDelete.setToolTipText("Delete");
+		btnDelete.setToolTipText("Brisanje");
+		btnDelete.setIcon(new ImageIcon("images/rubbish-bin.jpg"));
+		panLevi.add(btnDelete);
+		
 		btnDelete.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(Tabovi.pozicija==0) {
 					if(StudentiJtable.rowSelectedIndex >=0) {
-				StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
+						
+						
+						int dialogButton = JOptionPane.YES_NO_OPTION;
+			            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+
+			            if (dialogResult == JOptionPane.YES_OPTION) {
+			            	StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
+			            }
+						
 					}else {
 						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
 					}
+					
+					
 				}else if(Tabovi.pozicija==1) {
-					ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
+					
+				
+					if(ProfesorJTable.rowSelectedIndex !=-1) {
+						
+						
+						int dialogButton = JOptionPane.YES_NO_OPTION;
+			            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+
+			            if (dialogResult == JOptionPane.YES_OPTION) {
+			            	ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
+			            }
+						
+						
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+							       JOptionPane.ERROR_MESSAGE);
+							
+							return;
+						
+					}
+					
+					
+					
 				}else {
-					PredmetKontroler.getInstance().IzbrisiPredmet(PredmetiJtable.rowSelectedIndex);
+					
+					if(PredmetiJtable.rowSelectedIndex !=-1) {
+						
+						int dialogButton = JOptionPane.YES_NO_OPTION;
+			            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+
+			            if (dialogResult == JOptionPane.YES_OPTION) {
+			            	PredmetKontroler.getInstance().IzbrisiPredmet(PredmetiJtable.rowSelectedIndex);
+			            }
+						
+						
+						
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+							       JOptionPane.ERROR_MESSAGE);
+							
+							return;
+						
+					}
 				}
+			
+			}
+				
+			
+		});
+	
+		
+			
+		
+		JButton btnDodavanjeProfesoraNaPredmet = new JButton();
+		btnDodavanjeProfesoraNaPredmet.setToolTipText("Dodavanje profesora na predmet");
+		btnDodavanjeProfesoraNaPredmet.setIcon(new ImageIcon("images/profesor.jpg"));
+		panLevi.add(btnDodavanjeProfesoraNaPredmet);
+		
+		
+		btnDodavanjeProfesoraNaPredmet.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					if(Tabovi.pozicija==2) {
+						
+						if(PredmetiJtable.rowSelectedIndex!=-1) {
+							
+						new DijalogDodavanjaProfesora(null,PredmetiJtable.rowSelectedIndex);
+						}else {
+							
+							JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet gde zelite da dodate profesora !",
+									"Greska!",JOptionPane.ERROR_MESSAGE);
+							return;
+								
+						}
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Morate se nalaziti na tabu predmeti!", "Greska!",          
+							       JOptionPane.ERROR_MESSAGE);
+							
+						return;
+					}
+				
+			}
+		});
+		
+		
+		
+		JButton btnBrisanjeProfesoraSaPredmeta = new JButton();
+		btnBrisanjeProfesoraSaPredmeta.setToolTipText("Brisanje profesora sa predmeta");
+		btnBrisanjeProfesoraSaPredmeta.setIcon(new ImageIcon("images/brisanje_profesora_sa_predmeta.jpg"));
+		panLevi.add(btnBrisanjeProfesoraSaPredmeta);
+		
+		btnBrisanjeProfesoraSaPredmeta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(Tabovi.pozicija==2) {
+					
+					if(PredmetiJtable.rowSelectedIndex!=-1) {
+						
+						
+						int dialogButton = JOptionPane.YES_NO_OPTION;
+			            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+
+			            if (dialogResult == JOptionPane.YES_OPTION) {
+			            	PredmetKontroler.getInstance().obrisiProfesoraSaPredmeta(PredmetiJtable.rowSelectedIndex);
+			            }
+			            
+			            
+					}else {
+						
+						JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet gde zelite da obrisete profesora !",
+								"Greska!",JOptionPane.ERROR_MESSAGE);
+						return;
+							
+					}
+				}else {
+					JOptionPane.showMessageDialog(new JFrame(), "Morate se nalaziti na tabu predmeti!", "Greska!",          
+						       JOptionPane.ERROR_MESSAGE);
+						
+					return;      
+				}
+				
 				
 				
 			}
 		});
-		btnDelete.setIcon(new ImageIcon("images/rubbish-bin.jpg"));
-		panLevi.add(btnDelete);
+		
 		
 		
 		//addSeparator();
@@ -145,7 +281,10 @@ public class Toolbar extends JToolBar{
 		
 		
 		JTextField textField = new JTextField();
+		
 		textField.setPreferredSize(new Dimension(300,36));
+		
+		
 		panDesni.add(textField);
 		
 		
@@ -161,11 +300,67 @@ public class Toolbar extends JToolBar{
 			setBackground(new Color(255, 255, 204));
 		
 		
+			
+		btnSearch.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(Tabovi.pozicija==0) {
+					//pretragu studenta
+				}else if(Tabovi.pozicija==1) {
+					//pretraguProfesora
+				}else {
+					//pretraga predmeta
+					
+					String CeoUnetiZaPredmet=textField.getText().toLowerCase();
+					String [] splitovani_stringovi;
+					
+					
+				    splitovani_stringovi=CeoUnetiZaPredmet.split(";");
+				    
+				   	
+				   	
+				   	for(int i=0; i<splitovani_stringovi.length;i++) {
+				   		if(splitovani_stringovi[i].contains("naziv")) {
+				   			String nazivi[]=splitovani_stringovi[i].split(":");
+				   				naziv=nazivi[1];
+				   				
+				   		}
+				   		 if(splitovani_stringovi[i].contains("sifra")) {
+				   			String sifre[]=splitovani_stringovi[i].split(":");
+			   			    sifra=sifre[1];
+			   				
+				   		 }
+				   				
+			   			/*	if(splitovani_stringovi[i].contains("semestar")) {
+			   					String semestri[]=splitovani_stringovi[i].split(":");
+			   					semestar=semestri[1];
+			   					
+			   				}
+					
+			   			  if(splitovani_stringovi[i].contains("godina")) {
+			   				  	String godine[]=splitovani_stringovi[i].split(":");
+		   						godina=godine[1];
+		   						
+			   			  }*/
+			   			
+				   		}
+				   	
+				   		
+				   		PredmetiJtable.pronadjiPredmet(naziv, sifra);
+				   		
+				   		
+				   	}
+			}
+				   	
+ 	});	
+			
+			
+	
+	
+	
 	}
 	
 	
 	
-	
-	
-
 }

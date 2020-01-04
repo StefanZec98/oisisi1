@@ -8,6 +8,7 @@ import modeli.Status;
 import modeli.Student;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -21,7 +22,9 @@ public class DijalogStudent  extends JDialog implements ActionListener {
 
 public DijalogStudent(Dialog parent){   
 	super(parent,"Dodavanje studenta",true);
- 
+	
+	
+   
    setSize(500, 600);   
    setLocationRelativeTo(parent);
   

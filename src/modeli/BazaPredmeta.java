@@ -62,7 +62,11 @@ this.predmeti = new ArrayList<Predmet>();
 //String ime=profesor1.getIme();
 //String prezime=profesor1.getPrezime();
 
-predmeti.add(new Predmet("012a", "naziv_predmeta", 1, 1,null, null));
+Profesor profesor=new Profesor("MArko", "Markovic", "datum_rodjenja",
+		"adresa_stanovanja", 00002, "e_mail", "dresa_kancelarije", 
+		00023443, "titula", "zvanje", null);
+
+predmeti.add(new Predmet("012a", "naziv_predmeta", 1, 1,profesor, null));
 
 }
 
@@ -102,11 +106,17 @@ return predmet.getSifra_predmeta();
 case 1:
 return predmet.getNaziv_predmeta();
 case 2:
-return Integer.toString(predmet.getSemestar());
+return  Integer.toString(predmet.getSemestar());
 case 3:
-return Integer.toString(predmet.getGodina_studija());
+return  Integer.toString(predmet.getGodina_studija());
 case 4:
-return "";
+	
+	if(predmet.getPredmetni_profesor()==null) {
+		return "Predmet nema profesora";
+	}else {
+	return   "Licna karta: " + Long.toString(predmet.getPredmetni_profesor().getBroj_licne_karte());
+	}
+
 case 5:
   return "";
 default:
@@ -141,6 +151,12 @@ Integer godina, Profesor profesor,ArrayList<Student>studenti) {
 	
 	
 this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor,studenti));
+
+	for (Predmet p : predmeti) {
+			if(p.getSifra_predmeta().equals(sifra)) {
+				//System.out.println(p.getNaziv_predmeta());
+			}
+	}
 }
 
 public void izbrisiPredmet(String naziv) {
