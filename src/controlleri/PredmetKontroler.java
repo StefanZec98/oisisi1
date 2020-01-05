@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import modeli.BazaPredmeta;
-import modeli.BazaProfesora;
+import modeli.BazaStudenta;
 import modeli.Predmet;
 import modeli.Profesor;
 import modeli.Student;
@@ -32,12 +32,7 @@ public class PredmetKontroler {
 	public void dodajPredmet(String sifra,String naziv,Integer semestar,Integer godina) {
 		
 		
-			//Profesor profesor=new Profesor("ime", "prezime", "datum_rodjenja",
-					//"adresa_stanovanja", 00002, "e_mail", "dresa_kancelarije", 
-					//1, "titula", "zvanje", null);
-		
-				
-					BazaPredmeta.getInstance().dodajPredmet(sifra, naziv, semestar, godina, null, null);
+					BazaPredmeta.getInstance().dodajPredmet(sifra, naziv, semestar, godina, null, new ArrayList<Student>());
 					PredmetiJtable.azurirajPrikaz();
 					
 	}
@@ -65,44 +60,65 @@ public class PredmetKontroler {
 			}
 			// izmena modela
 			//Predmet predmet = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
-			BazaPredmeta.getInstance().izmeniPredmet(sifra,naziv,semestar,godina,null,null);
+			BazaPredmeta.getInstance().izmeniPredmet(sifra,naziv,semestar,godina,null,new ArrayList<Student>());
 			// TODO: izmena dodatnih polja modela tabele
 			
 			// azuriranje prikaza
 			PredmetiJtable.azurirajPrikaz();
 		}
 	  
-	 public void dodavanjeProfesoraNaPredmet(Profesor profesor,int rowSelectedIndex) {
-		 		
-		 	if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor()==null) {
-		 
-		 		BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(profesor);
-		 		PredmetiJtable.azurirajPrikaz();
-		 	}else {
-		 			
-		 		JOptionPane.showMessageDialog(new JFrame(), "Na tom predmetu se vec nalazi profesor !", "Greska!",
-				        JOptionPane.INFORMATION_MESSAGE);
-				return;
-		 		
-		 	}
-	 }
 	  
-	public void obrisiProfesoraSaPredmeta(int rowSelectedIndex) {
+	  public void dodavanjeStudentaNaPredmet(String index,int rowSelectedIndex) {
+		  
+		 Student s= BazaStudenta.getInstance().getStudentPrekoIndexa(index);
+		  if(s!=null) {
+		  
+		 
+		 
+		Predmet p = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
 		
-			if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor()!=null){
-				
-				BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(null);
-				PredmetiJtable.azurirajPrikaz();
-				
-			}else {
-				
-				JOptionPane.showMessageDialog(new JFrame(), "Na tom predmetu nema profesora !", "Greska!",
-				        JOptionPane.INFORMATION_MESSAGE);
-				return;
-				
-			}
 		
-	}
+		BazaStudenta.getInstance().getStudentPrekoIndexa(index).dodajPredmetNaStudenta(p);
+		BazaPredmeta.getInstance().dodajStudentaNaPredmet(s, p);
+		System.out.println(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getSpisak_studenata().get(0).getIme());
+		
+		  }
+	  }
+	  public void dodavanjeProfesoraNaPredmet(Profesor profesor,int rowSelectedIndex) {
+
+          if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor()==null) {
+
+              BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(profesor);
+              PredmetiJtable.azurirajPrikaz();
+          }else {
+
+              JOptionPane.showMessageDialog(new JFrame(), "Na tom predmetu se vec nalazi profesor !", "Greska!",
+                     JOptionPane.INFORMATION_MESSAGE);
+             return;
+
+          }
+  }
+	  
+	  public void obrisiProfesoraSaPredmeta(int rowSelectedIndex) {
+
+          if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor()!=null){
+
+              BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(null);
+              PredmetiJtable.azurirajPrikaz();
+
+          }else {
+
+              JOptionPane.showMessageDialog(new JFrame(), "Na tom predmetu nema profesora !", "Greska!",
+                      JOptionPane.INFORMATION_MESSAGE);
+              return;
+
+          }
+
+  }
+	  
+	  
+	  
+	
 	
 	
 }

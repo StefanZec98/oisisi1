@@ -51,7 +51,7 @@ private static StudentKontroler instance = null;
 			System.out.println("bbbbbbb");
 			return;
 			}
-		BazaStudenta.getInstance().izmeniStudenta(ime, prezime, datum_rodjenja, adresa_stanovanja, broj_telefona, email_adresa, broj_indexa, datum_upisa, trenutna_godina_studija, status, prosecna_ocena, null);
+		BazaStudenta.getInstance().izmeniStudenta(ime, prezime, datum_rodjenja, adresa_stanovanja, broj_telefona, email_adresa, broj_indexa, datum_upisa, trenutna_godina_studija, status, prosecna_ocena, new ArrayList<Predmet>());
 		System.out.println("aaaaaaaaaaa");
 		StudentiJtable.azurirajPrikaz();
 	}

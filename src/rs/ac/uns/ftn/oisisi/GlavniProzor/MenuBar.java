@@ -2,13 +2,11 @@ package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,7 +15,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
@@ -72,6 +69,7 @@ public class MenuBar extends JMenuBar {
 						
 					
 				Student student = BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex);
+				@SuppressWarnings("unused")
 				DijalogStudent dijalogStudent = new DijalogStudent(null, student.getIme(), student.getPrezime(), student.getDatum_rodjenja(), student.getAdresa_stanovanja(), student.getBroj_telefona(), student.getEmail_adresa(), student.getBroj_indexa(), student.getDatum_upisa(), student.getTrenutna_godina_studija(), student.getStatus(), student.getProsecna_ocena());
 					}else {
 						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
@@ -84,6 +82,7 @@ public class MenuBar extends JMenuBar {
 				}else if(Tabovi.pozicija==1){
 					if(ProfesorJTable.rowSelectedIndex >=0) {
 						Profesor profesor = BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex);
+						@SuppressWarnings("unused")
 						DijalogProfesor dijalogProfesor = new DijalogProfesor(null, profesor.getIme(), profesor.getPrezime(), profesor.getDatum_rodjenja(), profesor.getAdresa_stanovanja(), profesor.getKontakt_telefon(), profesor.getE_mail(), profesor.getAdresa_kancelarije(), profesor.getBroj_licne_karte(), profesor.getTitula(), profesor.getZvanje());
 					}else {
 						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
@@ -99,6 +98,7 @@ public class MenuBar extends JMenuBar {
 					if(PredmetiJtable.rowSelectedIndex >=0) {
 					
 					Predmet predmet=BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex);
+					@SuppressWarnings("unused")
 					DijalogPredmet dijalogPredmet=new DijalogPredmet(null,predmet.getSifra_predmeta(),
 							predmet.getNaziv_predmeta(),predmet.getSemestar()-1,predmet.getGodina_studija()-1);
 					}else {
@@ -119,11 +119,40 @@ public class MenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(Tabovi.pozicija==0) {
-				StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
+					
+					if(StudentiJtable.rowSelectedIndex >=0) {
+						
+						StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
+							}else {
+								JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+									return;
+							}
+					
+				
 				}else if(Tabovi.pozicija==1) {
-					ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
+					if(ProfesorJTable.rowSelectedIndex >=0) {
+						
+						ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
+							}else {
+								JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+									return;
+							}
+					
 				}else {
-					PredmetKontroler.getInstance().IzbrisiPredmet(PredmetiJtable.rowSelectedIndex);
+					if(PredmetiJtable.rowSelectedIndex >=0) {
+						
+						PredmetKontroler.getInstance().IzbrisiPredmet(PredmetiJtable.rowSelectedIndex);
+							}else {
+								JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+									return;
+							}
+					
 				}
 				
 				

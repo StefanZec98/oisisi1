@@ -81,11 +81,19 @@ public class Predmet {
 	public ArrayList<Student> getSpisak_studenata() {
 		return spisak_studenata;
 	}
+	
+	public void dodajStudentaNaPredmet(Student s) {
+		spisak_studenata.add(s);
+	}
+	public void obrisiStudentaSaPredmeta(Student s) {
+		spisak_studenata.remove(s);
+	}
+	
+	
 
 
 
 	public void setSpisak_studenata(ArrayList<Student> spisak_studenata) {
 		this.spisak_studenata = spisak_studenata;
 	}
-}	
-	
+}

@@ -64,7 +64,7 @@ this.studenti = new ArrayList<Student>();
 //igraci.add(new Igrac(generateId(), "Mika", "Mikic", "Crvena Zvezda"));
 
 Student student1=new Student("Nemanja", "Dragutinovic", "9.10.1998", "Vladike Maksima 16",
-06454444444, "nemanjadragutinovic54@gmail.com", "RA159-2017","1.6.2017",3,Status.B, (float) 7.1,null);
+06454444444, "nemanjadragutinovic54@gmail.com", "12","1.6.2017",3,Status.B, (float) 7.1,new ArrayList<Predmet>());
 
  
 
@@ -127,7 +127,7 @@ return student.getEmail_adresa();
 case 10:
 return student.getDatum_upisa();
 case 11:
- getListaPredmeta(student);
+ return "";
 default:
 return null;
 }
@@ -187,6 +187,15 @@ i.setProsecna_ocena(prosecna_ocena);
 i.setPredmeti(predmeti);
 }
 }
+}
+
+public Student getStudentPrekoIndexa(String index) {
+	for (Student s : studenti) {
+		if(s.getBroj_indexa().equals(index)) {
+			return s;
+		}
+	}
+	return null;
 }
 
 

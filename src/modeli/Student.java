@@ -136,5 +136,14 @@ public class Student {
 		public void setProsecna_ocena(float prosecna_ocena) {
 			this.prosecna_ocena = prosecna_ocena;
 		}
+		public void dodajPredmetNaStudenta(Predmet p) {
+			this.predmeti.add(p);
+		}
+		public void obirisiPredmet(Predmet p) {
+			predmeti.remove(p);
+		}
+		public ArrayList<Predmet> vratiPredmete(){
+			return predmeti;
+		}
 		
 }

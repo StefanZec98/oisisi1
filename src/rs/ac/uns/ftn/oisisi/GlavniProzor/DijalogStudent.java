@@ -8,12 +8,12 @@ import modeli.Status;
 import modeli.Student;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.*;  
+import java.awt.event.*;
+import java.util.ArrayList;  
 
 public class DijalogStudent  extends JDialog implements ActionListener {
 
@@ -22,9 +22,7 @@ public class DijalogStudent  extends JDialog implements ActionListener {
 
 public DijalogStudent(Dialog parent){   
 	super(parent,"Dodavanje studenta",true);
-	
-	
-   
+ 
    setSize(500, 600);   
    setLocationRelativeTo(parent);
   
@@ -35,11 +33,20 @@ public DijalogStudent(Dialog parent){
    JButton b2 = new JButton("Odustanak");
    b2.addActionListener(new ActionListener() {
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		dispose();
-	}
-});
+	   @Override
+	   public void actionPerformed(ActionEvent e) {
+
+	   int dialogButton = JOptionPane.YES_NO_OPTION;
+	              int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+
+	              if (dialogResult == JOptionPane.YES_OPTION) {
+	             dispose();
+	              }
+	                
+
+
+	   }
+	   });
    panelBottom.add(b1);
    panelBottom.add(b2);
    
@@ -310,7 +317,7 @@ public DijalogStudent(Dialog parent){
 				return;
 			}
 			
-			StudentKontroler.getInstance().dodajStudenta(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),godStud.getSelectedIndex()+1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()), null);
+			StudentKontroler.getInstance().dodajStudenta(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),godStud.getSelectedIndex()+1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()), new ArrayList<Predmet>());
 			dispose();
 		}
 		}
@@ -355,11 +362,20 @@ public DijalogStudent(Dialog parent){
 	   JButton b2 = new JButton("Odustanak");
 	   b2.addActionListener(new ActionListener() {
 		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			dispose();
-		}
-	});
+		   @Override
+		   public void actionPerformed(ActionEvent e) {
+
+		   int dialogButton = JOptionPane.YES_NO_OPTION;
+		              int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+
+		              if (dialogResult == JOptionPane.YES_OPTION) {
+		             dispose();
+		              }
+		                
+
+
+		   }
+		   });
 	   panelBottom.add(b1);
 	   panelBottom.add(b2);
 	   
@@ -637,7 +653,7 @@ public DijalogStudent(Dialog parent){
 					return;
 				}
 				
-				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex,txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()));
+				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex,txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),godStud.getSelectedIndex()+1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()));
 				dispose();
 			}
 			}

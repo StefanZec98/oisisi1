@@ -43,7 +43,7 @@ this.kolone.add("NAZIV");
 this.kolone.add("SEMESTAR");
 this.kolone.add("GODINA");
 this.kolone.add("PROFESOR");
-this.kolone.add("STUDENTI");
+//this.kolone.add("STUDENTI");
 
 initPredmeti();
 
@@ -62,11 +62,7 @@ this.predmeti = new ArrayList<Predmet>();
 //String ime=profesor1.getIme();
 //String prezime=profesor1.getPrezime();
 
-Profesor profesor=new Profesor("MArko", "Markovic", "datum_rodjenja",
-		"adresa_stanovanja", 00002, "e_mail", "dresa_kancelarije", 
-		00023443, "titula", "zvanje", null);
-
-predmeti.add(new Predmet("012a", "naziv_predmeta", 1, 1,profesor, null));
+predmeti.add(new Predmet("012a", "naziv_predmeta", 1, 1,null,new  ArrayList<Student>()));
 
 }
 
@@ -74,6 +70,8 @@ predmeti.add(new Predmet("012a", "naziv_predmeta", 1, 1,profesor, null));
 public List<Predmet> getPredmeti() {
 return predmeti;
 }
+
+
 
 public void setPredmeti(List<Predmet> predmeti) {
 this.predmeti = predmeti;
@@ -84,7 +82,7 @@ return ++generator;
 }
 
 public int getColumnCount() {
-return 6;
+return 5;
 }
 
 public String getColumnName(int index) {
@@ -106,21 +104,18 @@ return predmet.getSifra_predmeta();
 case 1:
 return predmet.getNaziv_predmeta();
 case 2:
-return  Integer.toString(predmet.getSemestar());
+return Integer.toString(predmet.getSemestar());
 case 3:
-return  Integer.toString(predmet.getGodina_studija());
+return Integer.toString(predmet.getGodina_studija());
 case 4:
-	
 	if(predmet.getPredmetni_profesor()==null) {
-		return "Predmet nema profesora";
-	}else {
-	return   "Licna karta: " + Long.toString(predmet.getPredmetni_profesor().getBroj_licne_karte());
-	}
+        return "Predmet nema profesora";
+    }else {
+    return   "Licna karta: " + Long.toString(predmet.getPredmetni_profesor().getBroj_licne_karte());
+    }
 
-case 5:
-  return "";
 default:
-return null;
+return "";
 }
 }
 
@@ -132,6 +127,17 @@ return predmet.getSpisak_studenata();
 
 
 }
+
+public void dodajStudentaNaPredmet(Student s,Predmet p1) {
+	for (Predmet p : predmeti) {
+		if(p.getSifra_predmeta().equals(p1.getSifra_predmeta())) {
+			p.dodajStudentaNaPredmet(s);
+			
+		}
+			
+	}
+}
+
 
 
 public void dodajPredmet(String sifra, String naziv, Integer semestar,
@@ -151,12 +157,6 @@ Integer godina, Profesor profesor,ArrayList<Student>studenti) {
 	
 	
 this.predmeti.add(new Predmet(sifra,naziv,semestar,godina,profesor,studenti));
-
-	for (Predmet p : predmeti) {
-			if(p.getSifra_predmeta().equals(sifra)) {
-				//System.out.println(p.getNaziv_predmeta());
-			}
-	}
 }
 
 public void izbrisiPredmet(String naziv) {

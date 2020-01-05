@@ -9,6 +9,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 
 
@@ -46,7 +47,7 @@ public void mouseReleased(MouseEvent e) {
 }
 });
 
-
+sort();
 
 }
 
@@ -61,6 +62,15 @@ c.setBackground(Color.LIGHT_GRAY);
 c.setBackground(Color.WHITE);
 }
 return c;
+}
+
+public void sort() {
+
+
+TableRowSorter<AbstractTableModel> sorter =
+new TableRowSorter<AbstractTableModel>(modelProfesora);
+this.setRowSorter(sorter);
+
 }
 
 public static  void azurirajPrikaz() {
