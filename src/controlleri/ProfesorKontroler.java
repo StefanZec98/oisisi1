@@ -29,7 +29,7 @@ public void dodajProfesora(String ime, String prezime, String datum_rodjenja, St
 
 
 	BazaProfesora.getInstance().dodajProfesora(ime, prezime, datum_rodjenja, adresa_stanovanja,
-			kontakt_telefon, e_mail, adresa_kancelarije, broj_licne_karte, titula, zvanje, null);
+			kontakt_telefon, e_mail, adresa_kancelarije, broj_licne_karte, titula, zvanje, new ArrayList<Predmet>());
 	
 	
 	

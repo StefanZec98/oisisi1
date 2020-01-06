@@ -2,6 +2,8 @@ package modeli;
 
 import java.util.ArrayList;
 
+import rs.ac.uns.ftn.oisisi.GlavniProzor.PredmetiJtable;
+
 public class Profesor {
 	
 	private String ime;
@@ -191,9 +193,26 @@ public class Profesor {
 	}
 	
 	
+	public void dodavanjePredmeta(Predmet p) {
+		this.predmetiSpisak.add(p);
+	}
 	
 	
+	public void obrisiPredmet(Predmet p,int rowSelectedIndex) {
+		
+		
+		
+		this.predmetiSpisak.remove(p);
+		BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(null);
+		PredmetiJtable.azurirajPrikaz();
+		
+		
+		
+	}
 	
 	
+	public void obrisiPredmet(Predmet p) {
+		this.predmetiSpisak.remove(p);
+	}
 
 }

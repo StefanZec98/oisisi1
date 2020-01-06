@@ -45,7 +45,7 @@ this.kolone.add("ADRESA_KANCELARIJE");
 this.kolone.add("BR_LICNE_KARTE");
 this.kolone.add("TITULA");
 this.kolone.add("ZVANJE");
-this.kolone.add("SPISAK_PREDMETA");
+//this.kolone.add("SPISAK_PREDMETA");
 
 initProfesori();
 
@@ -82,7 +82,7 @@ return ++generator;
 }
 
 public int getColumnCount() {
-return 11;
+return 10;
 }
 
 public String getColumnName(int index) {
@@ -118,7 +118,7 @@ return profesor.getTitula();
 case 9:
 return profesor.getZvanje();
 case 10:
-return "bla";//getListaPredmeta(profesor);
+return "";//getListaPredmeta(profesor);
 default:
 return null;
 }
@@ -139,6 +139,10 @@ public void dodajProfesora(String ime, String prezime, String datum_rodjenja, St
 		ArrayList<Predmet> predmetiSpisak) {
 for (Profesor profesor : profesori) {
 	if(Long.toString(profesor.getBroj_licne_karte()).equals(Long.toString(broj_licne_karte))) {
+		
+		JOptionPane.showMessageDialog(new JFrame(), "Dodajete vec postojeceg profesora!", "Greska!",          
+			       JOptionPane.ERROR_MESSAGE);
+			
 		
 		return;
 		}

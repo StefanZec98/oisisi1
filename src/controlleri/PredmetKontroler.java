@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import modeli.BazaPredmeta;
+import modeli.BazaProfesora;
 import modeli.BazaStudenta;
 import modeli.Predmet;
 import modeli.Profesor;
@@ -45,10 +46,10 @@ public class PredmetKontroler {
 		  if (rowSelectedIndex < 0) {
 				return;
 			}
-	    	// izmena modela
+	    	
 	    	Predmet predmet = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
 			BazaPredmeta.getInstance().izbrisiPredmet(predmet.getSifra_predmeta());
-			// azuriranje prikaza
+			
 			PredmetiJtable.azurirajPrikaz();
 	    }
 	  
@@ -58,12 +59,11 @@ public class PredmetKontroler {
 			if (rowSelectedIndex < 0) {
 				return;
 			}
-			// izmena modela
-			//Predmet predmet = BazaPredmeta.getInstance().getRow(rowSelectedIndex);
-			BazaPredmeta.getInstance().izmeniPredmet(sifra,naziv,semestar,godina,null,new ArrayList<Student>());
-			// TODO: izmena dodatnih polja modela tabele
 			
-			// azuriranje prikaza
+			BazaPredmeta.getInstance().izmeniPredmet(sifra,naziv,semestar,godina,null,new ArrayList<Student>());
+			
+			
+			
 			PredmetiJtable.azurirajPrikaz();
 		}
 	  
@@ -101,6 +101,9 @@ public class PredmetKontroler {
           if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor()==null) {
 
               BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(profesor);
+              BazaProfesora.getInstance().getProfesor(profesor.getBroj_licne_karte()).
+              								dodavanjePredmeta( BazaPredmeta.getInstance().getRow(rowSelectedIndex));
+             
               PredmetiJtable.azurirajPrikaz();
           }else {
 
@@ -111,13 +114,35 @@ public class PredmetKontroler {
           }
   }
 	  
+	  
+	  
+	  
 	  public void obrisiProfesoraSaPredmeta(int rowSelectedIndex) {
 
           if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor()!=null){
-
+        	  
+        	  
+        	  try {
+        	  		Profesor profesor=BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor();
+        	  		
+        	  		
+        	  for(Predmet p : BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor().getPredmetiSpisak()) {
+        		  
+        		  		if(p.getSifra_predmeta().equals(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getSifra_predmeta())) {
+        		  					profesor.obrisiPredmet(p,rowSelectedIndex);
+        		  		}
+        		  
+        	  }
+        	  
+        	  
+        	  
               BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(null);
               PredmetiJtable.azurirajPrikaz();
 
+        	  } catch (Exception e) {
+				
+			}
+              
           }else {
 
               JOptionPane.showMessageDialog(new JFrame(), "Na tom predmetu nema profesora !", "Greska!",
@@ -126,11 +151,11 @@ public class PredmetKontroler {
 
           }
 
-  }
+  } 
 	  
 	  
 	  
-	
+	  
 	
 	
 }

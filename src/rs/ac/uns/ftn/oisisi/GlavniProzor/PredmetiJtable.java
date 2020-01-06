@@ -49,6 +49,10 @@ public class PredmetiJtable extends JTable{
 			}	
 		});
 		
+		
+		sort();
+		
+		
 	}	
 	
 	
@@ -69,6 +73,18 @@ public class PredmetiJtable extends JTable{
 		predmetModel.fireTableDataChanged();
 		rowSelectedIndex=-1;
 	}
+	
+	
+	public void sort() {
+
+
+  	  TableRowSorter<AbstractTableModel> sorter =
+  	  new TableRowSorter<AbstractTableModel>(predmetModel);
+  	  this.setRowSorter(sorter);
+
+  	  }
+	
+	
 	
 	public static void pronadjiPredmet(String nazPred, String sifraPredm) {
 
@@ -96,10 +112,7 @@ public class PredmetiJtable extends JTable{
 
 
 
-
-
-
-
+     
 
 
 

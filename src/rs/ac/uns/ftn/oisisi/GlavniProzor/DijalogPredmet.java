@@ -147,7 +147,7 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 			
 			
 			
-			String semestar[]= {"I (Prvi)","II (Drugi)","III (Treci)","IV (Cetvrti)"};
+			String semestar[]= {"I (Prvi)","II (Drugi)"};
 			JComboBox<String> semestarStud=new JComboBox<>(semestar);
 			   
 			   
@@ -361,7 +361,7 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 			
 			
 			
-			String semestar[]= {"I (Prvi)","II (Drugi)","III (Treci)","IV (Cetvrti)"};
+			String semestar[]= {"I (Prvi)","II (Drugi)"};
 			JComboBox<String> semestarStud=new JComboBox<>(semestar);
 			semestarStud.setSelectedIndex(semestarUlaz);   
 			   

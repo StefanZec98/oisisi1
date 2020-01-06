@@ -150,6 +150,12 @@ public class Toolbar extends JToolBar{
                         int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
                         if (dialogResult == JOptionPane.YES_OPTION) {
+                        	
+                        	for(Predmet predmet : BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex).getPredmetiSpisak()) {
+                        			predmet.setPredmetni_profesor(null);
+                        	}
+                        	
+                        	
                             ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
                         }
 
@@ -173,6 +179,21 @@ public class Toolbar extends JToolBar{
 					for (Student s : BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex).getSpisak_studenata()) {
 						s.obirisiPredmet(BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex));
 					}
+					
+					try {
+					for(Profesor profesor : BazaProfesora.getInstance().getProfesori()) {
+							for(Predmet predmet : profesor.getPredmetiSpisak()) {
+									if(predmet.getSifra_predmeta().equals(BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex).getSifra_predmeta())){  
+													profesor.obrisiPredmet(predmet);
+		}
+							}
+						
+						
+					}
+					}catch (Exception e1) {
+						
+					}
+					
 					PredmetKontroler.getInstance().IzbrisiPredmet(PredmetiJtable.rowSelectedIndex);
 				
 						

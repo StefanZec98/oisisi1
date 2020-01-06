@@ -284,7 +284,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 						txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
-					//dispose();
+					
 					return;
 					
 				}
