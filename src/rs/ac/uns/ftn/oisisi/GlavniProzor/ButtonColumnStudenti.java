@@ -14,20 +14,19 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import modeli.BazaPredmeta;
+import modeli.Student;
 
-import modeli.BazaStudenta;
-import modeli.Predmet;
+public class ButtonColumnStudenti extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, MouseListener {
 
-public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, MouseListener {
-
-	private static final long serialVersionUID = 1343768131059619058L;
+	private static final long serialVersionUID = 13468131059619058L;
 	
 	private JButton renderButton;
 	private JButton editorButton;
 	private JTable table;
 	private boolean isEditorActive = false;
 	
-	public ButtonColumnPredmeti(JTable table, int column) {
+	public ButtonColumnStudenti(JTable table, int column) {
 		
 		this.table = table;
 		this.table.getColumnModel().getColumn(column).setCellRenderer(this);
@@ -45,19 +44,19 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 				try {
 				String prikaz="";
 				int i=0;
-				for (Predmet p : BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex).getPredmeti()) {
-					 prikaz += ++i+"." +" Sifra: " + p.getSifra_predmeta() + ", Naziv: " + p.getNaziv_predmeta() +  "\n";
+				for (Student s : BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex).getSpisak_studenata()) {
+					 prikaz += ++i+"." +" Ime: " + s.getIme() + " "+s.getPrezime() +", Broj indeksa: " + s.getBroj_indexa() + "\n";
 				}
 				
 				
-				if(BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex).getPredmeti().size()!=0) {
-				JOptionPane.showMessageDialog(table, prikaz,"Prikaz predmeta",JOptionPane.INFORMATION_MESSAGE);
+				if(BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex).getSpisak_studenata().size()!=0) {
+				JOptionPane.showMessageDialog(table, prikaz,"Prikaz studenata",JOptionPane.INFORMATION_MESSAGE);
 				}else {
-				JOptionPane.showMessageDialog(table, "Student ne slusa ni jedan predmet!","Prikaz studenata",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(table, "Ni jedan student ne slusa ovaj predmet!","Prikaz studenata",JOptionPane.INFORMATION_MESSAGE);
 				}
 				}catch (Exception e1) {
 					// TODO: handle exception
-					JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati studenta!", "Greska!",
+					JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					//dispose();
 					return;
@@ -88,7 +87,7 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 	public Component getTableCellRendererComponent(JTable arg0, Object arg1, boolean arg2, boolean arg3, int arg4,
 			int arg5) {
 		// TODO Auto-generated method stub
-		return new PredmetiTablePanel(this.renderButton, 50, 50);
+		return new StudentiTablePanel(this.renderButton, 50, 50);
 	}
 
 
@@ -96,7 +95,7 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 	@Override
 	public Component getTableCellEditorComponent(JTable arg0, Object arg1, boolean arg2, int arg3, int arg4) {
 		// TODO Auto-generated method stub
-		return new PredmetiTablePanel(this.editorButton, 50, 50);
+		return new StudentiTablePanel(this.editorButton, 50, 50);
 	}
 
 

@@ -35,7 +35,7 @@ public class PredmetiJtable extends JTable{
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelPredmeti());
 		
-		new ButtonColumnPredmeti(this, 5);
+		new ButtonColumnStudenti(this, 5);
 		
 		predmetModel=(AbstractTableModel) this.getModel();
 		

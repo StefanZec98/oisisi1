@@ -49,7 +49,7 @@ this.kolone.add("ADRESA STANOVANJA");
 this.kolone.add("BROJ TELEFONA");
 this.kolone.add("EMAIL ADRESA");
 this.kolone.add("DATUM UPISA");
-this.kolone.add("PREDMETI");
+//this.kolone.add("PREDMETI");
 
 
 initStudenti();
@@ -87,7 +87,7 @@ return ++generator;
 }
 
 public int getColumnCount() {
-return 12;
+return 11;
 }
 
 public String getColumnName(int index) {

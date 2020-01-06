@@ -34,6 +34,8 @@ this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 this.getTableHeader().setReorderingAllowed(false);
 this.setModel(new AbstractTableModelStudenti());
 
+new ButtonColumnPredmeti(this, 11);
+
 modelStudenta = (AbstractTableModel) this.getModel();
 
 this.addMouseListener(new MouseAdapter() {
