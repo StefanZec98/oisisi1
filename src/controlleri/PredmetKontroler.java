@@ -80,10 +80,22 @@ public class PredmetKontroler {
 		
 		BazaStudenta.getInstance().getStudentPrekoIndexa(index).dodajPredmetNaStudenta(p);
 		BazaPredmeta.getInstance().dodajStudentaNaPredmet(s, p);
-		System.out.println(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getSpisak_studenata().get(0).getIme());
+		
 		
 		  }
 	  }
+	  
+	  public void brisanjeStudentaSaPredmeta(String index,int rowSelectedIndex) {
+		  Student s= BazaStudenta.getInstance().getStudentPrekoIndexa(index);
+		  if(s!=null) {
+			  
+			  BazaPredmeta.getInstance().getRow(rowSelectedIndex).obrisiStudentaSaPredmeta(s);
+			  BazaStudenta.getInstance().getStudentPrekoIndexa(index).obirisiPredmet(BazaPredmeta.getInstance().getRow(rowSelectedIndex));
+			  
+			  
+		  }
+	  }
+	  
 	  public void dodavanjeProfesoraNaPredmet(Profesor profesor,int rowSelectedIndex) {
 
           if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getPredmetni_profesor()==null) {

@@ -214,6 +214,36 @@ public class Toolbar extends JToolBar{
 				
 			}
 		});
+	    
+	    JButton btnBrisanjeStudentaSaPredmeta = new JButton();
+	    btnBrisanjeStudentaSaPredmeta.setToolTipText("Obrisi studenta sa predmeta");
+	    btnBrisanjeStudentaSaPredmeta.setIcon(new ImageIcon("images/brisanje_profesora_sa_predmeta.jpg"));
+	    panLevi.add(btnBrisanjeStudentaSaPredmeta);
+	    
+	    btnBrisanjeStudentaSaPredmeta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(Tabovi.pozicija==2) {
+					if(PredmetiJtable.rowSelectedIndex!=-1) {
+						new DijalogBrisanjaStudenta(null,PredmetiJtable.rowSelectedIndex);
+					}else {
+						JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet!",
+								"Greska!",JOptionPane.ERROR_MESSAGE);
+								return;
+					}
+				
+				
+			}else {
+				JOptionPane.showMessageDialog(new JFrame(), "Morate se nalaziti na tabu 'Predmeti'!", "Greska!",          
+					      JOptionPane.ERROR_MESSAGE);
+				return;
+				}
+			}
+		});
+	    
+	    
 			
 		
 		JButton btnDodavanjeProfesoraNaPredmet = new JButton();
