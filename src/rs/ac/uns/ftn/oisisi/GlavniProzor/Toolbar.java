@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,6 +39,8 @@ public class Toolbar extends JToolBar{
     public String naziv;
     public 	String semestar;
    	public String godina;
+   	
+   	public static int dozvola=-1;
 	
 	public Toolbar() {
 		
@@ -384,10 +387,20 @@ public class Toolbar extends JToolBar{
 					//pretraga predmeta
 					
 					String CeoUnetiZaPredmet=textField.getText().toLowerCase();
+				
+				ArrayList<Predmet> svipredmeti=	(ArrayList<Predmet>) BazaPredmeta.getInstance().getPredmeti2();
+					
+				if(CeoUnetiZaPredmet.equals("")) {
+						
+						BazaPredmeta.getInstance().setPredmeti(svipredmeti);
+						PredmetiJtable.azurirajPrikaz();
+					}else {
+					
+					
 					String [] splitovani_stringovi;
 					
 					
-				    splitovani_stringovi=CeoUnetiZaPredmet.split(";");
+				    splitovani_stringovi=CeoUnetiZaPredmet.split("\\;");
 				    
 				   	
 				   	
@@ -403,7 +416,7 @@ public class Toolbar extends JToolBar{
 			   				
 				   		 }
 				   				
-			   			/*	if(splitovani_stringovi[i].contains("semestar")) {
+			   				if(splitovani_stringovi[i].contains("semestar")) {
 			   					String semestri[]=splitovani_stringovi[i].split(":");
 			   					semestar=semestri[1];
 			   					
@@ -413,15 +426,16 @@ public class Toolbar extends JToolBar{
 			   				  	String godine[]=splitovani_stringovi[i].split(":");
 		   						godina=godine[1];
 		   						
-			   			  }*/
+			   			  }
 			   			
 				   		}
 				   	
 				   		
-				   		PredmetiJtable.pronadjiPredmet(naziv, sifra);
+				   		PredmetKontroler.getInstance().pronadjiPredmet(naziv, sifra);
 				   		
 				   		
 				   	}
+			}
 			}
 				   	
  	});	
