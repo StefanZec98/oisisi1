@@ -155,30 +155,6 @@ public class PredmetKontroler {
 	  
 	  
 	  
-	  public static void pronadjiPredmet(String nazPred, String sifraPredm) {
-
-			
-			ArrayList<Predmet> predmetiPretrazeni=new ArrayList<Predmet>();
-			
-			
-			
-				for(Predmet p : BazaPredmeta.getInstance().getPredmeti2()) {
-					
-					if(p.getSifra_predmeta().equals(sifraPredm) && p.getNaziv_predmeta().equals(nazPred)) {
-						predmetiPretrazeni.add(p);
-						
-						
-						System.out.println(p.getNaziv_predmeta());
-					}
-					
-					
-				}		
-				
-				BazaPredmeta.getInstance().setPredmeti(predmetiPretrazeni);
-			
-				PredmetiJtable.azurirajPrikaz(); 
-	  
-	  }
 	  
 	
 	

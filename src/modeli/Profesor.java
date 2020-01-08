@@ -1,10 +1,11 @@
 package modeli;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import rs.ac.uns.ftn.oisisi.GlavniProzor.PredmetiJtable;
 
-public class Profesor {
+public class Profesor  implements Serializable {
 	
 	private String ime;
 	private String prezime;

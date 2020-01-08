@@ -2,17 +2,15 @@ package rs.ac.uns.ftn.oisisi.GlavniProzor;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
+
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
@@ -33,32 +31,29 @@ public class Toolbar extends JToolBar{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JTable TabelaStudenata;
 	
-	public String sifra;
-    public String naziv;
-    public 	String semestar;
-   	public String godina;
+	
+    public	String  stringovi_pre_dvotacke[];
+    public String  stringovi_posle_dvotacke[] ;
+   	
    	
    	public static int dozvola=-1;
 	
 	public Toolbar() {
 		
 		super(SwingConstants.HORIZONTAL);
-				
-		
-		JPanel panLevi = new JPanel();
-		panLevi.setLayout(new FlowLayout(FlowLayout.LEFT));
-		add(panLevi);
+			
 		
 		
 		JButton btnNew = new JButton();
 		btnNew.setToolTipText("Dodavanje");
 		btnNew.addMouseListener(new MyMouseListener());
 		btnNew.setIcon(new ImageIcon("images/add-user-button.jpg"));
-		panLevi.add(btnNew);
+		
+		
+		add(btnNew);
 
-		//addSeparator();
+		
 		JButton btnEdit = new JButton();
 		btnEdit.setToolTipText("Izmena");
 		btnEdit.addActionListener(new ActionListener() {
@@ -71,6 +66,7 @@ public class Toolbar extends JToolBar{
 						
 					
 				Student student = BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex);
+				@SuppressWarnings("unused")
 				DijalogStudent dijalogStudent = new DijalogStudent(null, student.getIme(), student.getPrezime(), student.getDatum_rodjenja(), student.getAdresa_stanovanja(), student.getBroj_telefona(), student.getEmail_adresa(), student.getBroj_indexa(), student.getDatum_upisa(), student.getTrenutna_godina_studija(), student.getStatus(), student.getProsecna_ocena());
 					}else {
 						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
@@ -83,6 +79,7 @@ public class Toolbar extends JToolBar{
 				}else if(Tabovi.pozicija==1){
 					if(ProfesorJTable.rowSelectedIndex >=0) {
 						Profesor profesor = BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex);
+						@SuppressWarnings("unused")
 						DijalogProfesor dijalogProfesor = new DijalogProfesor(null, profesor.getIme(), profesor.getPrezime(), profesor.getDatum_rodjenja(), profesor.getAdresa_stanovanja(), profesor.getKontakt_telefon(), profesor.getE_mail(), profesor.getAdresa_kancelarije(), profesor.getBroj_licne_karte(), profesor.getTitula(), profesor.getZvanje());
 					}else {
 						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
@@ -98,6 +95,7 @@ public class Toolbar extends JToolBar{
 					if(PredmetiJtable.rowSelectedIndex >=0) {
 					
 					Predmet predmet=BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex);
+					@SuppressWarnings("unused")
 					DijalogPredmet dijalogPredmet=new DijalogPredmet(null,predmet.getSifra_predmeta(),
 							predmet.getNaziv_predmeta(),predmet.getSemestar()-1,predmet.getGodina_studija()-1);
 					}else {
@@ -107,20 +105,23 @@ public class Toolbar extends JToolBar{
 							return;
 					}
 					
-					//PredmetKontroler.getInstance().izmeniPredmet(PredmetiJtable.rowSelectedIndex);
+					
 					
 				}
 			}
 		});
 		btnEdit.setIcon(new ImageIcon("images/writing.jpg"));
-		panLevi.add(btnEdit);
-
-		//addSeparator();
+		
+		
+		add(btnEdit);
+		
 
 		JButton btnDelete = new JButton();
 		btnDelete.setToolTipText("Brisanje");
 		btnDelete.setIcon(new ImageIcon("images/rubbish-bin.jpg"));
-		panLevi.add(btnDelete);
+		
+		
+		add(btnDelete);
 		
 		btnDelete.addActionListener(new ActionListener() {
 			
@@ -212,10 +213,15 @@ public class Toolbar extends JToolBar{
 			}
 		});
 	
+		
+		addSeparator();
+		
 		JButton btnDodavanjeStudentaNaPredmet = new JButton();
 		btnDodavanjeStudentaNaPredmet.setToolTipText("Dodaj studenta na predmet");
 	    btnDodavanjeStudentaNaPredmet.setIcon(new ImageIcon("images/Screenshot_14.png"));
-	    panLevi.add(btnDodavanjeStudentaNaPredmet);
+	   
+	    
+	    add(btnDodavanjeStudentaNaPredmet);
 	    
 	    btnDodavanjeStudentaNaPredmet.addActionListener(new ActionListener() {
 			
@@ -242,7 +248,10 @@ public class Toolbar extends JToolBar{
 	    JButton btnBrisanjeStudentaSaPredmeta = new JButton();
 	    btnBrisanjeStudentaSaPredmeta.setToolTipText("Obrisi studenta sa predmeta");
 	    btnBrisanjeStudentaSaPredmeta.setIcon(new ImageIcon("images/brisanje_profesora_sa_predmeta.jpg"));
-	    panLevi.add(btnBrisanjeStudentaSaPredmeta);
+	   
+	    
+	    add(btnBrisanjeStudentaSaPredmeta);
+	    
 	    
 	    btnBrisanjeStudentaSaPredmeta.addActionListener(new ActionListener() {
 			
@@ -270,10 +279,14 @@ public class Toolbar extends JToolBar{
 	    
 			
 		
+	  addSeparator();
+	    
 		JButton btnDodavanjeProfesoraNaPredmet = new JButton();
 		btnDodavanjeProfesoraNaPredmet.setToolTipText("Dodavanje profesora na predmet");
 		btnDodavanjeProfesoraNaPredmet.setIcon(new ImageIcon("images/profesor.jpg"));
-		panLevi.add(btnDodavanjeProfesoraNaPredmet);
+		
+		
+		add(btnDodavanjeProfesoraNaPredmet);
 		
 		
 		btnDodavanjeProfesoraNaPredmet.addActionListener(new ActionListener() {
@@ -307,7 +320,10 @@ public class Toolbar extends JToolBar{
 		JButton btnBrisanjeProfesoraSaPredmeta = new JButton();
 		btnBrisanjeProfesoraSaPredmeta.setToolTipText("Brisanje profesora sa predmeta");
 		btnBrisanjeProfesoraSaPredmeta.setIcon(new ImageIcon("images/brisanje_profesora_sa_predmeta.jpg"));
-		panLevi.add(btnBrisanjeProfesoraSaPredmeta);
+		
+		
+		add(btnBrisanjeProfesoraSaPredmeta);
+		
 		
 		btnBrisanjeProfesoraSaPredmeta.addActionListener(new ActionListener() {
 			
@@ -347,31 +363,38 @@ public class Toolbar extends JToolBar{
 		
 		
 		
-		//addSeparator();
 		
-		JPanel panDesni = new JPanel();
-		panDesni.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		add(panDesni);
+		
+		add(Box.createHorizontalGlue());
 		
 		
 		JTextField textField = new JTextField();
 		
-		textField.setPreferredSize(new Dimension(300,36));
+		textField.setPreferredSize(new Dimension(300,37));
+		
+		textField.setMaximumSize(new Dimension(100,37));
 		
 		
-		panDesni.add(textField);
+		add(textField);
 		
 		
-		//addSeparator();
 		
 		JButton btnSearch = new JButton();
 		btnSearch.setToolTipText("Search");
 		btnSearch.setIcon(new ImageIcon("images/magnifying-glass.jpg"));
-		panDesni.add(btnSearch);
-
+		
+		
+		JButton btnBack = new JButton();
+		btnBack.setToolTipText("Ponistavanje pretrazivanja");
+		btnBack.setIcon(new ImageIcon("images/sign-out.jpg"));
+		
+		
+		add(btnSearch);
+		add(btnBack);
+		btnBack.setVisible(false);
 		
 		    //setFloatable(false);
-			setBackground(new Color(255, 255, 204));
+			setBackground(Color.WHITE);
 		
 		
 			
@@ -379,70 +402,103 @@ public class Toolbar extends JToolBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnBack.setVisible(true);
+				btnSearch.setVisible(false);
+				
+				
 				if(Tabovi.pozicija==0) {
 					//pretragu studenta
 				}else if(Tabovi.pozicija==1) {
 					//pretraguProfesora
 				}else {
-					//pretraga predmeta
+					
 					
 					String CeoUnetiZaPredmet=textField.getText().toLowerCase();
 				
-				ArrayList<Predmet> svipredmeti=	(ArrayList<Predmet>) BazaPredmeta.getInstance().getPredmeti2();
+				
 					
-				if(CeoUnetiZaPredmet.equals("")) {
+					String splitovani_stringovi []=CeoUnetiZaPredmet.split("\\;");
+					
+					
+					for(int i=0; i<splitovani_stringovi.length;i++) {
+							if(!splitovani_stringovi[i].contains(":")) {
+								JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+								return;  
+							}
 						
-						BazaPredmeta.getInstance().setPredmeti(svipredmeti);
-						PredmetiJtable.azurirajPrikaz();
-					}else {
+					}
 					
 					
-					String [] splitovani_stringovi;
-					
-					
-				    splitovani_stringovi=CeoUnetiZaPredmet.split("\\;");
+					stringovi_pre_dvotacke=new String[splitovani_stringovi.length]  ;
+				    stringovi_posle_dvotacke=new String[splitovani_stringovi.length] ;
 				    
-				   	
-				   	
-				   	for(int i=0; i<splitovani_stringovi.length;i++) {
-				   		if(splitovani_stringovi[i].contains("naziv")) {
-				   			String nazivi[]=splitovani_stringovi[i].split(":");
-				   				naziv=nazivi[1];
+				    for(int i=0; i<splitovani_stringovi.length;i++) {
+				   		
+				   			String nazivi[]=splitovani_stringovi[i].split("\\:");
+				   			stringovi_pre_dvotacke[i]=nazivi[0];
+				   			stringovi_posle_dvotacke[i]=nazivi[1];
 				   				
 				   		}
-				   		 if(splitovani_stringovi[i].contains("sifra")) {
-				   			String sifre[]=splitovani_stringovi[i].split(":");
-			   			    sifra=sifre[1];
-			   				
-				   		 }
-				   				
-			   				if(splitovani_stringovi[i].contains("semestar")) {
-			   					String semestri[]=splitovani_stringovi[i].split(":");
-			   					semestar=semestri[1];
-			   					
-			   				}
-					
-			   			  if(splitovani_stringovi[i].contains("godina")) {
-			   				  	String godine[]=splitovani_stringovi[i].split(":");
-		   						godina=godine[1];
-		   						
-			   			  }
-			   			
+				    
+				    for(int i=0; i<stringovi_pre_dvotacke.length;i++) {
+				    		if(! stringovi_pre_dvotacke[i].contains("naziv") && ! stringovi_pre_dvotacke[i].contains("sifra")
+				    				&& ! stringovi_pre_dvotacke[i].contains("semestar") && ! stringovi_pre_dvotacke[i].contains("godina") ) {
+				    			
+				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;   ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+								return;  
+				    		}
+				    			
+				    }
+				    
+				    
+				   	for(int i=0;i<stringovi_pre_dvotacke.length;i++) {
+				   		
+				   		if(stringovi_pre_dvotacke[i].equals("sifra")) {
+				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],0);
 				   		}
-				   	
 				   		
-				   		PredmetKontroler.getInstance().pronadjiPredmet(naziv, sifra);
+				   		if(stringovi_pre_dvotacke[i].equals("naziv")) {
+				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],1);
+				   		}
 				   		
+				   		if(stringovi_pre_dvotacke[i].equals("semestar")) {
+				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],2);
+				   		}
+				   		
+				   		if(stringovi_pre_dvotacke[i].equals("godina")) {
+				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],3);
+				   		}
 				   		
 				   	}
-			}
+				  
+				    
+				    
+				   
+				   		
+				   		
+				}
+			
 			}
 				   	
  	});	
 			
 			
 	
-	
+		btnBack.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				btnBack.setVisible(false);
+				btnSearch.setVisible(true);
+				
+				PredmetiJtable.FilterPrikaza("", 2);
+			}
+		});
 	
 	}
 	

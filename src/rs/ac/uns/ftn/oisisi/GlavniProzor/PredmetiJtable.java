@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -13,8 +13,6 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
-import modeli.BazaPredmeta;
-import modeli.Predmet;
 
 
 
@@ -27,21 +25,26 @@ public class PredmetiJtable extends JTable{
 	private static final long serialVersionUID = 8900651367165240112L;
 	
 
-	public static AbstractTableModel predmetModel;
+	public static AbstractTableModelPredmeti predmetModel;
 	public static JTable tabelaPredmeta;
 	public static int rowSelectedIndex = -1;
-	public static JTable predmeti;
+	public static TableRowSorter<AbstractTableModelPredmeti>sortiranje;
 	
+	
+	
+	@SuppressWarnings("static-access")
 	public PredmetiJtable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.getTableHeader().setReorderingAllowed(false);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		this.predmetModel=new AbstractTableModelPredmeti();
 		this.setModel(new AbstractTableModelPredmeti());
 		
 		new ButtonColumnStudenti(this, 5);
 		
-		predmetModel=(AbstractTableModel) this.getModel();
+		predmetModel=(AbstractTableModelPredmeti) this.getModel();
 		
 		this.addMouseListener(new MouseAdapter() {
 			@Override
@@ -56,6 +59,12 @@ public class PredmetiJtable extends JTable{
 		
 		sort();
 		
+		sortiranje=new TableRowSorter<AbstractTableModelPredmeti>(predmetModel);
+		sortiranje.setSortable(4, false);
+		sortiranje.setSortable(5, false);
+		this.setRowSorter(sortiranje);
+		
+		
 		
 	}	
 	
@@ -63,7 +72,7 @@ public class PredmetiJtable extends JTable{
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		Component c = super.prepareRenderer(renderer, row, column);
-		// selektovani red ce imati drugaciju boju od ostalih
+		
 		if (isRowSelected(row)) {
 			c.setBackground(Color.LIGHT_GRAY);
 		} else {
@@ -87,7 +96,25 @@ public class PredmetiJtable extends JTable{
   	  this.setRowSorter(sorter);
 
   	  }
+	
+	
+	public static void FilterPrikaza(String trazeno,int brojKolone) {
+		
+			RowFilter<?  super AbstractTableModelPredmeti,? super Integer>rowfilter=null;
+			
+			try {
+				rowfilter=RowFilter.regexFilter("^" + trazeno, brojKolone);
+				
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			}
+		
+			sortiranje.setRowFilter(rowfilter);
+			
+			
+	}
 
+	
 	
 
 	
