@@ -94,7 +94,12 @@ public class Predmet  implements Serializable{
 		spisak_studenata.add(s);
 	}
 	public void obrisiStudentaSaPredmeta(Student s) {
-		spisak_studenata.remove(s);
+			for (Student student : spisak_studenata) {
+				if(student.getBroj_indexa().equals(s.getBroj_indexa())) {
+					spisak_studenata.remove(student);
+					break;
+				}
+			}
 	}
 	
 	

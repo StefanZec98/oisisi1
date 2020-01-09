@@ -141,7 +141,12 @@ public class Student  implements Serializable{
 			this.predmeti.add(p);
 		}
 		public void obirisiPredmet(Predmet p) {
-			predmeti.remove(p);
+			for (Predmet predmet : predmeti) {
+				if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+					predmeti.remove(predmet);
+					break;
+				}
+			}
 		}
 		public ArrayList<Predmet> vratiPredmete(){
 			return predmeti;
