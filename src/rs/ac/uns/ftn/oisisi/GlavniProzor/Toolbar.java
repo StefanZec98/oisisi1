@@ -35,6 +35,10 @@ public class Toolbar extends JToolBar{
 	
     public	String  stringovi_pre_dvotacke[];
     public String  stringovi_posle_dvotacke[] ;
+    
+    
+    public	String  stringovi_pre_dvotacke2[];
+    public String  stringovi_posle_dvotacke2[] ;
    	
    	
    	public static int dozvola=-1;
@@ -410,10 +414,112 @@ public class Toolbar extends JToolBar{
 					//pretragu studenta
 				}else if(Tabovi.pozicija==1) {
 					//pretraguProfesora
+					
+                    String CeoUnetiZaProfesora=textField.getText();
+				
+				
+					
+					String splitovani_stringovi2 []=CeoUnetiZaProfesora.split("\\;");
+					
+					
+					for(int i=0; i<splitovani_stringovi2.length;i++) {
+							if(!splitovani_stringovi2[i].contains(":")) {
+								JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+								return;  
+							}
+						
+					}
+					
+					
+					stringovi_pre_dvotacke2=new String[splitovani_stringovi2.length]  ;
+				    stringovi_posle_dvotacke2=new String[splitovani_stringovi2.length] ;
+				    
+				    for(int i=0; i<splitovani_stringovi2.length;i++) {
+				   		
+				   			String nazivi[]=splitovani_stringovi2[i].split("\\:");
+				   			stringovi_pre_dvotacke2[i]=nazivi[0];
+				   			stringovi_posle_dvotacke2[i]=nazivi[1];
+				   				
+				   		}
+				    
+				    for(int i=0; i<stringovi_pre_dvotacke2.length;i++) {
+				    		if(!stringovi_pre_dvotacke2[i].contains("ime") && !stringovi_pre_dvotacke2[i].contains("prezime")
+				    				&& !stringovi_pre_dvotacke2[i].contains("datum_rodjenja") && !stringovi_pre_dvotacke2[i].contains("adresa")
+				    				&& !stringovi_pre_dvotacke2[i].contains("kontakt_telefon") && !stringovi_pre_dvotacke2[i].contains("e_mail")
+				    				&& !stringovi_pre_dvotacke2[i].contains("adresa_kancelarije") && !stringovi_pre_dvotacke2[i].contains("br_licne_karte")
+				    				&& !stringovi_pre_dvotacke2[i].contains("titula") && !stringovi_pre_dvotacke2[i].contains("zvanje") 	) {
+				    			
+				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;   ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+								return;  
+				    		}
+				    			
+				    }
+				    
+				    
+				   	for(int i=0;i<stringovi_pre_dvotacke2.length;i++) {
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("ime")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],0);
+				   		}
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("prezime") || stringovi_pre_dvotacke2[i].equals("Prezime")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],1);
+				   		}
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("datum_rodjenja")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],2);
+				   		}
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("adresa")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],3);
+				   		}
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("kontakt_telefon")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],4);
+				   		}
+				   		
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("e_mail")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],5);
+				   		}
+				   		
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("adresa_kancelarije")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],6);
+				   		}
+				   		
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("br_licne_karte")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],7);
+				   		}
+				   		
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("titula")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],8);
+				   		}
+				   		
+				   		
+				   		if(stringovi_pre_dvotacke2[i].equals("zvanje")) {
+				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],9);
+				   		}
+				   		
+				   		
+				   		
+		
+				   	}
+				  
+				    
+					
+					
+					
 				}else {
 					
 					
-					String CeoUnetiZaPredmet=textField.getText().toLowerCase();
+					String CeoUnetiZaPredmet=textField.getText();
 				
 				
 					
@@ -497,6 +603,7 @@ public class Toolbar extends JToolBar{
 				btnSearch.setVisible(true);
 				
 				PredmetiJtable.FilterPrikaza("", 2);
+				ProfesorJTable.FilterPrikaza("", 0);
 			}
 		});
 	

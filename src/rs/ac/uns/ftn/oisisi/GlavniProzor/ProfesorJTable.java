@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
@@ -22,8 +23,9 @@ private static final long serialVersionUID = 8900651367165240112L;
 
 
 public static JTable tabelaProfesora;
-public static AbstractTableModel modelProfesora;
+public static AbstractTableModelProfesora modelProfesora;
 public static int rowSelectedIndex = -1;
+public static TableRowSorter<AbstractTableModelProfesora>sortiranje;
 
 public ProfesorJTable() {
 	
@@ -32,11 +34,14 @@ this.setRowSelectionAllowed(true);
 this.setColumnSelectionAllowed(true);
 this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 this.getTableHeader().setReorderingAllowed(false);
+
+
+this.modelProfesora=new AbstractTableModelProfesora();
 this.setModel(new AbstractTableModelProfesora());
 
 new ButtonColumnProfesori(this,10);
 
-modelProfesora = (AbstractTableModel) this.getModel();
+modelProfesora = (AbstractTableModelProfesora) this.getModel();
 
 this.addMouseListener(new MouseAdapter() {
 @Override
@@ -50,6 +55,13 @@ public void mouseReleased(MouseEvent e) {
 });
 
 sort();
+
+
+sortiranje=new TableRowSorter<AbstractTableModelProfesora>(modelProfesora);
+sortiranje.setSortable(10, false);
+
+this.setRowSorter(sortiranje);
+
 
 }
 
@@ -81,6 +93,25 @@ public static  void azurirajPrikaz() {
 	rowSelectedIndex=-1;
 		
 }
+
+
+public static void FilterPrikaza(String trazeno,int brojKolone) {
+	
+	RowFilter<?  super AbstractTableModelProfesora,? super Integer>rowfilter=null;
+	
+	try {
+		rowfilter=RowFilter.regexFilter("^" + trazeno, brojKolone);
+		
+	}catch (java.util.regex.PatternSyntaxException e) {
+		return;
+	}
+
+	sortiranje.setRowFilter(rowfilter);
+	
+	
+}
+
+
 
 
 }

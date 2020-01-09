@@ -32,8 +32,8 @@ public class GlavniProzorTest {
 		PredmetKontroler.getInstance();
 
 		
-		BazaPredmeta.getInstance().ucitavanjeListe("moj_prvi_fajl.txt");
-		
+		BazaPredmeta.getInstance().ucitavanjeListe("Predmet_fajl.txt");
+		BazaProfesora.getInstance().ucitavanjeListe("Profesor_fajl.txt");
 		
 		 MainFrame mf = new MainFrame();
 		 mf.setVisible(true); 

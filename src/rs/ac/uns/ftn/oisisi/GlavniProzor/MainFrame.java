@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 import modeli.BazaPredmeta;
+import modeli.BazaProfesora;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -49,8 +50,8 @@ public class MainFrame extends JFrame {
 					if(x==JOptionPane.YES_OPTION) {
 						
 						
-						BazaPredmeta.getInstance().saveListe("moj_prvi_fajl.txt");
-						
+						BazaPredmeta.getInstance().saveListe("Predmet_fajl.txt");
+						BazaProfesora.getInstance().saveListe("Profesor_fajl.txt");
 						
 						
 						e.getWindow().dispose();

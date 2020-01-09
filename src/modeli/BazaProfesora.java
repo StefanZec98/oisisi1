@@ -1,5 +1,11 @@
 package modeli;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +46,12 @@ this.kolone.add("PREZIME");
 this.kolone.add("DATUM_RODJENJA");
 this.kolone.add("ADRESA");
 this.kolone.add("KONTAKT_TELEFON");
-this.kolone.add("E-MAIL");
+this.kolone.add("E_MAIL");
 this.kolone.add("ADRESA_KANCELARIJE");
 this.kolone.add("BR_LICNE_KARTE");
 this.kolone.add("TITULA");
 this.kolone.add("ZVANJE");
-//this.kolone.add("SPISAK_PREDMETA");
+
 
 initProfesori();
 
@@ -56,15 +62,7 @@ initProfesori();
 
 private void initProfesori() {
 this.profesori = new ArrayList<Profesor>();
-/*//igraci.add(new Igrac(generateId(), "Mika", "Mikic", "Crvena Zvezda"));
-
-Profesor profesor1=new Profesor("MArko", "prezime", "datum_rodjenja", "adresa_stanovanja",
-06454444444, "e_mail", "adresa_kancelarije", 203, "titula", "zvanje", null);      
-
-String ime=profesor1.getIme();
-String prezime=profesor1.getPrezime();
-
-profesori.add(new Predmet("012a", "naziv_predmeta", "semestar", "godina_studija", ime + " " + prezime, null));*/      
+    
 
 }
 
@@ -77,6 +75,7 @@ public void setProfesori(List<Profesor> profesori) {
 this.profesori = profesori;
 }
 
+@SuppressWarnings("unused")
 private long generateId() {
 return ++generator;
 }
@@ -118,7 +117,7 @@ return profesor.getTitula();
 case 9:
 return profesor.getZvanje();
 case 10:
-return "";//getListaPredmeta(profesor);
+return "";
 default:
 return null;
 }
@@ -196,6 +195,73 @@ public Profesor getProfesor(long licna_karta) {
 public int getRowCount() {
 return BazaProfesora.getInstance().getProfesori().size();
 }
+
+
+
+
+
+public  void saveListe(String file){
+	ObjectOutputStream out = null;
+	List<Profesor> listaPredmeta=this.getProfesori();
+	try {
+		out = new ObjectOutputStream(new BufferedOutputStream( new FileOutputStream(file)));
+		
+		 
+		out.writeObject(listaPredmeta);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+    } finally {
+        if(out != null){
+            try {
+                out.close();
+            } catch (Exception e) {
+    			e.printStackTrace();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+@SuppressWarnings("unchecked")
+public void ucitavanjeListe(String file){
+	ObjectInputStream in = null;
+	List<Profesor> listaProfesori=new ArrayList<Profesor>();
+	try {
+		in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)));
+		listaProfesori = (List<Profesor>) in.readObject();
+		BazaProfesora.getInstance().setProfesori(listaProfesori);
+		
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+    } finally {
+        if(in != null){
+            try {
+                in.close();
+            } catch (Exception e) {
+    			e.printStackTrace();
+            }
+        }
+    }
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
