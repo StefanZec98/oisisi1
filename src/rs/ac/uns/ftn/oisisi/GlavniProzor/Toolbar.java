@@ -36,6 +36,9 @@ public class Toolbar extends JToolBar{
     public	String  stringovi_pre_dvotacke[];
     public String  stringovi_posle_dvotacke[] ;
     
+    public	String  stringovi_pre_dvotacke1[];
+    public String  stringovi_posle_dvotacke1[] ;
+    
     
     public	String  stringovi_pre_dvotacke2[];
     public String  stringovi_posle_dvotacke2[] ;
@@ -410,8 +413,90 @@ public class Toolbar extends JToolBar{
 				btnSearch.setVisible(false);
 				
 				
-				if(Tabovi.pozicija==0) {
-					//pretragu studenta
+if(Tabovi.pozicija==0) {
+					
+					String CeoUnetiZaStudenta=textField.getText();
+					String splitovani_stringovi1 []=CeoUnetiZaStudenta.split("\\;");
+					
+					for(int i=0;i<splitovani_stringovi1.length;i++) {
+						if(!splitovani_stringovi1[i].contains(":")) {
+							JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
+								       JOptionPane.ERROR_MESSAGE);
+								
+							return;
+						}
+						
+					}
+						
+						stringovi_pre_dvotacke1=new String[splitovani_stringovi1.length];
+					    stringovi_posle_dvotacke1=new String[splitovani_stringovi1.length];
+					    
+					    for(int i=0; i<splitovani_stringovi1.length;i++) {
+					   		
+				   			String nazivi1[]=splitovani_stringovi1[i].split("\\:");
+				   			stringovi_pre_dvotacke1[i]=nazivi1[0];
+				   			stringovi_posle_dvotacke1[i]=nazivi1[1];
+				   				
+				   		}
+					    
+					    for(int i=0; i<stringovi_pre_dvotacke1.length;i++) {
+				    		if(!stringovi_pre_dvotacke1[i].contains("ime") && !stringovi_pre_dvotacke1[i].contains("prez")
+				    				&& !stringovi_pre_dvotacke1[i].contains("datumr") && !stringovi_pre_dvotacke1[i].contains("adresa")
+				    				&& !stringovi_pre_dvotacke1[i].contains("broj") && !stringovi_pre_dvotacke1[i].contains("email")
+				    				&& !stringovi_pre_dvotacke1[i].contains("index") && !stringovi_pre_dvotacke1[i].contains("datum")
+				    				&& !stringovi_pre_dvotacke1[i].contains("godina") && !stringovi_pre_dvotacke1[i].contains("status")
+				    				&& !stringovi_pre_dvotacke1[i].contains("prosek")) {
+				    			
+				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;   ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+								return;  
+				    		}
+				    			
+				    }
+					    
+					    for(int i=0;i<stringovi_pre_dvotacke1.length;i++) {
+					   		
+					   		if(stringovi_pre_dvotacke1[i].equals("index")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],0);
+					   			
+					   		}
+					   		
+					   		if(stringovi_pre_dvotacke1[i].equals("ime")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],1);
+					   			
+					   		}
+					   		
+					   		if(stringovi_pre_dvotacke1[i].equals("prez")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],2);
+					   		}
+					   		
+					   		if(stringovi_pre_dvotacke1[i].equals("godina")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],3);
+					   		}
+					   		
+					   		if(stringovi_pre_dvotacke1[i].equals("status")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],4);
+					   		}
+					   		if(stringovi_pre_dvotacke1[i].equals("prosek")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],5);
+					   		}
+					   		if(stringovi_pre_dvotacke1[i].equals("datumr")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],6);
+					   		}
+					   		if(stringovi_pre_dvotacke1[i].equals("adresa")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],7);
+					   		}
+					   		if(stringovi_pre_dvotacke1[i].equals("broj")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],8);
+					   		}
+					   		if(stringovi_pre_dvotacke1[i].equals("email")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],9);
+					   		}
+					   		if(stringovi_pre_dvotacke1[i].equals("datum")) {
+					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],10);
+					   		}
+					   	}
 				}else if(Tabovi.pozicija==1) {
 					//pretraguProfesora
 					
@@ -602,6 +687,7 @@ public class Toolbar extends JToolBar{
 				btnBack.setVisible(false);
 				btnSearch.setVisible(true);
 				
+				StudentiJtable.FilterPrikaza("", 2);
 				PredmetiJtable.FilterPrikaza("", 2);
 				ProfesorJTable.FilterPrikaza("", 0);
 			}

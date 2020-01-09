@@ -42,7 +42,7 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				fireEditingStopped();
-				if(PredmetiJtable.rowSelectedIndex !=-1) {
+				if(StudentiJtable.rowSelectedIndex !=-1) {
 				String prikaz="";
 				int i=0;
 				for (Predmet p : BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex).getPredmeti()) {
@@ -56,7 +56,7 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 				JOptionPane.showMessageDialog(table, "Student ne slusa ni jedan predmet!","Prikaz studenata",JOptionPane.INFORMATION_MESSAGE);
 				}
 				}else {
-					JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet!", "Greska!",
+					JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati studenta!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					
 					return;

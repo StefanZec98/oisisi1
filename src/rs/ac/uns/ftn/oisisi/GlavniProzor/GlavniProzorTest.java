@@ -31,7 +31,7 @@ public class GlavniProzorTest {
 		BazaPredmeta.getInstance();
 		PredmetKontroler.getInstance();
 
-		
+		BazaStudenta.getInstance().ucitavanjeListe("Student_File.txt");
 		BazaPredmeta.getInstance().ucitavanjeListe("Predmet_fajl.txt");
 		BazaProfesora.getInstance().ucitavanjeListe("Profesor_fajl.txt");
 		

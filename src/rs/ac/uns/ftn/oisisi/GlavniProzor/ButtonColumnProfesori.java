@@ -57,7 +57,7 @@ editorButton.addActionListener(new ActionListener() {
 		if(BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex).getPredmetiSpisak().size()!=0) {
 			JOptionPane.showMessageDialog(null, prikazivanje,"Prikaz predmeta",JOptionPane.INFORMATION_MESSAGE);
 			}else {
-			JOptionPane.showMessageDialog(null, "Profesor ne predaje ni jedan predmet!","Prikaz studenata",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Profesor ne predaje ni jedan predmet!","Prikaz profesora",JOptionPane.INFORMATION_MESSAGE);
 			}
 		
 		

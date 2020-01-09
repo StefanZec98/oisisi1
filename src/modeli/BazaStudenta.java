@@ -1,5 +1,11 @@
 package modeli;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,15 +46,15 @@ generator = 0;
 this.kolone = new ArrayList<String>();
 this.kolone.add("INDEX");
 this.kolone.add("IME");
-this.kolone.add("PREZIME");
-this.kolone.add("GODINA STUDIJA");
+this.kolone.add("PREZ");
+this.kolone.add("GODINA");
 this.kolone.add("STATUS");
 this.kolone.add("PROSEK");
-this.kolone.add("DATUM RODJENJA");
-this.kolone.add("ADRESA STANOVANJA");
-this.kolone.add("BROJ TELEFONA");
-this.kolone.add("EMAIL ADRESA");
-this.kolone.add("DATUM UPISA");
+this.kolone.add("DATUMR");
+this.kolone.add("ADRESA");
+this.kolone.add("BROJ");
+this.kolone.add("EMAIL");
+this.kolone.add("DATUM");
 //this.kolone.add("PREDMETI");
 
 
@@ -63,12 +69,6 @@ private void initStudenti() {
 this.studenti = new ArrayList<Student>();
 //igraci.add(new Igrac(generateId(), "Mika", "Mikic", "Crvena Zvezda"));
 
-Student student1=new Student("Nemanja", "Dragutinovic", "9.10.1998", "Vladike Maksima 16",
-06454444444, "nemanjadragutinovic54@gmail.com", "12","1.6.2017",3,Status.B, (float) 7.1,new ArrayList<Predmet>());
-
- 
-
-studenti.add(student1);
 
 
 }
@@ -202,6 +202,61 @@ public Student getStudentPrekoIndexa(String index) {
 @Override
 public int getRowCount() {
 return BazaStudenta.getInstance().getStudenti().size();
+}
+
+
+
+public  void saveListe(String file){
+	ObjectOutputStream out = null;
+	List<Student> listaStudenata=this.getStudenti();
+	try {
+		out = new ObjectOutputStream(new BufferedOutputStream( new FileOutputStream(file)));
+		
+		 
+		out.writeObject(listaStudenata);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+    } finally {
+        if(out != null){
+            try {
+                out.close();
+            } catch (Exception e) {
+    			e.printStackTrace();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+@SuppressWarnings("unchecked")
+public void ucitavanjeListe(String file){
+	ObjectInputStream in = null;
+	List<Student> listaStudenata=new ArrayList<Student>();
+	try {
+		in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)));
+		listaStudenata = (List<Student>) in.readObject();
+		BazaStudenta.getInstance().setStudenti(listaStudenata);
+		
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+    } finally {
+        if(in != null){
+            try {
+                in.close();
+            } catch (Exception e) {
+    			e.printStackTrace();
+            }
+        }
+    }
+	
+	
 }
 
 

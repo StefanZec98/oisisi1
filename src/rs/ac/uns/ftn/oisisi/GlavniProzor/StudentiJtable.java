@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
@@ -20,23 +21,27 @@ public class StudentiJtable extends JTable{
 
 private static final long serialVersionUID = 8900651367165240112L;
 
-
+public static AbstractTableModelStudenti studentModel;
 public static JTable TabelaStudenata;
-public static AbstractTableModel modelStudenta;
 public static int rowSelectedIndex = -1;
+public static TableRowSorter<AbstractTableModelStudenti>sortiranje;
 
+@SuppressWarnings("static-access")
 public StudentiJtable() {
 	
 	
 this.setRowSelectionAllowed(true);
 this.setColumnSelectionAllowed(true);
-this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 this.getTableHeader().setReorderingAllowed(false);
+this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+
+this.studentModel=new AbstractTableModelStudenti();
 this.setModel(new AbstractTableModelStudenti());
 
 new ButtonColumnPredmeti(this, 11);
 
-modelStudenta = (AbstractTableModel) this.getModel();
+studentModel = (AbstractTableModelStudenti) this.getModel();
 
 this.addMouseListener(new MouseAdapter() {
 @Override
@@ -50,6 +55,10 @@ public void mouseReleased(MouseEvent e) {
 });
 
 sort();
+
+sortiranje=new TableRowSorter<AbstractTableModelStudenti>(studentModel);
+sortiranje.setSortable(11, false);
+this.setRowSorter(sortiranje);
 
 }
 
@@ -66,21 +75,34 @@ c.setBackground(Color.WHITE);
 return c;
 }
 
+public static  void azurirajPrikaz() {
+	
+	studentModel.fireTableDataChanged();
+	rowSelectedIndex=-1;
+
+}
 
 public void sort() {
 
 
 TableRowSorter<AbstractTableModel> sorter =
-new TableRowSorter<AbstractTableModel>(modelStudenta);
+new TableRowSorter<AbstractTableModel>(studentModel);
 this.setRowSorter(sorter);
 
 }
 
-public static  void azurirajPrikaz() {
+public static void FilterPrikaza(String trazeno,int brojKolone) {
 	
-	modelStudenta.fireTableDataChanged();
-	rowSelectedIndex=-1;
+	RowFilter<?  super AbstractTableModelStudenti,? super Integer>rowfilter=null;
 	
+	try {
+		rowfilter=RowFilter.regexFilter("^" + trazeno, brojKolone);
+		
+	}catch (java.util.regex.PatternSyntaxException e) {
+		return;
+	}
+
+	sortiranje.setRowFilter(rowfilter);
 	
 	
 }
