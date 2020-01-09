@@ -102,7 +102,14 @@ public class Predmet  implements Serializable{
 			}
 	}
 	
-	
+	public void obrisiProfesoraSaPredmeta(Profesor p) {
+		
+			if(predmetni_profesor.getBroj_licne_karte()==p.getBroj_licne_karte()) {
+				this.setPredmetni_profesor(null);
+			
+			
+		}
+}
 
 
 

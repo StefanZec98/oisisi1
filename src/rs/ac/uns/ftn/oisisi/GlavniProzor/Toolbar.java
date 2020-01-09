@@ -530,13 +530,13 @@ if(Tabovi.pozicija==0) {
 				   		}
 				    
 				    for(int i=0; i<stringovi_pre_dvotacke2.length;i++) {
-				    		if(!stringovi_pre_dvotacke2[i].contains("ime") && !stringovi_pre_dvotacke2[i].contains("prezime")
-				    				&& !stringovi_pre_dvotacke2[i].contains("datum_rodjenja") && !stringovi_pre_dvotacke2[i].contains("adresa")
-				    				&& !stringovi_pre_dvotacke2[i].contains("kontakt_telefon") && !stringovi_pre_dvotacke2[i].contains("e_mail")
-				    				&& !stringovi_pre_dvotacke2[i].contains("adresa_kancelarije") && !stringovi_pre_dvotacke2[i].contains("br_licne_karte")
-				    				&& !stringovi_pre_dvotacke2[i].contains("titula") && !stringovi_pre_dvotacke2[i].contains("zvanje") 	) {
+				    		if(!stringovi_pre_dvotacke2[i].contains("Ime") && !stringovi_pre_dvotacke2[i].contains("Prezime")
+				    				&& !stringovi_pre_dvotacke2[i].contains("Datum_rodjenja") && !stringovi_pre_dvotacke2[i].contains("Adresa")
+				    				&& !stringovi_pre_dvotacke2[i].contains("Kontakt_telefon") && !stringovi_pre_dvotacke2[i].contains("E_mail")
+				    				&& !stringovi_pre_dvotacke2[i].contains("Adresa_kancelarije") && !stringovi_pre_dvotacke2[i].contains("Br_licne_karte")
+				    				&& !stringovi_pre_dvotacke2[i].contains("Titula") && !stringovi_pre_dvotacke2[i].contains("Zvanje") 	) {
 				    			
-				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;   ", "Greska!",          
+				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone(velikim slovima) : vrednost ;   ", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 								return;  
@@ -547,48 +547,48 @@ if(Tabovi.pozicija==0) {
 				    
 				   	for(int i=0;i<stringovi_pre_dvotacke2.length;i++) {
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("ime")) {
+				   		if(stringovi_pre_dvotacke2[i].equals("Ime")) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],0);
 				   		}
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("prezime") || stringovi_pre_dvotacke2[i].equals("Prezime")) {
+				   		if( stringovi_pre_dvotacke2[i].equals("Prezime")) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],1);
 				   		}
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("datum_rodjenja")) {
+				   		if(stringovi_pre_dvotacke2[i].equals("Datum_rodjenja")) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],2);
 				   		}
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("adresa")) {
+				   		if(stringovi_pre_dvotacke2[i].equals("Adresa") ) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],3);
 				   		}
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("kontakt_telefon")) {
+				   		if( stringovi_pre_dvotacke2[i].equals("Kontakt_telefon") ) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],4);
 				   		}
 				   		
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("e_mail")) {
+				   		if( stringovi_pre_dvotacke2[i].equals("E_mail")) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],5);
 				   		}
 				   		
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("adresa_kancelarije")) {
+				   		if( stringovi_pre_dvotacke2[i].equals("Adresa_kancelarije") ) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],6);
 				   		}
 				   		
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("br_licne_karte")) {
+				   		if( stringovi_pre_dvotacke2[i].equals("Br_licne_karte")) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],7);
 				   		}
 				   		
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("titula")) {
+				   		if( stringovi_pre_dvotacke2[i].equals("Titula") ) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],8);
 				   		}
 				   		
 				   		
-				   		if(stringovi_pre_dvotacke2[i].equals("zvanje")) {
+				   		if(stringovi_pre_dvotacke2[i].equals("Zvanje")) {
 				   			ProfesorJTable.FilterPrikaza(stringovi_posle_dvotacke2[i],9);
 				   		}
 				   		
@@ -634,10 +634,10 @@ if(Tabovi.pozicija==0) {
 				   		}
 				    
 				    for(int i=0; i<stringovi_pre_dvotacke.length;i++) {
-				    		if(! stringovi_pre_dvotacke[i].contains("naziv") && ! stringovi_pre_dvotacke[i].contains("sifra")
-				    				&& ! stringovi_pre_dvotacke[i].contains("semestar") && ! stringovi_pre_dvotacke[i].contains("godina") ) {
+				    		if(! stringovi_pre_dvotacke[i].contains("Naziv") && ! stringovi_pre_dvotacke[i].contains("Sifra")
+				    				&& ! stringovi_pre_dvotacke[i].contains("Semestar") && ! stringovi_pre_dvotacke[i].contains("Godina") ) {
 				    			
-				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;   ", "Greska!",          
+				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone(velikim slovima) : vrednost ;   ", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 								return;  
@@ -648,19 +648,19 @@ if(Tabovi.pozicija==0) {
 				    
 				   	for(int i=0;i<stringovi_pre_dvotacke.length;i++) {
 				   		
-				   		if(stringovi_pre_dvotacke[i].equals("sifra")) {
+				   		if(stringovi_pre_dvotacke[i].equals("Sifra")) {
 				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],0);
 				   		}
 				   		
-				   		if(stringovi_pre_dvotacke[i].equals("naziv")) {
+				   		if(stringovi_pre_dvotacke[i].equals("Naziv")) {
 				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],1);
 				   		}
 				   		
-				   		if(stringovi_pre_dvotacke[i].equals("semestar")) {
+				   		if(stringovi_pre_dvotacke[i].equals("Semestar")) {
 				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],2);
 				   		}
 				   		
-				   		if(stringovi_pre_dvotacke[i].equals("godina")) {
+				   		if(stringovi_pre_dvotacke[i].equals("Godina")) {
 				   			PredmetiJtable.FilterPrikaza(stringovi_posle_dvotacke[i],3);
 				   		}
 				   		

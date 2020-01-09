@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import rs.ac.uns.ftn.oisisi.GlavniProzor.PredmetiJtable;
+import rs.ac.uns.ftn.oisisi.GlavniProzor.ProfesorJTable;
 
 public class Profesor  implements Serializable {
 	
@@ -199,21 +200,21 @@ public class Profesor  implements Serializable {
 	}
 	
 	
-	public void obrisiPredmet(Predmet p,int rowSelectedIndex) {
-		
-		
-		
-		this.predmetiSpisak.remove(p);
-		BazaPredmeta.getInstance().getRow(rowSelectedIndex).setPredmetni_profesor(null);
-		PredmetiJtable.azurirajPrikaz();
-		
-		
-		
-	}
-	
-	
 	public void obrisiPredmet(Predmet p) {
-		this.predmetiSpisak.remove(p);
+		
+		
+		for (Predmet predmet : predmetiSpisak) {
+			if(predmet.getSifra_predmeta().equals(p.getSifra_predmeta())) {
+				this.predmetiSpisak.remove(predmet);
+				ProfesorJTable.azurirajPrikaz();
+				break;
+			}
+		}
+		
+		
+		
 	}
+	
+	
 
 }

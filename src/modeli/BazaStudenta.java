@@ -82,6 +82,7 @@ public void setStudenti(List<Student> studenti) {
 this.studenti = studenti;
 }
 
+@SuppressWarnings("unused")
 private long generateId() {
 return ++generator;
 }

@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
+
+
 public class BazaProfesora extends AbstractTableModel{
 
 /**
@@ -235,7 +237,6 @@ public void ucitavanjeListe(String file){
 		in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)));
 		listaProfesori = (List<Profesor>) in.readObject();
 		BazaProfesora.getInstance().setProfesori(listaProfesori);
-		
 		
 	} catch (Exception e) {
 		e.printStackTrace();
