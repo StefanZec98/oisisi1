@@ -56,7 +56,7 @@ public class ButtonColumnPredmeti extends AbstractCellEditor implements TableCel
 				JOptionPane.showMessageDialog(table, "Student ne slusa ni jedan predmet!","Prikaz studenata",JOptionPane.INFORMATION_MESSAGE);
 				}
 				}else {
-					JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati studenta!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati studenta!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					
 					return;

@@ -27,7 +27,7 @@ public class DijalogDodavanjaProfesora  extends JDialog implements ActionListene
 	private static final long serialVersionUID = 971293789179L;
 	
 	
-	public DijalogDodavanjaProfesora(Dialog owner,int rowSelectedIndex) {
+	public DijalogDodavanjaProfesora(JFrame owner,int rowSelectedIndex) {
 		 
 		 super(owner,"Dodavanje profesora na predmet ",true);
 		 
@@ -45,7 +45,7 @@ public class DijalogDodavanjaProfesora  extends JDialog implements ActionListene
 			public void actionPerformed(ActionEvent e) {
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-	            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+	            int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 	            if (dialogResult == JOptionPane.YES_OPTION) {
 		           dispose();
@@ -94,7 +94,7 @@ public class DijalogDodavanjaProfesora  extends JDialog implements ActionListene
 			public void actionPerformed(ActionEvent e) {
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
+				int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
 				
 				if (dialogResult == JOptionPane.YES_OPTION) {
 				
@@ -103,7 +103,7 @@ public class DijalogDodavanjaProfesora  extends JDialog implements ActionListene
 				try {
 					Long.parseLong(txtLicnaKartaProfesora.getText());
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(new JFrame(), "Broj licne karte moraju biti brojevi !", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj licne karte moraju biti brojevi !", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -113,7 +113,7 @@ public class DijalogDodavanjaProfesora  extends JDialog implements ActionListene
 				long licna_karta=Long.parseLong(txtLicnaKartaProfesora.getText());
 				
 				if(BazaProfesora.getInstance().getProfesor(licna_karta)==null) {
-					JOptionPane.showMessageDialog(new JFrame(), "Nismo pronasli profesora !", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Nismo pronasli profesora !", "Greska!",
 					        JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}else {

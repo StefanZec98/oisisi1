@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
+import rs.ac.uns.ftn.oisisi.GlavniProzor.MainFrame;
+
 
 
 public class BazaProfesora extends AbstractTableModel{
@@ -141,7 +143,7 @@ public void dodajProfesora(String ime, String prezime, String datum_rodjenja, St
 for (Profesor profesor : profesori) {
 	if(Long.toString(profesor.getBroj_licne_karte()).equals(Long.toString(broj_licne_karte))) {
 		
-		JOptionPane.showMessageDialog(new JFrame(), "Dodajete vec postojeceg profesora!", "Greska!",          
+		JOptionPane.showMessageDialog(MainFrame.getInstance(), "Dodajete vec postojeceg profesora!", "Greska!",          
 			       JOptionPane.ERROR_MESSAGE);
 			
 		

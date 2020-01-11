@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
+import rs.ac.uns.ftn.oisisi.GlavniProzor.MainFrame;
+
 
 
 
@@ -151,7 +153,7 @@ public void dodajStudenta(String ime, String prezime, String datum_rodjenja, Str
 	for (Student s : studenti) {
 		if(s.getBroj_indexa().equals(broj_indexa)) {
 			
-			JOptionPane.showMessageDialog(new JFrame(), "Studenti moraju da imaju razlicite indexe!", "Greska!",
+			JOptionPane.showMessageDialog(MainFrame.getInstance(), "Studenti moraju da imaju razlicite indexe!", "Greska!",
 			        JOptionPane.ERROR_MESSAGE);
 			return;
 		}

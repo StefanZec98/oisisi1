@@ -19,7 +19,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 	private static final long serialVersionUID =19823918398L;
 
 
-	public DijalogProfesor(Dialog owner){  
+	public DijalogProfesor(JFrame owner){  
 	  
 		
 		super(owner,"Dodavanje profesora",true);
@@ -38,7 +38,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-	            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+	            int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 	            if (dialogResult == JOptionPane.YES_OPTION) {
 		           dispose();
@@ -273,7 +273,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
+				int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
 				
 				if (dialogResult == JOptionPane.YES_OPTION) {
 					
@@ -282,7 +282,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 						txtAdresa.getText().isEmpty() || txtTelefon.getText().isEmpty() || txtEmail.getText().isEmpty() ||
 						txtAdresaKancelarije.getText().isEmpty() || txtLicnaKarta.getText().isEmpty() ||
 						txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Sva polja moraju biti popunjena!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					
 					return;
@@ -291,14 +291,14 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 				try {
 					Integer.parseInt(txtTelefon.getText());
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(new JFrame(), "Broj telefona bora biti Integer!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj telefona bora biti Integer!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				try {
 					Integer.parseInt(txtLicnaKarta.getText());
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(new JFrame(), "Broj licne karte bora biti Integer!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj licne karte bora biti Integer!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -330,7 +330,7 @@ public class DijalogProfesor extends JDialog implements ActionListener {
 
 	
 	
-public DijalogProfesor(Dialog owner,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long kontakt_telefon,
+public DijalogProfesor(JFrame owner,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long kontakt_telefon,
 		String e_mail, String adresa_kancelarije, long broj_licne_karte, String titula, String zvanje){  
 	  
 		
@@ -579,7 +579,7 @@ public DijalogProfesor(Dialog owner,String ime, String prezime, String datum_rod
 			public void actionPerformed(ActionEvent e) {
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
+				int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
 				
 				if (dialogResult == JOptionPane.YES_OPTION) {
 					
@@ -588,7 +588,7 @@ public DijalogProfesor(Dialog owner,String ime, String prezime, String datum_rod
 						txtAdresa.getText().isEmpty() || txtTelefon.getText().isEmpty() || txtEmail.getText().isEmpty() ||
 						txtAdresaKancelarije.getText().isEmpty() || txtLicnaKarta.getText().isEmpty() ||
 						txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Sva polja moraju biti popunjena!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					//dispose();
 					return;
@@ -597,14 +597,14 @@ public DijalogProfesor(Dialog owner,String ime, String prezime, String datum_rod
 				try {
 					Integer.parseInt(txtTelefon.getText());
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(new JFrame(), "Broj telefona bora biti Integer!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj telefona bora biti Integer!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				try {
 					Integer.parseInt(txtLicnaKarta.getText());
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(new JFrame(), "Broj licne karte bora biti Integer!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj licne karte bora biti Integer!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}

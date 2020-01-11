@@ -24,18 +24,19 @@ public class GlavniProzorTest {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException{
 	
-		BazaStudenta.getInstance();
-		BazaProfesora.getInstance();
-		StudentKontroler.getInstance();
-		ProfesorKontroler.getInstance();
-		BazaPredmeta.getInstance();
-		PredmetKontroler.getInstance();
+	//	BazaStudenta.getInstance();
+	//	BazaProfesora.getInstance();
+	//	StudentKontroler.getInstance();
+	//	ProfesorKontroler.getInstance();
+	//	BazaPredmeta.getInstance();
+	//	PredmetKontroler.getInstance();
+	//	MainFrame.getInstance();
 
 		BazaStudenta.getInstance().ucitavanjeListe("Student_File.txt");
 		BazaPredmeta.getInstance().ucitavanjeListe("Predmet_fajl.txt");
 		BazaProfesora.getInstance().ucitavanjeListe("Profesor_fajl.txt");
 		
-		 MainFrame mf = new MainFrame();
+		 MainFrame mf = MainFrame.getInstance();
 		 mf.setVisible(true); 
 		
 		

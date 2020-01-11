@@ -74,9 +74,9 @@ public class Toolbar extends JToolBar{
 					
 				Student student = BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex);
 				@SuppressWarnings("unused")
-				DijalogStudent dijalogStudent = new DijalogStudent(null, student.getIme(), student.getPrezime(), student.getDatum_rodjenja(), student.getAdresa_stanovanja(), student.getBroj_telefona(), student.getEmail_adresa(), student.getBroj_indexa(), student.getDatum_upisa(), student.getTrenutna_godina_studija(), student.getStatus(), student.getProsecna_ocena());
+				DijalogStudent dijalogStudent = new DijalogStudent(MainFrame.getInstance(), student.getIme(), student.getPrezime(), student.getDatum_rodjenja(), student.getAdresa_stanovanja(), student.getBroj_telefona(), student.getEmail_adresa(), student.getBroj_indexa(), student.getDatum_upisa(), student.getTrenutna_godina_studija(), student.getStatus(), student.getProsecna_ocena());
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
@@ -87,9 +87,9 @@ public class Toolbar extends JToolBar{
 					if(ProfesorJTable.rowSelectedIndex >=0) {
 						Profesor profesor = BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex);
 						@SuppressWarnings("unused")
-						DijalogProfesor dijalogProfesor = new DijalogProfesor(null, profesor.getIme(), profesor.getPrezime(), profesor.getDatum_rodjenja(), profesor.getAdresa_stanovanja(), profesor.getKontakt_telefon(), profesor.getE_mail(), profesor.getAdresa_kancelarije(), profesor.getBroj_licne_karte(), profesor.getTitula(), profesor.getZvanje());
+						DijalogProfesor dijalogProfesor = new DijalogProfesor(MainFrame.getInstance(), profesor.getIme(), profesor.getPrezime(), profesor.getDatum_rodjenja(), profesor.getAdresa_stanovanja(), profesor.getKontakt_telefon(), profesor.getE_mail(), profesor.getAdresa_kancelarije(), profesor.getBroj_licne_karte(), profesor.getTitula(), profesor.getZvanje());
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
@@ -103,10 +103,10 @@ public class Toolbar extends JToolBar{
 					
 					Predmet predmet=BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex);
 					@SuppressWarnings("unused")
-					DijalogPredmet dijalogPredmet=new DijalogPredmet(null,predmet.getSifra_predmeta(),
+					DijalogPredmet dijalogPredmet=new DijalogPredmet(MainFrame.getInstance(),predmet.getSifra_predmeta(),
 							predmet.getNaziv_predmeta(),predmet.getSemestar()-1,predmet.getGodina_studija()-1);
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
@@ -137,7 +137,7 @@ public class Toolbar extends JToolBar{
 				if(Tabovi.pozicija==0) {
 					if(StudentiJtable.rowSelectedIndex >=0) {
 						int dialogButton = JOptionPane.YES_NO_OPTION;
-						int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda brisanja", dialogButton);
+						int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda brisanja", dialogButton);
 						
 						if (dialogResult == JOptionPane.YES_OPTION) {
 				for (Predmet p : BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex).getPredmeti()) {
@@ -146,7 +146,7 @@ public class Toolbar extends JToolBar{
 				StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
 						}
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
@@ -158,7 +158,7 @@ public class Toolbar extends JToolBar{
 
 
                         int dialogButton = JOptionPane.YES_NO_OPTION;
-                        int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+                        int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
                         if (dialogResult == JOptionPane.YES_OPTION) {
                         	
@@ -172,7 +172,7 @@ public class Toolbar extends JToolBar{
 
 
                     }else {
-                        JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",
+                        JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",
                                    JOptionPane.ERROR_MESSAGE);
 
                             return;
@@ -184,7 +184,7 @@ public class Toolbar extends JToolBar{
 					
 					if(PredmetiJtable.rowSelectedIndex >=0) {
 						int dialogButton = JOptionPane.YES_NO_OPTION;
-						int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda brisanja", dialogButton);
+						int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda brisanja", dialogButton);
 						
 						if (dialogResult == JOptionPane.YES_OPTION) {
 					for (Student s : BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex).getSpisak_studenata()) {
@@ -211,7 +211,7 @@ public class Toolbar extends JToolBar{
 						return;
 					}
 				}else {
-					JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 						       JOptionPane.ERROR_MESSAGE);
 				}
 				
@@ -237,14 +237,14 @@ public class Toolbar extends JToolBar{
 				// TODO Auto-generated method stub
 				if(Tabovi.pozicija==2) {
 					if(PredmetiJtable.rowSelectedIndex!=-1) {
-						new DijalogDodavanjaStudenta(null,PredmetiJtable.rowSelectedIndex);
+						new DijalogDodavanjaStudenta(MainFrame.getInstance(),PredmetiJtable.rowSelectedIndex);
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet!",
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati predmet!",
 								"Greska!",JOptionPane.ERROR_MESSAGE);
 								return;
 					}
 				}else {
-					JOptionPane.showMessageDialog(new JFrame(), "Morate se nalaziti na tabu 'Predmeti'!", "Greska!",          
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate se nalaziti na tabu 'Predmeti'!", "Greska!",          
 						      JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -267,16 +267,16 @@ public class Toolbar extends JToolBar{
 				// TODO Auto-generated method stub
 				if(Tabovi.pozicija==2) {
 					if(PredmetiJtable.rowSelectedIndex!=-1) {
-						new DijalogBrisanjaStudenta(null,PredmetiJtable.rowSelectedIndex);
+						new DijalogBrisanjaStudenta(MainFrame.getInstance(),PredmetiJtable.rowSelectedIndex);
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet!",
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati predmet!",
 								"Greska!",JOptionPane.ERROR_MESSAGE);
 								return;
 					}
 				
 				
 			}else {
-				JOptionPane.showMessageDialog(new JFrame(), "Morate se nalaziti na tabu 'Predmeti'!", "Greska!",          
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate se nalaziti na tabu 'Predmeti'!", "Greska!",          
 					      JOptionPane.ERROR_MESSAGE);
 				return;
 				}
@@ -304,16 +304,16 @@ public class Toolbar extends JToolBar{
 						
 						if(PredmetiJtable.rowSelectedIndex!=-1) {
 							
-						new DijalogDodavanjaProfesora(null,PredmetiJtable.rowSelectedIndex);
+						new DijalogDodavanjaProfesora(MainFrame.getInstance(),PredmetiJtable.rowSelectedIndex);
 						}else {
 							
-							JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet gde zelite da dodate profesora !",
+							JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati predmet gde zelite da dodate profesora !",
 									"Greska!",JOptionPane.ERROR_MESSAGE);
 							return;
 								
 						}
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Morate se nalaziti na tabu predmeti!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate se nalaziti na tabu predmeti!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 						return;
@@ -342,7 +342,7 @@ public class Toolbar extends JToolBar{
 						
 						
 						int dialogButton = JOptionPane.YES_NO_OPTION;
-			            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+			            int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 			            if (dialogResult == JOptionPane.YES_OPTION) {
 			            	PredmetKontroler.getInstance().obrisiProfesoraSaPredmeta(PredmetiJtable.rowSelectedIndex);
@@ -351,13 +351,13 @@ public class Toolbar extends JToolBar{
 			            
 					}else {
 						
-						JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati predmet gde zelite da obrisete profesora !",
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati predmet gde zelite da obrisete profesora !",
 								"Greska!",JOptionPane.ERROR_MESSAGE);
 						return;
 							
 					}
 				}else {
-					JOptionPane.showMessageDialog(new JFrame(), "Morate se nalaziti na tabu predmeti!", "Greska!",          
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate se nalaziti na tabu predmeti!", "Greska!",          
 						       JOptionPane.ERROR_MESSAGE);
 						
 					return;      
@@ -420,7 +420,7 @@ if(Tabovi.pozicija==0) {
 					
 					for(int i=0;i<splitovani_stringovi1.length;i++) {
 						if(!splitovani_stringovi1[i].contains(":")) {
-							JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
+							JOptionPane.showMessageDialog(MainFrame.getInstance(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
 								       JOptionPane.ERROR_MESSAGE);
 								
 							return;
@@ -447,7 +447,7 @@ if(Tabovi.pozicija==0) {
 				    				&& !stringovi_pre_dvotacke1[i].contains("godina") && !stringovi_pre_dvotacke1[i].contains("status")
 				    				&& !stringovi_pre_dvotacke1[i].contains("prosek")) {
 				    			
-				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;   ", "Greska!",          
+				    			JOptionPane.showMessageDialog(MainFrame.getInstance(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;   ", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 								return;  
@@ -509,7 +509,7 @@ if(Tabovi.pozicija==0) {
 					
 					for(int i=0; i<splitovani_stringovi2.length;i++) {
 							if(!splitovani_stringovi2[i].contains(":")) {
-								JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 								return;  
@@ -536,7 +536,7 @@ if(Tabovi.pozicija==0) {
 				    				&& !stringovi_pre_dvotacke2[i].contains("Adresa_kancelarije") && !stringovi_pre_dvotacke2[i].contains("Br_licne_karte")
 				    				&& !stringovi_pre_dvotacke2[i].contains("Titula") && !stringovi_pre_dvotacke2[i].contains("Zvanje") 	) {
 				    			
-				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone(velikim slovima) : vrednost ;   ", "Greska!",          
+				    			JOptionPane.showMessageDialog(MainFrame.getInstance(), "Pretraga se vrsi u formatu naziv_kolone(velikim slovima) : vrednost ;   ", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 								return;  
@@ -613,7 +613,7 @@ if(Tabovi.pozicija==0) {
 					
 					for(int i=0; i<splitovani_stringovi.length;i++) {
 							if(!splitovani_stringovi[i].contains(":")) {
-								JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Pretraga se vrsi u formatu naziv_kolone : vrednost ;  ", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 								return;  
@@ -637,7 +637,7 @@ if(Tabovi.pozicija==0) {
 				    		if(! stringovi_pre_dvotacke[i].contains("Naziv") && ! stringovi_pre_dvotacke[i].contains("Sifra")
 				    				&& ! stringovi_pre_dvotacke[i].contains("Semestar") && ! stringovi_pre_dvotacke[i].contains("Godina") ) {
 				    			
-				    			JOptionPane.showMessageDialog(new JFrame(), "Pretraga se vrsi u formatu naziv_kolone(velikim slovima) : vrednost ;   ", "Greska!",          
+				    			JOptionPane.showMessageDialog(MainFrame.getInstance(), "Pretraga se vrsi u formatu naziv_kolone(velikim slovima) : vrednost ;   ", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 								return;  

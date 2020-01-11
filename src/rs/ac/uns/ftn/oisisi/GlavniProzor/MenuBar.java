@@ -70,9 +70,9 @@ public class MenuBar extends JMenuBar {
 					
 				Student student = BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex);
 				@SuppressWarnings("unused")
-				DijalogStudent dijalogStudent = new DijalogStudent(null, student.getIme(), student.getPrezime(), student.getDatum_rodjenja(), student.getAdresa_stanovanja(), student.getBroj_telefona(), student.getEmail_adresa(), student.getBroj_indexa(), student.getDatum_upisa(), student.getTrenutna_godina_studija(), student.getStatus(), student.getProsecna_ocena());
+				DijalogStudent dijalogStudent = new DijalogStudent(MainFrame.getInstance(), student.getIme(), student.getPrezime(), student.getDatum_rodjenja(), student.getAdresa_stanovanja(), student.getBroj_telefona(), student.getEmail_adresa(), student.getBroj_indexa(), student.getDatum_upisa(), student.getTrenutna_godina_studija(), student.getStatus(), student.getProsecna_ocena());
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
@@ -83,9 +83,9 @@ public class MenuBar extends JMenuBar {
 					if(ProfesorJTable.rowSelectedIndex >=0) {
 						Profesor profesor = BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex);
 						@SuppressWarnings("unused")
-						DijalogProfesor dijalogProfesor = new DijalogProfesor(null, profesor.getIme(), profesor.getPrezime(), profesor.getDatum_rodjenja(), profesor.getAdresa_stanovanja(), profesor.getKontakt_telefon(), profesor.getE_mail(), profesor.getAdresa_kancelarije(), profesor.getBroj_licne_karte(), profesor.getTitula(), profesor.getZvanje());
+						DijalogProfesor dijalogProfesor = new DijalogProfesor(MainFrame.getInstance(), profesor.getIme(), profesor.getPrezime(), profesor.getDatum_rodjenja(), profesor.getAdresa_stanovanja(), profesor.getKontakt_telefon(), profesor.getE_mail(), profesor.getAdresa_kancelarije(), profesor.getBroj_licne_karte(), profesor.getTitula(), profesor.getZvanje());
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
@@ -99,10 +99,10 @@ public class MenuBar extends JMenuBar {
 					
 					Predmet predmet=BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex);
 					@SuppressWarnings("unused")
-					DijalogPredmet dijalogPredmet=new DijalogPredmet(null,predmet.getSifra_predmeta(),
+					DijalogPredmet dijalogPredmet=new DijalogPredmet(MainFrame.getInstance(),predmet.getSifra_predmeta(),
 							predmet.getNaziv_predmeta(),predmet.getSemestar()-1,predmet.getGodina_studija()-1);
 					}else {
-						JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 							       JOptionPane.ERROR_MESSAGE);
 							
 							return;
@@ -124,7 +124,7 @@ public class MenuBar extends JMenuBar {
 						
 						StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
 							}else {
-								JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 									return;
@@ -136,7 +136,7 @@ public class MenuBar extends JMenuBar {
 						
 						ProfesorKontroler.getInstance().izbrisiProfesora(ProfesorJTable.rowSelectedIndex);
 							}else {
-								JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 									return;
@@ -147,7 +147,7 @@ public class MenuBar extends JMenuBar {
 						
 						PredmetKontroler.getInstance().IzbrisiPredmet(PredmetiJtable.rowSelectedIndex);
 							}else {
-								JOptionPane.showMessageDialog(new JFrame(), "Niste selektovali ni jedno polje!", "Greska!",          
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Niste selektovali ni jedno polje!", "Greska!",          
 									       JOptionPane.ERROR_MESSAGE);
 									
 									return;
@@ -166,7 +166,7 @@ public class MenuBar extends JMenuBar {
 				// TODO Auto-generated method stub
 				JDialog d = new JDialog(new JFrame(),"Help");
 				d.setSize(500,430); 
-				d.setLocationRelativeTo(null);
+				d.setLocationRelativeTo(MainFrame.getInstance());
 				JTextArea textArea = new JTextArea();
 				textArea.setEditable(false);
 				Font font = new Font("Cyrilic", Font.BOLD, 15);
@@ -206,7 +206,7 @@ public class MenuBar extends JMenuBar {
 				// TODO Auto-generated method stub
 				JDialog d = new JDialog(new JFrame(),"Help");
 				d.setSize(500,230);
-				d.setLocationRelativeTo(null);
+				d.setLocationRelativeTo(MainFrame.getInstance());
 				JTextArea textArea = new JTextArea();
 				textArea.setEditable(false);
 				Font font = new Font("Cyrilic", Font.BOLD, 15);

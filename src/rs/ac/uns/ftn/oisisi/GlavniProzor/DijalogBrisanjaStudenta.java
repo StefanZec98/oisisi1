@@ -27,7 +27,7 @@ public class DijalogBrisanjaStudenta  extends JDialog implements ActionListener 
 	
 	private static final long serialVersionUID = 9712937289179L;
 	
-	public DijalogBrisanjaStudenta(Dialog owner,int rowSelectedIndex) {
+	public DijalogBrisanjaStudenta(JFrame owner,int rowSelectedIndex) {
 		
 		super(owner,"Brisanje studenta sa predmeta ",true);
 		

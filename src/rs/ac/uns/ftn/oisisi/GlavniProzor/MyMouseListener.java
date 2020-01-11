@@ -16,12 +16,12 @@ public class MyMouseListener extends Tabovi implements MouseListener {
 		 if(arg0.getClickCount() == 1) {
 			  
 			  if(pozicija==0) {
-				  new DijalogStudent(null);
+				  new DijalogStudent(MainFrame.getInstance());
 			  }else if(pozicija==1){
 				  
-				  new DijalogProfesor(null);
+				  new DijalogProfesor(MainFrame.getInstance());
 			  }else
-			  	new DijalogPredmet(null);
+			  	new DijalogPredmet(MainFrame.getInstance());
 				 	 
 			 
 		 }	

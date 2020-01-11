@@ -27,7 +27,7 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 	
 	
 
-	public DijalogPredmet(Dialog owner) {
+	public DijalogPredmet(JFrame owner) {
 		 
 		 super(owner,"Dodavanje predmeta ",true);
 		 
@@ -44,7 +44,7 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-	            int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+	            int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 	            if (dialogResult == JOptionPane.YES_OPTION) {
 		           dispose();
@@ -186,14 +186,14 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 					public void actionPerformed(ActionEvent e) {
 						
 						int dialogButton = JOptionPane.YES_NO_OPTION;
-						int dialogResult = JOptionPane.showConfirmDialog(null,
+						int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(),
 								"Da li ste sigurni?", "Potvrda unosa", dialogButton);
 						
 					if (dialogResult == JOptionPane.YES_OPTION) {
 						
 						if(txtNaziv.getText().isEmpty() || txtSifra.getText().isEmpty() ) {
 								
-							JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",          
+							JOptionPane.showMessageDialog(MainFrame.getInstance(), "Sva polja moraju biti popunjena!", "Greska!",          
 								       JOptionPane.ERROR_MESSAGE);
 								
 								return;
@@ -264,7 +264,7 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 	}
 	
 	
-	public DijalogPredmet(Dialog owner,String sifra,String naziv,Integer semestarUlaz,Integer godinaUlaz) {
+	public DijalogPredmet(JFrame owner,String sifra,String naziv,Integer semestarUlaz,Integer godinaUlaz) {
          super(owner,"Dodavanje predmeta ",true);
 		 
 		 setSize(500, 350); 
@@ -400,14 +400,14 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 					public void actionPerformed(ActionEvent e) {
 						
 						int dialogButton = JOptionPane.YES_NO_OPTION;
-						int dialogResult = JOptionPane.showConfirmDialog(null,
+						int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(),
 								"Da li ste sigurni?", "Potvrda unosa", dialogButton);
 						
 					if (dialogResult == JOptionPane.YES_OPTION) {
 						
 						if(txtNaziv.getText().isEmpty() || txtSifra.getText().isEmpty() ) {
 								
-							JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",          
+							JOptionPane.showMessageDialog(MainFrame.getInstance(), "Sva polja moraju biti popunjena!", "Greska!",          
 								       JOptionPane.ERROR_MESSAGE);
 								
 								return;

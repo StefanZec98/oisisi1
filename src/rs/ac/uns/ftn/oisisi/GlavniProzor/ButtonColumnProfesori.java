@@ -64,7 +64,7 @@ editorButton.addActionListener(new ActionListener() {
 		
 		}else {
 			
-			JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati profesora!", "Greska!",
+			JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati profesora!", "Greska!",
 			        JOptionPane.ERROR_MESSAGE);
 			
 			return;

@@ -11,6 +11,8 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import rs.ac.uns.ftn.oisisi.GlavniProzor.MainFrame;
+
 
 
 
@@ -159,7 +161,7 @@ Integer godina, Profesor profesor,ArrayList<Student>studenti) {
 		if(p.getSifra_predmeta().equals(sifra)) {
 			
 			
-			JOptionPane.showMessageDialog(new JFrame(), "Dodajete predmet sa vec postojecom sifrom!", "Greska!",          
+			JOptionPane.showMessageDialog(MainFrame.getInstance(), "Dodajete predmet sa vec postojecom sifrom!", "Greska!",          
 				       JOptionPane.ERROR_MESSAGE);
 				
 			return;

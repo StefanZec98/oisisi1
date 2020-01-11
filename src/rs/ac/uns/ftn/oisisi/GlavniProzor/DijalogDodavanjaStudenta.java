@@ -27,7 +27,7 @@ public class DijalogDodavanjaStudenta  extends JDialog implements ActionListener
 	
 	private static final long serialVersionUID = 9712937289179L;
 	
-	public DijalogDodavanjaStudenta(Dialog owner,int rowSelectedIndex) {
+	public DijalogDodavanjaStudenta(JFrame owner,int rowSelectedIndex) {
 		
 		super(owner,"Dodavanje studenta na predmet ",true);
 		
@@ -44,7 +44,7 @@ public class DijalogDodavanjaStudenta  extends JDialog implements ActionListener
 			public void actionPerformed(ActionEvent e) {
 
 			int dialogButton = JOptionPane.YES_NO_OPTION;
-			           int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+			           int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 			           if (dialogResult == JOptionPane.YES_OPTION) {
 			          dispose();
@@ -89,7 +89,7 @@ public class DijalogDodavanjaStudenta  extends JDialog implements ActionListener
 				// TODO Auto-generated method stub
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-		           int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+		           int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 		           if (dialogResult == JOptionPane.YES_OPTION) {
 		          
@@ -98,7 +98,7 @@ public class DijalogDodavanjaStudenta  extends JDialog implements ActionListener
 				
 				for(int i=0;i<BazaPredmeta.getInstance().getRow(rowSelectedIndex).getSpisak_studenata().size();i++) {
 					if(BazaPredmeta.getInstance().getRow(rowSelectedIndex).getSpisak_studenata().get(i).getBroj_indexa().equals(indexStudenta)) {
-						JOptionPane.showMessageDialog(new JFrame(), "Ovaj student vec slusa ovaj predmet!", "Greska!",
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "Ovaj student vec slusa ovaj predmet!", "Greska!",
 							       JOptionPane.ERROR_MESSAGE);
 							return;
 					}
@@ -106,7 +106,7 @@ public class DijalogDodavanjaStudenta  extends JDialog implements ActionListener
 					
 				
 				if(BazaStudenta.getInstance().getStudentPrekoIndexa(indexStudenta)==null) {
-					JOptionPane.showMessageDialog(new JFrame(), "Ne postoji student sa tim indeksom!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Ne postoji student sa tim indeksom!", "Greska!",
 						       JOptionPane.ERROR_MESSAGE);
 						return;
 				}else {

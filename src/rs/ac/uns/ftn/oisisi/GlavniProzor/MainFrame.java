@@ -20,9 +20,18 @@ public class MainFrame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private static MainFrame instance = null;
 
+	public static MainFrame getInstance() {
+	if (instance == null) {
+	instance = new MainFrame();
+	}
+	return instance;
+	}
+	
 	public MainFrame() {
-	 super();
+	
 	
 	 
 	 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -45,7 +54,7 @@ public class MainFrame extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				
-					int x=JOptionPane.showConfirmDialog(null, "Da li ste sigurni?"," Izlaz",JOptionPane.YES_NO_OPTION,
+					int x=JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?"," Izlaz",JOptionPane.YES_NO_OPTION,
 							JOptionPane.INFORMATION_MESSAGE);
 					
 					if(x==JOptionPane.YES_OPTION) {

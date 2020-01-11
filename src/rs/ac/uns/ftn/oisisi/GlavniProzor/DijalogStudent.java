@@ -20,7 +20,7 @@ public class DijalogStudent  extends JDialog implements ActionListener {
 	private static final long serialVersionUID = -86380656841831620L;
 
 
-public DijalogStudent(Dialog parent){   
+public DijalogStudent(JFrame parent){   
 	super(parent,"Dodavanje studenta",true);
  
    setSize(500, 600);   
@@ -37,7 +37,7 @@ public DijalogStudent(Dialog parent){
 	   public void actionPerformed(ActionEvent e) {
 
 	   int dialogButton = JOptionPane.YES_NO_OPTION;
-	              int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+	              int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 	              if (dialogResult == JOptionPane.YES_OPTION) {
 	             dispose();
@@ -278,19 +278,19 @@ public DijalogStudent(Dialog parent){
 			// TODO Auto-generated method stub
 			
 			int dialogButton = JOptionPane.YES_NO_OPTION;
-			int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
+			int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
 			
 			if (dialogResult == JOptionPane.YES_OPTION) {
 			
 			if(txtIme.getText().isEmpty() ||txtPrezime.getText().isEmpty() ||txtDatumRodjenja.getText().isEmpty() ||txtAdresa.getText().isEmpty()||txtTelefon.getText().isEmpty()||txtEmailAdresa.getText().isEmpty()||txtBrojIndeksa.getText().isEmpty()||txtDatumUpisa.getText().isEmpty()||txtProsecnaOcena.getText().isEmpty() ) {
 				//System.out.println("Morate popuniti sva polja");
-				JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Sva polja moraju biti popunjena!", "Greska!",
 				        JOptionPane.ERROR_MESSAGE);
 				//dispose();
 				return;
 			}
 			if(budzet.isSelected()==false && samof.isSelected()==false) {
-				JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati ili budzet ili samofinansiranje!", "Greska!",
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati ili budzet ili samofinansiranje!", "Greska!",
 				        JOptionPane.ERROR_MESSAGE);
 				//dispose();
 				return;
@@ -299,12 +299,12 @@ public DijalogStudent(Dialog parent){
 			try {
 				Float.parseFloat(txtProsecnaOcena.getText());
 			}catch(NumberFormatException e1) {
-				JOptionPane.showMessageDialog(new JFrame(), "Prosecna ocena mora biti float!", "Greska!",
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Prosecna ocena mora biti float!", "Greska!",
 				        JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			if(Float.parseFloat(txtProsecnaOcena.getText())<6.0 || Float.parseFloat(txtProsecnaOcena.getText())>10.0) {
-				JOptionPane.showMessageDialog(new JFrame(), "Ocena mora biti u opsegu [6,10]!", "Greska!",
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Ocena mora biti u opsegu [6,10]!", "Greska!",
 				        JOptionPane.ERROR_MESSAGE);
 				//dispose();
 				return;
@@ -312,7 +312,7 @@ public DijalogStudent(Dialog parent){
 			try {
 				Integer.parseInt(txtTelefon.getText());
 			}catch(NumberFormatException e1) {
-				JOptionPane.showMessageDialog(new JFrame(), "Broj telefona bora biti Integer!", "Greska!",
+				JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj telefona bora biti Integer!", "Greska!",
 				        JOptionPane.ERROR_MESSAGE);
 				return;
 			}
@@ -347,7 +347,7 @@ public DijalogStudent(Dialog parent){
    
 }
   
-   public DijalogStudent(Dialog parent,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+   public DijalogStudent(JFrame parent,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
 			String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 			float prosecna_ocena){   
 		super(parent,"Dodavanje studenta",true);
@@ -366,7 +366,7 @@ public DijalogStudent(Dialog parent){
 		   public void actionPerformed(ActionEvent e) {
 
 		   int dialogButton = JOptionPane.YES_NO_OPTION;
-		              int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
+		              int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda odustanka", dialogButton);
 
 		              if (dialogResult == JOptionPane.YES_OPTION) {
 		             dispose();
@@ -614,19 +614,19 @@ public DijalogStudent(Dialog parent){
 				// TODO Auto-generated method stub
 				
 				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog(null, "Da li ste sigurni?", "Potvrda unosa", dialogButton);
+				int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda unosa", dialogButton);
 				
 				if (dialogResult == JOptionPane.YES_OPTION) {
 				
 				if(txtIme.getText().isEmpty() ||txtPrezime.getText().isEmpty() ||txtDatumRodjenja.getText().isEmpty() ||txtAdresa.getText().isEmpty()||txtTelefon.getText().isEmpty()||txtEmailAdresa.getText().isEmpty()||txtBrojIndeksa.getText().isEmpty()||txtDatumUpisa.getText().isEmpty()||txtProsecnaOcena.getText().isEmpty() ) {
 					//System.out.println("Morate popuniti sva polja");
-					JOptionPane.showMessageDialog(new JFrame(), "Sva polja moraju biti popunjena!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Sva polja moraju biti popunjena!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					//dispose();
 					return;
 				}
 				if(budzet.isSelected()==false && samof.isSelected()==false) {
-					JOptionPane.showMessageDialog(new JFrame(), "Morate selektovati ili budzet ili samofinansiranje!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Morate selektovati ili budzet ili samofinansiranje!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					//dispose();
 					return;
@@ -635,12 +635,12 @@ public DijalogStudent(Dialog parent){
 				try {
 					Float.parseFloat(txtProsecnaOcena.getText());
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(new JFrame(), "Prosecna ocena mora biti float!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Prosecna ocena mora biti float!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				if(Float.parseFloat(txtProsecnaOcena.getText())<6.0 || Float.parseFloat(txtProsecnaOcena.getText())>10.0) {
-					JOptionPane.showMessageDialog(new JFrame(), "Ocena mora biti u opsegu [6,10]!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Ocena mora biti u opsegu [6,10]!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					//dispose();
 					return;
@@ -648,7 +648,7 @@ public DijalogStudent(Dialog parent){
 				try {
 					Integer.parseInt(txtTelefon.getText());
 				}catch(NumberFormatException e1) {
-					JOptionPane.showMessageDialog(new JFrame(), "Broj telefona bora biti Integer!", "Greska!",
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj telefona bora biti Integer!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}
