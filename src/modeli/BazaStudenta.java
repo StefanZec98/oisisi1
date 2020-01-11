@@ -171,7 +171,7 @@ break;
 
 public void izmeniStudenta(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
 		String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
-		float prosecna_ocena, ArrayList<Predmet> predmeti) {
+		float prosecna_ocena) {
 for (Student i : studenti) {
 if (i.getBroj_indexa().equals(broj_indexa)) {
 i.setIme(ime);
@@ -185,7 +185,7 @@ i.setDatum_upisa(datum_upisa);
 i.setTrenutna_godina_studija(trenutna_godina_studija);
 i.setStatus(status);
 i.setProsecna_ocena(prosecna_ocena);
-i.setPredmeti(predmeti);
+
 }
 }
 }

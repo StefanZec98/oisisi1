@@ -165,7 +165,7 @@ break;
 
 public void izmeniProfesora(String ime, String prezime, String datum_rodjenja,
 String adresa_stanovanja,long kontakt_telefon,String e_mail,String adresa_kancelarije,
-long broj_licne_karte,String titula,String zvanje,ArrayList<Predmet>predmetiSpisak){
+long broj_licne_karte,String titula,String zvanje){
 for (Profesor i : profesori) {
 if (i.getBroj_licne_karte()==broj_licne_karte) {
 i.setIme(ime);
@@ -177,7 +177,6 @@ i.setE_mail(e_mail);
 i.setAdresa_kancelarije(adresa_kancelarije);
 i.setTitula(titula);
 i.setZvanje(zvanje);
-i.setPredmetiSpisak(predmetiSpisak);
 
 }
 }

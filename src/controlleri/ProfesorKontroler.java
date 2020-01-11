@@ -1,7 +1,9 @@
 package controlleri;
 
+import java.awt.List;
 import java.util.ArrayList;
 
+import modeli.BazaPredmeta;
 import modeli.BazaProfesora;
 import modeli.Predmet;
 import modeli.Profesor;
@@ -52,7 +54,8 @@ public void izmeniProfesora(int rowSelectedIndex,String ime, String prezime, Str
 	if (rowSelectedIndex < 0) {
 		return;
 	}
-	BazaProfesora.getInstance().izmeniProfesora(ime, prezime, datum_rodjenja, adresa_stanovanja, kontakt_telefon, e_mail, adresa_kancelarije, broj_licne_karte, titula, zvanje, null);
+	BazaProfesora.getInstance().izmeniProfesora(ime, prezime, datum_rodjenja, adresa_stanovanja, kontakt_telefon, e_mail, adresa_kancelarije, broj_licne_karte, titula, zvanje);
+	
 	ProfesorJTable.azurirajPrikaz();
 }
 

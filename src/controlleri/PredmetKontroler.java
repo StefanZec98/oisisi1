@@ -61,7 +61,7 @@ public class PredmetKontroler {
 				return;
 			}
 			
-			BazaPredmeta.getInstance().izmeniPredmet(sifra,naziv,semestar,godina,null,new ArrayList<Student>());
+			BazaPredmeta.getInstance().izmeniPredmet(sifra,naziv,semestar,godina);
 			
 			
 			

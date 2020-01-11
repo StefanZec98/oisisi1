@@ -188,19 +188,16 @@ break;
 }
 
 public void izmeniPredmet(String sifra, String naziv, Integer semestar,
-Integer godina, Profesor profesor,ArrayList<Student>studenti) {
+Integer godina) {
 for (Predmet i : predmeti) {
 if (i.getSifra_predmeta().equals(sifra)) {
 i.setSifra_predmeta(sifra);
 i.setNaziv_predmeta(naziv);
 i.setSemestar(semestar);
 i.setGodina_studija(godina);
-i.setPredmetni_profesor(profesor);
-i.setSpisak_studenata(studenti);
+
 }
 }
-
-
 
 }
 

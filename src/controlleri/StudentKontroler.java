@@ -48,11 +48,9 @@ private static StudentKontroler instance = null;
 			String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 			float prosecna_ocena) {
 		if (rowSelectedIndex < 0) {
-			System.out.println("bbbbbbb");
 			return;
 			}
-		BazaStudenta.getInstance().izmeniStudenta(ime, prezime, datum_rodjenja, adresa_stanovanja, broj_telefona, email_adresa, broj_indexa, datum_upisa, trenutna_godina_studija, status, prosecna_ocena, new ArrayList<Predmet>());
-		System.out.println("aaaaaaaaaaa");
+		BazaStudenta.getInstance().izmeniStudenta(ime, prezime, datum_rodjenja, adresa_stanovanja, broj_telefona, email_adresa, broj_indexa, datum_upisa, trenutna_godina_studija, status, prosecna_ocena);
 		StudentiJtable.azurirajPrikaz();
 	}
 }
