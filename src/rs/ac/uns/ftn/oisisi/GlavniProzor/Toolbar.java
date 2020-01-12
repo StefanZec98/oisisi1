@@ -422,6 +422,10 @@ public class Toolbar extends JToolBar{
 				
 				
 if(Tabovi.pozicija==0) {
+	
+	String CeoUnetiZaProfesora=textField.getText();
+    StudentiJtable.FilterPrikaza(CeoUnetiZaProfesora);
+	/*
 					
 					String CeoUnetiZaStudenta=textField.getText();
 					String splitovani_stringovi1 []=CeoUnetiZaStudenta.split("\\;");
@@ -505,6 +509,7 @@ if(Tabovi.pozicija==0) {
 					   			StudentiJtable.FilterPrikaza(stringovi_posle_dvotacke1[i],10);
 					   		}
 					   	}
+					    */
 				}else if(Tabovi.pozicija==1) {
 					
                     String CeoUnetiZaProfesora=textField.getText();
@@ -540,7 +545,7 @@ if(Tabovi.pozicija==0) {
 				btnBack.setVisible(false);
 				btnSearch.setVisible(true);
 				
-				StudentiJtable.FilterPrikaza("", 2);
+				StudentiJtable.FilterPrikaza("");
 				PredmetiJtable.FilterPrikaza("");
 				ProfesorJTable.FilterPrikaza("");
 			}
