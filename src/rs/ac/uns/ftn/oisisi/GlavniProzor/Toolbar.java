@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
@@ -30,12 +29,6 @@ import modeli.Student;
 public class Toolbar extends JToolBar{
 
 	private static final long serialVersionUID = 1L;
-	
-    public	String  stringovi_pre_dvotacke1[];
-    public String  stringovi_posle_dvotacke1[] ;
-    
-    
-   
 	
 	public Toolbar() {
 		
@@ -383,7 +376,7 @@ public class Toolbar extends JToolBar{
 		add(Box.createHorizontalGlue());
 		
 		
-		JTextField textField = new JTextField();
+		JTextField textField = new JTextField("<IME_KOLONE>:<TRAŽENI_PODATAK>;");
 		
 		textField.setPreferredSize(new Dimension(300,37));
 		
