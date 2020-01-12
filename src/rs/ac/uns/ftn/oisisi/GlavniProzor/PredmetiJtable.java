@@ -4,7 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -98,18 +99,94 @@ public class PredmetiJtable extends JTable{
   	  }
 	
 	
-	public static void FilterPrikaza(String trazeno,int brojKolone) {
+	public static void FilterPrikaza(String pretraga) {
 		
-			RowFilter<?  super AbstractTableModelPredmeti,? super Integer>rowfilter=null;
+		
+		RowFilter<Object,Object>rowfilter=null;
+		List<RowFilter<Object,Object>>listaRowFiltera=new ArrayList<>();
+		
+		String[] splitovani_stringovi;
+		String [] splitovani_stringovi2;
+		
+		
+
+		
+		if(pretraga.contains(";")) {
+			splitovani_stringovi=pretraga.split("\\;");
+		}else {
+			splitovani_stringovi=new String[1];
+			splitovani_stringovi[0]=pretraga;
 			
-			try {
-				rowfilter=RowFilter.regexFilter("^" + trazeno, brojKolone);
-				
-			}catch (java.util.regex.PatternSyntaxException e) {
-				return;
-			}
+		}
 		
-			sortiranje.setRowFilter(rowfilter);
+		
+		
+		
+		
+		for(int i=0; i<splitovani_stringovi.length; i++) {
+			
+			splitovani_stringovi2=splitovani_stringovi[i].split(":");
+			
+			if(splitovani_stringovi2[0].equalsIgnoreCase("sifra")) {
+				try {
+					
+				rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 0);
+				listaRowFiltera.add(rowfilter);					
+				}catch (java.util.regex.PatternSyntaxException e) {
+					return;
+				
+					}		
+			
+			
+			}
+			
+			
+			if(splitovani_stringovi2[0].equalsIgnoreCase("naziv")) {
+				try {
+					
+				rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 1);
+				listaRowFiltera.add(rowfilter);					
+				}catch (java.util.regex.PatternSyntaxException e) {
+					return;
+				
+					}		
+			
+			
+			}
+			
+			
+			if(splitovani_stringovi2[0].equalsIgnoreCase("semestar")) {
+				try {
+					
+				rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 2);
+				listaRowFiltera.add(rowfilter);					
+				}catch (java.util.regex.PatternSyntaxException e) {
+					return;
+				
+					}		
+			
+			
+			}
+			
+			
+			if(splitovani_stringovi2[0].equalsIgnoreCase("godina")) {
+				try {
+					
+				rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 3);
+				listaRowFiltera.add(rowfilter);					
+				}catch (java.util.regex.PatternSyntaxException e) {
+					return;
+				
+					}		
+			
+			
+			}
+			
+					
+	}
+		
+		rowfilter=RowFilter.andFilter(listaRowFiltera);
+		sortiranje.setRowFilter(rowfilter);
 			
 			
 	}

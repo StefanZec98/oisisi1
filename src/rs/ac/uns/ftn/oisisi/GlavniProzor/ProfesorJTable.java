@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -95,17 +97,178 @@ public static  void azurirajPrikaz() {
 }
 
 
-public static void FilterPrikaza(String trazeno,int brojKolone) {
+public static void FilterPrikaza(String pretraga) {
 	
-	RowFilter<?  super AbstractTableModelProfesora,? super Integer>rowfilter=null;
+	RowFilter<Object,Object>rowfilter=null;
+	List<RowFilter<Object,Object>>listaRowFiltera=new ArrayList<>();
 	
-	try {
-		rowfilter=RowFilter.regexFilter("^" + trazeno, brojKolone);
-		
-	}catch (java.util.regex.PatternSyntaxException e) {
-		return;
-	}
+	String[] splitovani_stringovi;
+	String [] splitovani_stringovi2;
+	
+	
 
+	
+	if(pretraga.contains(";")) {
+		splitovani_stringovi=pretraga.split("\\;");
+	}else {
+		splitovani_stringovi=new String[1];
+		splitovani_stringovi[0]=pretraga;
+		
+	}
+	
+	
+	
+	
+	
+	for(int i=0; i<splitovani_stringovi.length; i++) {
+		
+		splitovani_stringovi2=splitovani_stringovi[i].split(":");
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("ime")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 0);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("prezime")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 1);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("datum_rodjenja")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 2);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("adresa")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 3);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("kontakt_telefon")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 4);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("e_mail")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 5);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("adresa_kancelarije")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 6);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("br_licne_karte")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 7);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("titula")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 8);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		if(splitovani_stringovi2[0].equalsIgnoreCase("zvanje")) {
+			try {
+				
+			rowfilter=RowFilter.regexFilter(splitovani_stringovi2[1], 9);
+			listaRowFiltera.add(rowfilter);					
+			}catch (java.util.regex.PatternSyntaxException e) {
+				return;
+			
+				}		
+		
+		
+		}
+		
+		
+		
+		
+				
+}
+	
+	rowfilter=RowFilter.andFilter(listaRowFiltera);
 	sortiranje.setRowFilter(rowfilter);
 	
 	
