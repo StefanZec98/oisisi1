@@ -584,10 +584,10 @@ public DijalogProfesor(JFrame owner,String ime, String prezime, String datum_rod
 				if (dialogResult == JOptionPane.YES_OPTION) {
 					
 				
-				if(txtIme.getText().isEmpty() || txtPrezime.getText().isEmpty() || txtDatumRodjenja.getText().isEmpty() ||
-						txtAdresa.getText().isEmpty() || txtTelefon.getText().isEmpty() || txtEmail.getText().isEmpty() ||
-						txtAdresaKancelarije.getText().isEmpty() || txtLicnaKarta.getText().isEmpty() ||
-						txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
+				if(txtIme.getText().trim().isEmpty() || txtPrezime.getText().trim().isEmpty() || txtDatumRodjenja.getText().trim().isEmpty() ||
+						txtAdresa.getText().trim().isEmpty() || txtTelefon.getText().trim().isEmpty() || txtEmail.getText().trim().isEmpty() ||
+						txtAdresaKancelarije.getText().trim().isEmpty() || txtLicnaKarta.getText().trim().isEmpty() ||
+						txtTitula.getText().trim().isEmpty() || txtZvanje.getText().trim().isEmpty()) {
 					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Sva polja moraju biti popunjena!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					//dispose();
@@ -605,6 +605,23 @@ public DijalogProfesor(JFrame owner,String ime, String prezime, String datum_rod
 					Integer.parseInt(txtLicnaKarta.getText());
 				}catch(NumberFormatException e1) {
 					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Broj licne karte bora biti Integer!", "Greska!",
+					        JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(txtIme.getText().contains("0") || txtIme.getText().contains("0") || txtIme.getText().contains("1")
+						|| txtIme.getText().contains("2") || txtIme.getText().contains("3") || txtIme.getText().contains("4")
+						|| txtIme.getText().contains("5") || txtIme.getText().contains("6") || txtIme.getText().contains("7")
+						|| txtIme.getText().contains("7") || txtIme.getText().contains("8") || txtIme.getText().contains("9")) {
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Ime ne sme da sadrzi broj!", "Greska!",
+					        JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				if(txtPrezime.getText().contains("0") || txtPrezime.getText().contains("0") || txtPrezime.getText().contains("1")
+						|| txtPrezime.getText().contains("2") || txtPrezime.getText().contains("3") || txtPrezime.getText().contains("4")
+						|| txtPrezime.getText().contains("5") || txtPrezime.getText().contains("6") || txtPrezime.getText().contains("7")
+						|| txtPrezime.getText().contains("7") || txtPrezime.getText().contains("8") || txtPrezime.getText().contains("9")) {
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Ime ne sme da sadrzi broj!", "Greska!",
 					        JOptionPane.ERROR_MESSAGE);
 					return;
 				}

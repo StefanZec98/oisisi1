@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import rs.ac.uns.ftn.oisisi.GlavniProzor.StudentiJtable;
+
 public class Student  implements Serializable{
 		private String ime;
 		private String prezime;
@@ -147,6 +149,7 @@ public class Student  implements Serializable{
 					break;
 				}
 			}
+	
 		}
 		public ArrayList<Predmet> vratiPredmete(){
 			return predmeti;

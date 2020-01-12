@@ -140,9 +140,18 @@ public class Toolbar extends JToolBar{
 						int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda brisanja", dialogButton);
 						
 						if (dialogResult == JOptionPane.YES_OPTION) {
-				for (Predmet p : BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex).getPredmeti()) {
-					p.obrisiStudentaSaPredmeta(BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex));
-				}			
+							try {
+				for(Predmet p : BazaPredmeta.getInstance().getPredmeti()) {
+					for(Student s : BazaStudenta.getInstance().getStudenti()) {
+						if(s.getBroj_indexa().equals(BazaStudenta.getInstance().getRow(StudentiJtable.rowSelectedIndex).getBroj_indexa())) {
+							p.obrisiStudentaSaPredmeta(s);
+						}
+					}
+					}
+							}catch (Exception e1) {
+								
+							}
+				
 				StudentKontroler.getInstance().izbrisiStudenta(StudentiJtable.rowSelectedIndex);
 						}
 					}else {
@@ -187,9 +196,17 @@ public class Toolbar extends JToolBar{
 						int dialogResult = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li ste sigurni?", "Potvrda brisanja", dialogButton);
 						
 						if (dialogResult == JOptionPane.YES_OPTION) {
-					for (Student s : BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex).getSpisak_studenata()) {
-						s.obirisiPredmet(BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex));
+							try {
+					for (Student s : BazaStudenta.getInstance().getStudenti()) {
+						for(Predmet p : s.getPredmeti()) {
+							if(p.getSifra_predmeta().equals(BazaPredmeta.getInstance().getRow(PredmetiJtable.rowSelectedIndex).getSifra_predmeta())) {
+								s.obirisiPredmet(p);
+							}
+						}
 					}
+							}catch (Exception e1) {
+								
+							}
 					
 					try {
 					for(Profesor profesor : BazaProfesora.getInstance().getProfesori()) {
