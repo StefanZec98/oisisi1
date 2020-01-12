@@ -49,7 +49,7 @@ editorButton.addActionListener(new ActionListener() {
 		String prikazivanje="";
 		int i=0;
 		for (Predmet p : BazaProfesora.getInstance().getRow(ProfesorJTable.rowSelectedIndex).getPredmetiSpisak()) {
-			 prikazivanje += ++i + "." + "Sifra_predmeta: "  + p.getSifra_predmeta() +  "\n";
+			 prikazivanje += ++i + "." + "Sifra_predmeta: "  + p.getSifra_predmeta() + "," + " Naziv_predmeta: " + p.getNaziv_predmeta() +"\n";
 		}
 		
 		

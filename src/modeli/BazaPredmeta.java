@@ -122,7 +122,8 @@ case 4:
 	if(predmet.getPredmetni_profesor()==null) {
         return "Predmet nema profesora";
     }else {
-    return   "Licna karta: " + Long.toString(predmet.getPredmetni_profesor().getBroj_licne_karte());
+    return   "Licna karta: " + Long.toString(predmet.getPredmetni_profesor().getBroj_licne_karte())  
+    			+ ", " + predmet.getPredmetni_profesor().getIme() + " " + predmet.getPredmetni_profesor().getPrezime() ;
     }
 
 default:
