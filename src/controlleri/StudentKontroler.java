@@ -21,7 +21,7 @@ private static StudentKontroler instance = null;
 	
 	private StudentKontroler() {}
 	
-	public void dodajStudenta(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+	public void dodajStudenta(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long broj_telefona,
 			String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 			float prosecna_ocena, ArrayList<Predmet> predmeti) {
 		
@@ -44,7 +44,7 @@ private static StudentKontroler instance = null;
 
 		}
 	
-	public void izmeniStudenta(int rowSelectedIndex,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+	public void izmeniStudenta(int rowSelectedIndex,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long broj_telefona,
 			String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 			float prosecna_ocena) {
 		if (rowSelectedIndex < 0) {

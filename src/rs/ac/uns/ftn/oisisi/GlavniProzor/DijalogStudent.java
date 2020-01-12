@@ -333,7 +333,7 @@ public DijalogStudent(JFrame parent){
 				return;
 			}
 			
-			StudentKontroler.getInstance().dodajStudenta(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),godStud.getSelectedIndex()+1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()), new ArrayList<Predmet>());
+			StudentKontroler.getInstance().dodajStudenta(txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Long.parseLong(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),godStud.getSelectedIndex()+1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()), new ArrayList<Predmet>());
 			dispose();
 		}
 		}
@@ -363,7 +363,7 @@ public DijalogStudent(JFrame parent){
    
 }
   
-   public DijalogStudent(JFrame parent,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+   public DijalogStudent(JFrame parent,String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long broj_telefona,
 			String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 			float prosecna_ocena){   
 		super(parent,"Dodavanje studenta",true);
@@ -420,7 +420,7 @@ public DijalogStudent(JFrame parent){
 	  final JTextField txtPrezime = new JTextField(prezime);
 	  final JTextField txtDatumRodjenja = new JTextField(datum_rodjenja);
 	  final JTextField txtAdresa = new JTextField(adresa_stanovanja);
-	  final JTextField txtTelefon = new JTextField(Integer.toString(broj_telefona));
+	  final JTextField txtTelefon = new JTextField(Long.toString(broj_telefona));
 	  final JTextField txtBrojIndeksa = new JTextField(broj_indexa);
 	  txtBrojIndeksa.setEditable(false);
 	  final JTextField txtEmailAdresa = new JTextField(email_adresa);
@@ -685,7 +685,7 @@ public DijalogStudent(JFrame parent){
 					return;
 				}
 				
-				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex,txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Integer.parseInt(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),godStud.getSelectedIndex()+1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()));
+				StudentKontroler.getInstance().izmeniStudenta(StudentiJtable.rowSelectedIndex,txtIme.getText(), txtPrezime.getText(), txtDatumRodjenja.getText(), txtAdresa.getText(), Long.parseLong(txtTelefon.getText()), txtEmailAdresa.getText(), txtBrojIndeksa.getText(), txtDatumUpisa.getText(),godStud.getSelectedIndex()+1, budzet.isSelected() ? Status.B : Status.S, Float.parseFloat(txtProsecnaOcena.getText()));
 				dispose();
 			}
 			}

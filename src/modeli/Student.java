@@ -11,7 +11,7 @@ public class Student  implements Serializable{
 		private String prezime;
 		private String datum_rodjenja;
 		private String adresa_stanovanja;
-		private int broj_telefona;
+		private long broj_telefona;
 		private String email_adresa;
 		private String broj_indexa;
 		private String datum_upisa;
@@ -34,7 +34,7 @@ public class Student  implements Serializable{
 		
 		
 
-		public Student(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+		public Student(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long broj_telefona,
 				String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 				float prosecna_ocena, ArrayList<Predmet> predmeti) {
 			super();
@@ -84,11 +84,11 @@ public class Student  implements Serializable{
 			this.adresa_stanovanja = adresa_stanovanja;
 		}
 
-		public int getBroj_telefona() {
+		public long getBroj_telefona() {
 			return broj_telefona;
 		}
 
-		public void setBroj_telefona(int broj_telefona) {
+		public void setBroj_telefona(long broj_telefona) {
 			this.broj_telefona = broj_telefona;
 		}
 

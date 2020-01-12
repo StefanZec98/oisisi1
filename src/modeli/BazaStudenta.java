@@ -124,7 +124,7 @@ return student.getDatum_rodjenja();
 case 7:
 return student.getAdresa_stanovanja();
 case 8:
-return Integer.toString(student.getBroj_telefona());
+return Long.toString(student.getBroj_telefona());
 case 9:
 return student.getEmail_adresa();
 case 10:
@@ -146,7 +146,7 @@ return student.getPredmeti();
 }
 
 
-public void dodajStudenta(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+public void dodajStudenta(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long broj_telefona,
 		String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 		float prosecna_ocena, ArrayList<Predmet> predmeti) {
 
@@ -171,7 +171,7 @@ break;
 }
 }
 
-public void izmeniStudenta(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, int broj_telefona,
+public void izmeniStudenta(String ime, String prezime, String datum_rodjenja, String adresa_stanovanja, long broj_telefona,
 		String email_adresa, String broj_indexa, String datum_upisa, int trenutna_godina_studija, Status status,
 		float prosecna_ocena) {
 for (Student i : studenti) {
