@@ -147,7 +147,8 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 			
 			
 			
-			String semestar[]= {"I (Prvi)","II (Drugi)"};
+			String semestar[]= {"I (Prvi)","II (Drugi)","III (Treci)",
+					"IV (Cetvrti)","V (Peti)","VI (Sesti)","VII (Sedmi)","VIII (Osmi)"};
 			JComboBox<String> semestarStud=new JComboBox<>(semestar);
 			   
 			   
@@ -198,6 +199,48 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 								
 								return;
 							}
+						
+						if(semestarStud.getSelectedIndex()==0 || semestarStud.getSelectedIndex()==1 ) {
+							if(godStud.getSelectedIndex()!=0) {
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Semestar se ne poklapa sa godinom studija! ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+									return;
+							}
+							
+						}
+						
+						if(semestarStud.getSelectedIndex()==2 || semestarStud.getSelectedIndex()==3 ) {
+							if(godStud.getSelectedIndex()!=1) {
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Semestar se ne poklapa sa godinom studija! ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+									return;
+							}
+							
+						}
+						
+						
+						if(semestarStud.getSelectedIndex()==4 || semestarStud.getSelectedIndex()==5 ) {
+							if(godStud.getSelectedIndex()!=2) {
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Semestar se ne poklapa sa godinom studija! ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+									return;
+							}
+							
+						}
+						
+						
+						if(semestarStud.getSelectedIndex()==6 || semestarStud.getSelectedIndex()==7 ) {
+							if(godStud.getSelectedIndex()!=3) {
+								JOptionPane.showMessageDialog(MainFrame.getInstance(), "Semestar se ne poklapa sa godinom studija! ", "Greska!",          
+									       JOptionPane.ERROR_MESSAGE);
+									
+									return;
+							}
+							
+						}
 						
 						
 						
@@ -361,7 +404,8 @@ public class DijalogPredmet extends JDialog implements ActionListener{
 			
 			
 			
-			String semestar[]= {"I (Prvi)","II (Drugi)"};
+			String semestar[]= {"I (Prvi)","II (Drugi)","III (Treci)",
+					"IV (Cetvrti)","V (Peti)","VI (Sesti)","VII (Sedmi)","VIII (Osmi)"};
 			JComboBox<String> semestarStud=new JComboBox<>(semestar);
 			semestarStud.setSelectedIndex(semestarUlaz);   
 			   
